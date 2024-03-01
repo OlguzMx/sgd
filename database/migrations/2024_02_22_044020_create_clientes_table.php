@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('name',95);
-            $table->string('email')->unique();
-            $table->string('puesto',45);
-            $table->string('num_cel',13);
-            $table->string('num_fijo',13);
-            $table->string('extension',3);
+            $table->string('name');
+            $table->string('email');
+            $table->string('puesto');
+            $table->string('num_cel');
+            $table->string('num_fijo');
+            $table->string('extension');
             $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });
