@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('puesto');
             $table->string('num_cel');
-            $table->string('num_fijo');
-            $table->string('extension');
+            $table->string('num_fijo')->nullable();
+            $table->string('extension')->nullable();
             $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });

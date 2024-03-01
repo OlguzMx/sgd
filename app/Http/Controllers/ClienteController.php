@@ -38,11 +38,11 @@ class ClienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:85',
             'email' => 'required|max:120|unique:clientes,email|email',
-            'puesto' => 'sometimes|required|max:45',
-            'num_cel' => 'sometimes|max:13',
-            'num_fijo' => 'sometimes|max:13',
-            'extension' => 'sometimes|max:3',
-            'empresas_id' => 'sometimes',
+            'puesto' => 'required|max:75',
+            'num_cel' => 'required|max:13',
+            'num_fijo' => 'nullable|max:13',
+            'extension' => 'nullable|max:5',
+            'empresas_id' => 'required',
         ]);
 
         try {
