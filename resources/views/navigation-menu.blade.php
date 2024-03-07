@@ -64,9 +64,9 @@
                                     </x-dropdown-link>
 
                                     <!-- Vista de Tipo de Documentos -->
-                                    <x-dropdown-link href="{{ route('tiposdocumentos.index') }}" :active="request()->routeIs('tiposdocumentos')">
+                                    <!-- <x-dropdown-link href="{{ route('tiposdocumentos.index') }}" :active="request()->routeIs('tiposdocumentos')">
                                         {{ __('Tipo de Documentos') }}
-                                    </x-dropdown-link>
+                                    </x-dropdown-link> -->
 
                                 </div>
                             </x-slot>
