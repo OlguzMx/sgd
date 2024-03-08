@@ -22,7 +22,7 @@ Crear nuevo cliente
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del nuevo Cliente</h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">Ingrese la información requerida para el cliente.</p>
-                    <form action="{{ route('clientes.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('clientes.create') }}" method="POST" enctype="multipart/form-data" novalidate>
                         @csrf
                         <div class="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
@@ -34,13 +34,19 @@ Crear nuevo cliente
                                     <input 
                                         type="text" 
                                         name="name" 
-                                        id="name" 
+                                        id="name"
+                                        value="{{old('name')}}" 
                                         autocomplete="name" 
                                         placeholder="Nombre del cliente"
-                                        class="block w-full rounded-md border-0 py-1.5 
+                                        class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
-                                        focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                        focus:ring-indigo-600 sm:text-sm sm:leading-6 ">
+                                        @error('name')
+                                        <div class="alerta my-2 p-2  border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                        @enderror
                                 </div>
                             </div>
 
@@ -57,10 +63,15 @@ Crear nuevo cliente
                                         type="email" 
                                         autocomplete="email" 
                                         placeholder="Email del cliente"
-                                        class="block w-full rounded-md border-0 py-1.5 
+                                        class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                        @error('email')
+                                        <div class="alerta my-2 p-2  border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                        @enderror
                                 </div>
                             </div>
 
@@ -77,10 +88,15 @@ Crear nuevo cliente
                                         id="puesto" 
                                         autocomplete="puesto" 
                                         placeholder="Ej: Ingeniero de Soporte"
-                                        class="block w-full rounded-md border-0 py-1.5 
+                                        class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 
                                         sm:text-sm sm:leading-6">
+                                        @error('puesto')
+                                        <div class="alerta my-2 p-2  border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                        @enderror
                                 </div>
                             </div>
 
@@ -97,11 +113,16 @@ Crear nuevo cliente
                                         id="num_cel" 
                                         autocomplete="num_cel" 
                                         placeholder="No. Celular del cliente"
-                                        class="block w-full rounded-md border-0 
+                                        class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 
                                         py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
                                       ring-gray-300 placeholder:text-gray-400 
                                         focus:ring-2 focus:ring-inset focus:ring-indigo-600 
                                         sm:text-sm sm:leading-6">
+                                        @error('num_cel')
+                                        <div class="alerta my-2 p-2  border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                        @enderror
                                 </div>
                             </div>
 
@@ -110,7 +131,7 @@ Crear nuevo cliente
                             <!-- INICIO - NÚMERO FIJO -->
 
                             <div class="sm:col-span-3">
-                                <label for="num_fijo" class="block text-sm font-medium leading-6 text-gray-900">Número Fijo</label>
+                                <label for="num_fijo" class="block text-sm font-medium leading-6 text-gray-900">Número Fijo (opcional)</label>
                                 <div class="mt-2">
                                     <input 
                                         type="text" 
@@ -129,7 +150,7 @@ Crear nuevo cliente
                             <!-- INICIO - EXTENSION -->
 
                             <div class="sm:col-span-3">
-                                <label for="extension" class="block text-sm font-medium leading-6 text-gray-900">Extension</label>
+                                <label for="extension" class="block text-sm font-medium leading-6 text-gray-900">Extension (opcional)</label>
                                 <div class="mt-2">
                                     <input 
                                         type="text" 
@@ -141,10 +162,11 @@ Crear nuevo cliente
                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                        
                                 </div>
                             </div>
                             <div class="sm:col-span-3">
-                                <label for="departamento" class="block text-sm font-medium leading-6 text-gray-900">Departamento</label>
+                                <label for="departamento" class="block text-sm font-medium leading-6 text-gray-900">Departamento (opcional) </label>
                                 <div class="mt-2">
                                     <input 
                                         type="text" 
@@ -153,6 +175,7 @@ Crear nuevo cliente
                                         autocomplete="departamento"
                                         placeholder="Introduce el departamento, ej: TI" 
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                        
                                 </div>
                             </div>
 
@@ -162,13 +185,18 @@ Crear nuevo cliente
 
                             <div class="sm:col-span-3">
                                 <label for="empresas_id" class="block text-sm font-medium leading-6 text-gray-900">Empresa</label>
-                                <div class="mt-2">
-                                    <select id="empresas_id" name="empresas_id" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                <div class="mt-2 inline-block">
+                                    <select id="empresas_id" name="empresas_id" class="@error('name') md:border border-red-500 @enderror w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                         <option value="">Seleccione su Empresa</option>
                                         @foreach ($Empresa as $row)
                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('empresas_id')
+                                        <div class="alerta my-2 p-2  border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                            <p class="text-red-700">{{ $message }}</p>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
 
