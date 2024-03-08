@@ -17,6 +17,7 @@ class Cliente extends Model
         'num_fijo',
         'extension',
         'empresas_id',
+        'departamento'
     ];    
 
     public function REL_empresa()

@@ -13,7 +13,7 @@ class EmpresasController extends Controller
      */
     public function index()
     {
-        $empresa = Empresa::all();
+        $empresa = Empresa::paginate(10);
         $empresaCount = Empresa::count();
         return view('empresas.index')->with(['Empresa' => $empresa, 'EmpresaCount' => $empresaCount]);
     }
@@ -36,18 +36,18 @@ class EmpresasController extends Controller
             'name' => 'required|max:85',
             'email' => 'required|max:120|unique:clientes,email|email',
             'direccion' => 'sometimes|required|max:145',
+            'ubicacion' => 'sometimes',
+            'codigo_postal' => 'sometimes'
         ]);
 
-        try {
-            Empresa::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'direccion' => $request->direccion,
-            ]);
-            return redirect()->route('empresas.index');
-        } catch (\Exception $e) {
-            return ["Error" => $e->getCode(), "messages" => $e->getMessage()];
-        }
+        Empresa::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'direccion' => $request->direccion,
+            'ubicacion' => $request->ubicacion,
+            'codigo_postal' => $request->codigo_postal,
+        ]);
+        return redirect()->route('empresas.index');
     }
 
     /**
@@ -71,23 +71,28 @@ class EmpresasController extends Controller
      * ACTUALIZAR UNA EMPRESA EN ESPECÍFICO DEL ALMACENAMIENTO.
      */
     public function update(Request $request, string $id)
-    {
-        try {
-            $validator = Validator::make($request->all(), []);
-            $empresa = Empresa::find($id);
-            $empresa->name = $request->name;
-            $empresa->email = $request->email;
-            $empresa->direccion = $request->direccion;
-            if ($validator->fails()) {
-                return back()
-                    ->withErrors($validator->messages())
-                    ->withInput($request->input());
-            }
-            $empresa->update();
-            return redirect()->route('empresas.index');
-        } catch (\Exception $e) {
-            return ["Error" => $e->getCode(), "Message" => $e->getMessage()];
-        };
+    {   
+        // Validar campos
+        $this->validate($request, [
+            'name' => 'required|max:85',
+            'email' => 'required|max:120|unique:clientes,email|email',
+            'direccion' => 'sometimes|required|max:145',
+            'ubicacion' => 'sometimes',
+            'codigo_postal' => 'sometimes'
+        ]);
+
+        // Busca la empresa a actualizar
+        $empresa = Empresa::find($id);
+
+        $empresa->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'direccion' => $request->direccion,
+            'ubicacion' => $request->ubicacion,
+            'codigo_postal' => $request->codigo_postal,
+        ]);
+
+        return redirect()->route('empresas.index');
     }
 
     /**

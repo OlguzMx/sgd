@@ -36,18 +36,20 @@ Iniciar Sesión
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex md:justify-between flex-col items-center md:flex-row my-4 space-y-2">
                 @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('¿Olvidate tu contraseña?') }}
+                    {{ __('¿Olvidaste tu contraseña?') }}
                 </a>
                 @endif
 
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
                     {{ __('¿No tienes cuenta?') }}
                 </a>
-                
-                <x-button class="ms-4">
+            </div>
+            
+            <div class="md:flex justify-end w-full">
+                <x-button class="w-full">
                     {{ __('Iniciar sesión') }}
                 </x-button>
             </div>
