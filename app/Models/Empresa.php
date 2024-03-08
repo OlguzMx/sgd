@@ -16,6 +16,8 @@ class Empresa extends Model
         'name',
         'email',
         'direccion',
+        'ubicacion',
+        'codigo_postal'
     ];
     
     public function REL_cliente()

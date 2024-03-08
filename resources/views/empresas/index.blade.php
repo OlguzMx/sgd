@@ -31,11 +31,9 @@ Empresas
 
                         <!-- INICIO - BOTÓN PARA CREAR EMPRESA -->
 
-                        <div class="flex items-center gap-4">
-                            <a href="{{route('empresas.create')}}" class="bg-blue-500 hover:bg-blue-600 text-white p-1 rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
+                        <div class="flex items-center gap-4 mb-3">
+                            <a href="{{route('empresas.create')}}" class="uppercase text-sm font-semibold bg-orange-500 hover:bg-indigo-700 text-white px-2 py-1 rounded">
+                              Agregar empresa
                             </a>
                         </div>
 
@@ -50,7 +48,9 @@ Empresas
                                     <tr>
                                         <th class="px-6 py-3 text-left font-semibold uppercase">Nombre</th>
                                         <th class="px-6 py-3 text-left font-semibold uppercase">Email</th>
-                                        <th class="px-6 py-3 text-left font-semibold uppercase">Direccion</th>
+                                        <th class="px-6 py-3 text-left font-semibold uppercase">Dirección</th>
+                                        <th class="px-6 py-3 text-left font-semibold uppercase">Ubicacion</th>
+                                        <th class="px-6 py-3 text-left font-semibold uppercase">Codigo Postal</th>
                                         <th class="px-6 py-3 text-left font-semibold uppercase">Acción</th>
                                     </tr>
                                 </thead>
@@ -61,6 +61,8 @@ Empresas
                                         <td class="px-6 py-4">{{ $empresa->name }}</td>
                                         <td class="px-6 py-4">{{ $empresa->email }}</td>
                                         <td class="px-6 py-4">{{ $empresa->direccion }}</td>
+                                        <td class="px-6 py-4">{{ $empresa->ubicacion }}</td>
+                                        <td class="px-6 py-4">{{ $empresa->codigo_postal }}</td>
                                         <td class="px-6 py-4">
 
                                             <!-- INICIO - BOTÓN PARA EDITAR Y ELIMINAR EMPRESA -->
@@ -87,7 +89,9 @@ Empresas
                             </table>
 
                             <!-- FIN - TABLA DE EMPRESA -->
-
+                        </div>
+                        <div class="my-2">
+                            {{$Empresa->links()}}
                         </div>
                     </div>
                 </div>

@@ -43,22 +43,21 @@ class ClienteController extends Controller
             'num_fijo' => 'nullable|max:13',
             'extension' => 'nullable|max:5',
             'empresas_id' => 'required',
+            'departamento' => 'sometimes'
         ]);
 
-        try {
-            Cliente::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'puesto' => $request->puesto,
-                'num_cel' => $request->num_cel,
-                'num_fijo' => $request->num_fijo,
-                'extension' => $request->extension,
-                'empresas_id' => $request->empresas_id,
-            ]);
-            return redirect()->route('clientes.index');
-        } catch (\Exception $e) {
-            return ["Error" => $e->getCode(), "messages" => $e->getMessage()];
-        }
+        Cliente::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'puesto' => $request->puesto,
+            'num_cel' => $request->num_cel,
+            'num_fijo' => $request->num_fijo,
+            'extension' => $request->extension,
+            'empresas_id' => $request->empresas_id,
+            'departamento' => $request->departamento
+        ]);
+        
+        return redirect()->route('clientes.index');
     }
 
     /**

@@ -65,4 +65,13 @@
         </div>
         <!-- FIN - BOTÓN DE CREAR Y REGRESAR -->
     </form>
+    <button
+    type="button"
+    wire:click="delete"
+    wire:confirm="Are you sure you want to delete this post?"
+>
+    Delete post 
+</button>
 </div>
+
+

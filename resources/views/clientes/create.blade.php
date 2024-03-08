@@ -31,7 +31,16 @@ Crear nuevo cliente
                             <div class="sm:col-span-3">
                                 <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
                                 <div class="mt-2">
-                                    <input type="text" name="name" id="name" autocomplete="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input 
+                                        type="text" 
+                                        name="name" 
+                                        id="name" 
+                                        autocomplete="name" 
+                                        placeholder="Nombre del cliente"
+                                        class="block w-full rounded-md border-0 py-1.5 
+                                        text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                        placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                        focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
@@ -42,7 +51,16 @@ Crear nuevo cliente
                             <div class="sm:col-span-3">
                                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                                 <div class="mt-2">
-                                    <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input 
+                                        id="email" 
+                                        name="email" 
+                                        type="email" 
+                                        autocomplete="email" 
+                                        placeholder="Email del cliente"
+                                        class="block w-full rounded-md border-0 py-1.5 
+                                        text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                        placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                        focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
@@ -53,7 +71,16 @@ Crear nuevo cliente
                             <div class="sm:col-span-3">
                                 <label for="puesto" class="block text-sm font-medium leading-6 text-gray-900">Puesto</label>
                                 <div class="mt-2">
-                                    <input type="text" name="puesto" id="puesto" autocomplete="puesto" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input 
+                                        type="text" 
+                                        name="puesto" 
+                                        id="puesto" 
+                                        autocomplete="puesto" 
+                                        placeholder="Ej: Ingeniero de Soporte"
+                                        class="block w-full rounded-md border-0 py-1.5 
+                                        text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                        placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 
+                                        sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
@@ -64,7 +91,17 @@ Crear nuevo cliente
                             <div class="sm:col-span-3">
                                 <label for="num_cel" class="block text-sm font-medium leading-6 text-gray-900">Número de Celular</label>
                                 <div class="mt-2">
-                                    <input type="text" name="num_cel" id="num_cel" autocomplete="num_cel" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input 
+                                        type="text" 
+                                        name="num_cel" 
+                                        id="num_cel" 
+                                        autocomplete="num_cel" 
+                                        placeholder="No. Celular del cliente"
+                                        class="block w-full rounded-md border-0 
+                                        py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                                      ring-gray-300 placeholder:text-gray-400 
+                                        focus:ring-2 focus:ring-inset focus:ring-indigo-600 
+                                        sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
@@ -75,7 +112,15 @@ Crear nuevo cliente
                             <div class="sm:col-span-3">
                                 <label for="num_fijo" class="block text-sm font-medium leading-6 text-gray-900">Número Fijo</label>
                                 <div class="mt-2">
-                                    <input type="text" name="num_fijo" id="num_fijo" autocomplete="num_fijo" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input 
+                                        type="text" 
+                                        name="num_fijo" 
+                                        id="num_fijo" 
+                                        autocomplete="num_fijo" 
+                                        placeholder="No. Teléfono del cliente"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                                        shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
+                                        focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
@@ -86,7 +131,28 @@ Crear nuevo cliente
                             <div class="sm:col-span-3">
                                 <label for="extension" class="block text-sm font-medium leading-6 text-gray-900">Extension</label>
                                 <div class="mt-2">
-                                    <input type="text" name="extension" id="extension" autocomplete="extension" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input 
+                                        type="text" 
+                                        name="extension" 
+                                        id="extension" 
+                                        autocomplete="extension" 
+                                        placeholder="Introduce la extension max: 5 digitos"
+                                        class="block w-full rounded-md border-0 py-1.5 
+                                        text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                        placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                        focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label for="departamento" class="block text-sm font-medium leading-6 text-gray-900">Departamento</label>
+                                <div class="mt-2">
+                                    <input 
+                                        type="text" 
+                                        name="departamento" 
+                                        id="departamento" 
+                                        autocomplete="departamento"
+                                        placeholder="Introduce el departamento, ej: TI" 
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
