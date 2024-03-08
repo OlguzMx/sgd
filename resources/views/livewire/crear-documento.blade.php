@@ -43,9 +43,8 @@
                 <select id="tipos_documentos_id" wire:model="tipos_documentos_id"
                     class="block w-full md:w-2/3 rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     <option value="">Seleccione el tipo de documento</option>
-                    @foreach ($tiposDocumentos as $tipoDocumento)
-                        <option value="{{ $tipoDocumento->id }}">{{ $tipoDocumento->name }}</option>
-                    @endforeach
+                    
+                    
                 </select>
             </div>
             <div>

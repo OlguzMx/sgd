@@ -16,7 +16,9 @@
 
                 <!-- INICIO - CONTEO DE CLIENTES -->
 
-                <h2 class="text-3xl font-light text-center font-mono">Clientes: {{ $ClienteCount }}</h2>
+                <h2 class="text-3xl font-light text-center font-mono">{{ $ClienteCount }}
+                    <span class="font-normal"> @choice('Cliente|Clientes',$ClienteCount )</span>
+                </h2>
 
                 <!-- FIN - CONTEO DE CLIENTES -->
 

@@ -22,7 +22,11 @@ Usuarios
 
                 <!-- INICIO - CONTEO DE USUARIOS -->
 
-                <h2 class="text-3xl font-light text-center font-mono">Usuarios: {{ $UserCount }}</h2>
+                <h2 class="text-3xl font-light text-center font-mono">
+                    {{ $UserCount }}
+                    {{-- Pluralizar si hay más de 1 --}}
+                    <span class="font-normal"> @choice('Usuario|Usuarios',$UserCount )</span>
+                </h2>
 
                 <!-- FIN - CONTEO DE USUARIOS -->
 
