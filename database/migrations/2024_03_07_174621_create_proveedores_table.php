@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('direccion');
-            $table->string('name_contacto');
-            $table->string('telefono');
+            $table->string('name'); //Ej: Westcon Mexico, S.A. de C.V 
+            $table->string('direccion'); //Ej: Av. Insurgentes Sur 730 Piso 11Col. Del Valle, Del. Benito Juárez, C.P. 03100 Ciudad de México.
+            $table->string('name_contacto'); //Ej: Carlos Ruiz
+            $table->string('telefono'); //Ej: 99 22 00 12 42
             $table->timestamps();
         });
     }

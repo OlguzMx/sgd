@@ -22,7 +22,9 @@ Empresas
 
                 <!-- INICIO - CONTEO DE EMPRESAS -->
 
-                <h2 class="text-3xl font-light text-center font-mono">Empresas: {{ $EmpresaCount }}</h2>
+                <h2 class="text-3xl font-light text-center font-mono">{{ $EmpresaCount }}
+                    <span class="font-normal"> @choice('Empresa|Empresas', $EmpresaCount)</span>
+                </h2>
 
                 <!-- FIN - CONTEO DE EMPRESAS -->
 
@@ -33,7 +35,7 @@ Empresas
 
                         <div class="flex items-center gap-4 mb-3">
                             <a href="{{route('empresas.create')}}" class="uppercase text-sm font-semibold bg-orange-500 hover:bg-indigo-700 text-white px-2 py-1 rounded">
-                              Agregar empresa
+                                Agregar empresa
                             </a>
                         </div>
 

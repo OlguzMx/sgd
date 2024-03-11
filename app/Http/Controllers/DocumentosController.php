@@ -16,7 +16,7 @@ class DocumentosController extends Controller
      */
     public function index()
     {
-        $documento = Documento::all();
+        $documento = Documento::paginate(10);
         $documentoCount = Documento::count();
         $tipoDocumento = TipoDocumento::all();
         $user = User::all();

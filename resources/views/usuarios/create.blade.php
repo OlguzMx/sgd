@@ -26,7 +26,15 @@ Crear nuevo usuario
                             <div class="sm:col-span-3">
                                 <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
                                 <div class="mt-2">
-                                    <input type="text" name="name" id="name" autocomplete="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="name" name="name" value="{{ old('name') }}" type="text" autocomplete="name" placeholder="Ej: Carlos Pérez" class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('name')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -36,7 +44,15 @@ Crear nuevo usuario
                             <div class="sm:col-span-3">
                                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                                 <div class="mt-2">
-                                    <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="email" name="email" value="{{ old('email') }}" type="text" autocomplete="email" placeholder="Ej: Carlos Pérez" class="@error('email') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('email')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -47,7 +63,15 @@ Crear nuevo usuario
                             <div class="sm:col-span-3">
                                 <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
                                 <div class="mt-2">
-                                    <input id="password" name="password" type="password" autocomplete="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="password" name="password" type="text" autocomplete="email" class="@error('password') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('password')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -69,11 +93,19 @@ Crear nuevo usuario
                             <div class="sm:col-span-3">
                                 <label for="rol" class="block text-sm font-medium leading-6 text-gray-900">Rol</label>
                                 <div class="mt-2">
-                                    <select id="rol" name="rol" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                    <select id="rol" name="rol" class="@error('rol') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         <option value="">Seleccione un Rol</option>
                                         <option value="1">Administrador</option>
                                         <option value="2">Operador</option>
                                     </select>
+                                    @error('rol')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
 

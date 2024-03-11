@@ -35,11 +35,10 @@ Usuarios
 
                         <!-- INICIO - BOTÓN PARA CREAR USUARIO -->
 
-                        <div class="flex items-center gap-4">
-                            <a href="{{route('usuarios.create')}}" title="Crear nuevo Usuario" class="bg-blue-500 hover:bg-blue-600 text-white p-1 rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
+                        <div class="flex items-center gap-4 mb-3">
+                            <a href="{{ route('usuarios.create') }}"
+                                class="uppercase text-sm font-semibold bg-orange-500 hover:bg-indigo-700 text-white px-2 py-1 rounded">
+                                Agregar usuario
                             </a>
                         </div>
 
@@ -92,6 +91,9 @@ Usuarios
 
                             <!-- FIN - TABLA DE USUARIOS -->
 
+                        </div>
+                        <div class="py-2">
+                            {{ $User->links()}}
                         </div>
                     </div>
                 </div>

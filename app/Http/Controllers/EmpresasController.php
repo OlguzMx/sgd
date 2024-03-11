@@ -36,8 +36,8 @@ class EmpresasController extends Controller
             'name' => 'required|max:85',
             'email' => 'required|max:120|unique:clientes,email|email',
             'direccion' => 'sometimes|required|max:145',
-            'ubicacion' => 'sometimes',
-            'codigo_postal' => 'sometimes'
+            'ubicacion' => 'sometimes|required',
+            'codigo_postal' => 'sometimes|required'
         ]);
 
         Empresa::create([

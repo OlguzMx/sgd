@@ -14,7 +14,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::paginate(10);
         $userCount = User::count();
         return view('usuarios.index')->with(['User' => $user, 'UserCount' => $userCount]);
     }
@@ -37,7 +37,7 @@ class UsuariosController extends Controller
             'name' => 'required|max:85',
             'email' => 'required|max:120|unique:users,email|email',
             'password' => 'required|confirmed|min:5',
-            'rol' => 'sometimes'
+            'rol' => 'sometimes|required'
         ]);
 
         try {

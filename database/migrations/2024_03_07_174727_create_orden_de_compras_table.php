@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('orden_de_compras', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); //Captura el nombre de documento
             $table->date('fecha');
-            $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade');
-            $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade');
-            $table->foreignId('proveedores_id')->constrained('proveedores')->onDelete('cascade');
+            $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Muestra el nombre, telefono y email
+            $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); // Muestra el nombre, direccion, ubicacion (ciudad y estado, ej: Villahermosa, Tabasco) y código postal 
+            $table->foreignId('proveedores_id')->constrained('proveedores')->onDelete('cascade'); // Trae los campos de la tabla proveedores (name, direccion, nombre del contacto y telefono)
             $table->string('num_orden_compra');
             $table->string('nombre_proyecto');
-            $table->string('tiempo_entrega');
-            $table->string('moneda');
+            $table->string('tiempo_entrega'); //Ej: Por confirmar con el mayorista, 1 a 2 semanas
+            $table->string('moneda'); //Moneda: USD, MXN
             $table->integer('cantidad');
             $table->string('unidad');
             $table->string('num_de_parte');

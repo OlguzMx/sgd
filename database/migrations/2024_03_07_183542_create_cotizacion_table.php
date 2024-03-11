@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('cotizacion', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); //Captura el nombre de documento
             $table->date('fecha');
             $table->string('folio');
-            $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade');
-            $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade');
+            $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Muestra el nombre y puesto
+            $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); // Muestra el nombre, direccion y ubicacion (ciudad y estado, ej: Villahermosa, Tabasco)
             $table->integer('cantidad');
             $table->string('unidad');
             $table->string('num_de_parte');

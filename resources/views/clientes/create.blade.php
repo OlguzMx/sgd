@@ -37,11 +37,11 @@ Crear nuevo cliente
                                         id="name"
                                         value="{{old('name')}}" 
                                         autocomplete="name" 
-                                        placeholder="Nombre del cliente"
+                                        placeholder="Ej: José Martínez"
                                         class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
-                                        focus:ring-indigo-600 sm:text-sm sm:leading-6 ">
+                                        focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         @error('name')
                                         <div class="alerta my-2 p-2  border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                             <p class="text-red-700">{{ $message }}</p>
@@ -62,7 +62,7 @@ Crear nuevo cliente
                                         name="email" 
                                         type="email" 
                                         autocomplete="email" 
-                                        placeholder="Email del cliente"
+                                        placeholder="Ej: correo@empresa.com"
                                         class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
@@ -112,7 +112,7 @@ Crear nuevo cliente
                                         name="num_cel" 
                                         id="num_cel" 
                                         autocomplete="num_cel" 
-                                        placeholder="No. Celular del cliente"
+                                        placeholder="Ej: 99 22 11 00 88"
                                         class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 
                                         py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
                                       ring-gray-300 placeholder:text-gray-400 
@@ -138,7 +138,7 @@ Crear nuevo cliente
                                         name="num_fijo" 
                                         id="num_fijo" 
                                         autocomplete="num_fijo" 
-                                        placeholder="No. Teléfono del cliente"
+                                        placeholder="Ej: 1 23 45 67"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 
                                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
                                         focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">

@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('salida_almacen', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); //Captura el nombre de documento
+            $table->date('fecha');
+            $table->string('cantidad');
+            $table->string('marca');
+            $table->string('modelo');
+            $table->string('num_de_serie');
+            $table->text('descripcion');
+            $table->string('name_cliente'); //Quien recibe (Mostrará el nombre)
+            $table->string('puesto_cliente'); //Quien recibe (Mostrará el puesto del cliente)
+            $table->string('empresa_cliente'); //Muestra el nombre de la empresa/institucion que pertenece
+            $table->foreignId('users_id')->constrained('users')->onDelete('cascade'); // Quien entrega el documento (Ej: Empleados de AR-SITE INTEGRADORES S.A DE C.V)
             $table->timestamps();
         });
     }

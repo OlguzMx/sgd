@@ -1,5 +1,5 @@
 @section('titulo')
-    Crear empresa
+Crear empresa
 @endsection
 <x-app-layout>
 
@@ -30,74 +30,100 @@
                             <!-- INICIO - NOMBRE -->
 
                             <div class="sm:col-span-3">
-                                <label for="name"
-                                    class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
+                                <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
                                 <div class="mt-2">
-                                    <input type="text" name="name" id="name" autocomplete="name"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="name" name="name" value="{{ old('name') }}" type="text" autocomplete="name" placeholder="Ej: AR-SITE INTEGRADORES S.A. DE C.V." class="@error('name') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('name')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <!-- FIN - NOMBRE -->
 
-
-                            
-                            
                             <!-- INICIO - EMAIL -->
-                            
+
                             <div class="sm:col-span-3">
-                                <label for="email"
-                                class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                                 <div class="mt-2">
-                                    <input id="email" name="email" type="email" autocomplete="email"
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="email" name="email" value="{{ old('email') }}" type="email" autocomplete="email" placeholder="Ej: correo@gmail.com" class="@error('email') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('email')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
-                            
+
+                            <!-- FIN - EMAIL -->
+
                             <!-- INICIO - DIRECCIÓN -->
 
                             <div class="sm:col-span-3">
-                                <label for="direccion"
-                                    class="block text-sm font-medium leading-6 text-gray-900">Dirección</label>
+                                <label for="direccion" class="block text-sm font-medium leading-6 text-gray-900">Dirección</label>
                                 <div class="mt-2">
-                                    <input id="direccion" name="direccion" type="text" autocomplete="direccion"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="direccion" name="direccion" value="{{ old('direccion') }}" type="text" autocomplete="direccion" placeholder="Ej: Av. Gregorio Mendez Col. Atasta" class="@error('direccion') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('direccion')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <!-- FIN - DIRECCIÓN -->
-                            <!-- FIN - EMAIL -->
-                            
+
+                            <!-- inicio -->
                             <div class="sm:col-span-3">
-                                <label for="ubicacion"
-                                    class="block text-sm font-medium leading-6 text-gray-900">Ubicación</label>
+                                <label for="ubicacion" class="block text-sm font-medium leading-6 text-gray-900">Ubicación</label>
                                 <div class="mt-2">
-                                    <input id="ubicacion" name="ubicacion" type="text" autocomplete="ubicacion"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="ubicacion" name="ubicacion" value="{{ old('ubicacion') }}" type="text" autocomplete="ubicacion" placeholder="Ej: Villahermosa, Tabasco" class="@error('ubicacion') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('ubicacion')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
-                            
+
                             <div class="sm:col-span-3">
-                                <label for="codigo_postal"
-                                    class="block text-sm font-medium leading-6 text-gray-900">Código Postal</label>
+                                <label for="codigo_postal" class="block text-sm font-medium leading-6 text-gray-900">Código Postal</label>
                                 <div class="mt-2">
-                                    <input id="codigo_postal" name="codigo_postal" type="text" autocomplete="codigo_postal"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <input id="codigo_postal" name="codigo_postal" value="{{ old('codigo_postal') }}" type="text" autocomplete="codigo_postal" placeholder="Ej: 86150" class="@error('codigo_postal') md:border border-red-500 @enderror block w-full rounded-md border-0 py-1.5 
+                                         text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 
+                                         placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
+                                         focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    @error('codigo_postal')
+                                    <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                        <p class="text-red-700">{{ $message }}</p>
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
-                            
-                            
+
+
 
                         </div>
 
                         <!-- INICIO - BOTON DE CREAR EMPRESA Y REGRESAR -->
 
                         <div class="py-4">
-                            <button
-                                class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105"><a
-                                    href="{{ route('empresas.index') }}">Regresar</a></button>
-                            <button type="submit"
-                                class="bg-orange-500 hover:bg-indigo-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Crear
+                            <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105"><a href="{{ route('empresas.index') }}">Regresar</a></button>
+                            <button type="submit" class="bg-orange-500 hover:bg-indigo-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Crear
                                 Empresa</button>
                         </div>
 
