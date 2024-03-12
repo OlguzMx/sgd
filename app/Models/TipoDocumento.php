@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoDocumento extends Model
 {
-    protected $table = 'tipos_documentos';
+    protected $table = 'tipo_documento';
     protected $primaryKey = 'id';
 
     protected $fillable = [

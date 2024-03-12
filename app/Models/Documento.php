@@ -10,7 +10,7 @@ class Documento extends Model
 
     protected $fillable = [
         'titulo',
-        'tipos_documentos_id',
+        'tipo_documento_id',
         'users_id',
         'clientes_id',
     ];
