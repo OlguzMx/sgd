@@ -2,23 +2,6 @@
     <form wire:submit="save">
         <div class="grid grid-cols-1 gap-y-4 md:grid-cols-2 sm:gap-x-6 sm:gap-y-4">
             <div class="space-y-4">
-
-                <!-- Título -->
-                <div>
-                    <label for="titulo" class="block text-sm font-medium leading-6 text-gray-900">Título</label>
-                    <div class="mt-1">
-                        <input type="text" wire:model="titulo" id="titulo" autocomplete="titulo"
-                            placeholder="Ingrese el título"
-                            class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    </div>
-                    @error('titulo')
-                        <div
-                            class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
-                            <p class="text-red-700">{{ $message }}</p>
-                        </div>
-                    @enderror
-                </div>
-
                 <!-- Usuario -->
                 <div>
                     <label for="users_id" class="block text-sm font-medium leading-6 text-gray-900">Usuario</label>
@@ -101,8 +84,8 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                             @enderror
-                            <label for="unidad" class="block">Unidades</label>
-                            <input wire:model="unidad" type="number" min="0"
+                            <label for="unidad" class="block">Unidad</label>
+                            <input wire:model="unidad" type="text" placeholder="Eje: Servicio"
                                 class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             @error('unidad')
                                 <div

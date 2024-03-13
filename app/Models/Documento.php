@@ -9,7 +9,6 @@ class Documento extends Model
 {
 
     protected $fillable = [
-        'titulo',
         'tipo_documento_id',
         'users_id',
         'clientes_id',

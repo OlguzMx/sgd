@@ -11,8 +11,6 @@ use Livewire\Attributes\Validate;
 class CrearDocumento extends Component
 {
     public $selectedOption;
-    #[Validate('required')]
-    public $titulo;
     public $users_id;
     #[Validate('required')]
     public $clientes_id;
@@ -47,7 +45,6 @@ class CrearDocumento extends Component
 
             // Guardar en Documento
             Documento::create([
-                'titulo' => $this->titulo,
                 'users_id' => $this->users_id,
                 'tipo_documento_id' => $this->tipo_documento_id,
                 'clientes_id' => $this->clientes_id
