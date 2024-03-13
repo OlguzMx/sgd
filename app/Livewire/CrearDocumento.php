@@ -11,17 +11,20 @@ use Livewire\Attributes\Validate;
 class CrearDocumento extends Component
 {
     public $selectedOption;
-
     #[Validate('required')]
     public $titulo;
-
     public $users_id;
-
     #[Validate('required')]
     public $clientes_id;
-
     #[Validate('required')]
     public $tipo_documento_id;
+
+    // Remision
+    public $fecha;
+    public $empresas_id;
+    public $cantidad;
+    public $unidad;
+    public $descripcion;
 
     public function mount() {
         $this->users_id = auth()->user()->id;
@@ -33,12 +36,25 @@ class CrearDocumento extends Component
 
         // Remisión
         if($this->validate()['tipo_documento_id'] === '1') {
+            // Validar campos de remision
+            $this->validate([
+                'fecha' => 'required',
+                'empresas_id' => 'required',
+                'cantidad' => 'required',
+                'unidad' => 'required',
+                'descripcion' => 'required'
+            ]);
+
+            // Guardar en Documento
             Documento::create([
                 'titulo' => $this->titulo,
                 'users_id' => $this->users_id,
                 'tipo_documento_id' => $this->tipo_documento_id,
                 'clientes_id' => $this->clientes_id
             ]);
+
+            // Guardar campos en tabla de remision
+            
             return;
         }
         dd('Este no es remision');
