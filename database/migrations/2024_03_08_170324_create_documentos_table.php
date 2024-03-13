@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
             $table->foreignId('tipo_documento_id')->constrained('tipo_documento')->onDelete('cascade');
             $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade');
