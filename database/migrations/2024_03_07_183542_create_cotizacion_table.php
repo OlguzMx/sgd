@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('cotizacion', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); //Captura el nombre de documento
             $table->date('fecha');
             $table->string('folio');
             $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Muestra el nombre y puesto

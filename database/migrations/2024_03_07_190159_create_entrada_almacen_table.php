@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('entrada_almacen', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); //Captura el nombre de documento
             $table->date('fecha');
             $table->string('cantidad');
             $table->string('marca');

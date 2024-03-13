@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('orden_de_compras', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); //Captura el nombre de documento
             $table->date('fecha');
             $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Muestra el nombre, telefono y email
             $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); // Muestra el nombre, direccion, ubicacion (ciudad y estado, ej: Villahermosa, Tabasco) y código postal 

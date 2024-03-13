@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('remision', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); //Captura el nombre de documento
             $table->date('fecha');
             $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); //Muestra el nombre del cliente
             $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); //Muestra el nombre de la empresa
