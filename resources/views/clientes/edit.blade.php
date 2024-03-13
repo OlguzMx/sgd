@@ -93,6 +93,18 @@ Editar cliente
 
                             <!-- FIN - EDITAR EXTENSION -->
 
+                            <!-- INICIO - DEPARTAMENTO -->
+
+                            <div class="sm:col-span-3">
+                                <label for="departamento" class="block text-sm font-medium leading-6 text-gray-900">Departamento (opcional) </label>
+                                <div class="mt-2">
+                                    <input type="text" name="departamento" id="departamento" value="{{ $Clientes->departamento }}" placeholder="Introduce el departamento, ej: TI" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                                </div>
+                            </div>
+
+                            <!-- INICIO - DEPARTAMENTO -->
+
                             <!-- INICIO - EDITAR EMPRESA -->
 
                             <div class="sm:col-span-3">
