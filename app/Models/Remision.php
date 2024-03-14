@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Remision extends Model
 {
+    protected $table = 'remision'; //Nombre de la tabla
+
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'fecha',
         'clientes_id',
         'empresas_id',
@@ -19,6 +20,6 @@ class Remision extends Model
         'descripcion',
     ];
 
-
+    
     
 }
