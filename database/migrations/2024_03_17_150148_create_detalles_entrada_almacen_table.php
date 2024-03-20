@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('cantidad');
             $table->string('marca');
             $table->string('modelo');
-            $table->integer('cantidad');
             $table->string('num_de_parte');
             $table->text('descripcion');
             $table->timestamps();
