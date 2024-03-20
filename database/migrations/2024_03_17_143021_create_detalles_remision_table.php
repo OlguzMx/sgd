@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('remision', function (Blueprint $table) {
+        Schema::create('detalles_remision', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha');
-            $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); //Muestra el nombre del cliente
-            $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); //Muestra el nombre de la empresa
+            $table->foreignId('remision_id')->constrained('remision')->onDelete('cascade');
+            $table->integer('cantidad');
+            $table->string('unidad');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('remision');
+        Schema::dropIfExists('detalles_remision');
     }
 };

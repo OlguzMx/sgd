@@ -21,12 +21,6 @@ return new class extends Migration
             $table->string('nombre_proyecto');
             $table->string('tiempo_entrega'); //Ej: Por confirmar con el mayorista, 1 a 2 semanas
             $table->string('moneda'); //Moneda: USD, MXN
-            $table->integer('cantidad');
-            $table->string('unidad');
-            $table->string('num_de_parte');
-            $table->text('descripcion');
-            $table->decimal('precio_unitario', 10,2); // Campo para almacenar precio unitario de cada unidad
-            $table->decimal('importe', 10,2); //Campo para almacenar el importe de las unidades
             $table->decimal('subtotal', 10,2); // Campo para almacenar el subtotal del importe de cada unidad
             $table->decimal('iva', 10,2); // Campo para almacenar el IVA del subtotal
             $table->decimal('total', 10,2); // Campo para almacenar el total (incluye subtotal e IVA)
