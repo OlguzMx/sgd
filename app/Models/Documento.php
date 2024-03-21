@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Remision;
 
 class Documento extends Model
 {
@@ -22,13 +23,22 @@ class Documento extends Model
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
-    public function tipo_documento()
-    {
-        return $this->belongsTo(TipoDocumento::class, 'tipos_documentos_id', 'id');
-    }
-
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'clientes_id', 'id');
+    }
+
+    // SOLO RELACIONES SOBRE DOCUMENTOS
+
+    // Un tipo pertenece a Documento
+    public function tipo_documento()
+    {
+        return $this->belongsTo(TipoDocumento::class);
+    }
+
+    // Relación uno a uno
+    public function remision()
+    {
+        return $this->hasOne(Remision::class);
     }
 }

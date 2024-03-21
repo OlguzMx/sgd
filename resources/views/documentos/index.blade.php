@@ -19,6 +19,9 @@
             <!-- INICIO - VISTA DE DOCUMENTOS -->
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-2">
 
+                {{-- Importar alerta --}}
+                <livewire:alerta />
+
                 <!-- INICIO - CONTEO DE DOCUMENTOS -->
 
                 <h2 class="text-3xl font-light text-center font-mono">{{ $DocumentoCount }}
@@ -32,6 +35,37 @@
                         class="uppercase text-sm font-semibold bg-orange-500 hover:bg-indigo-700 text-white px-2 py-1 rounded">
                         Agregar documento
                     </a>
+                </div>
+
+                {{-- CARDS DOCUMENTOS --}}
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
+                    @forelse ($documentos as $documento)
+                        <div class="bg-white shadow-lg rounded-lg overflow-hidden w-full">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Tipo: <span
+                                        class="text-gray-600 font-normal">{{ $documento->tipo_documento->name }}</span>
+                                </h3>
+                                <p class="text-base font-semibold text-gray-700 mb-2">Usuario: <span
+                                        class="text-gray-600 font-normal">{{ $documento->user->name }}</span></p>
+                                <p class="text-base font-semibold text-gray-700 mb-2">Cliente: <span
+                                        class="text-gray-600 font-normal">{{ $documento->cliente->name }}</span></p>
+                                <p class="text-sm text-gray-500">Creado {{ $documento->created_at->diffForHumans() }}
+                                </p>
+                            </div>
+                            <div
+                                class="bg-blue-500 px-6 py-4 transition-colors duration-300 ease-in-out hover:bg-blue-600">
+                                <a href="#"
+                                    class="text-white font-semibold text-sm hover:text-blue-200 transition duration-300 ease-in-out">Ver
+                                    más</a>
+                            </div>
+                        </div>
+                    @empty
+                        <p class="col-span-4 text-gray-500">No hay ningún documento creado, agrega alguno...</p>
+                    @endforelse
+
+
+                    <!-- Repite este bloque para más elementos en el grid -->
                 </div>
 
 

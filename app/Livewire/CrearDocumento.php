@@ -26,14 +26,17 @@ class CrearDocumento extends Component
     public $unidad;
     public $descripcion;
 
+    // Detalles de los tipos de documentos (NEW)
+    // public $detalles = [];
+
     public function mount()
     {
         $this->users_id = auth()->user()->id;
+
     }
 
     public function save()
     {
-
         $this->validate();
 
         // Remisión
@@ -48,14 +51,7 @@ class CrearDocumento extends Component
             ]);
 
             // Tabla remision
-            Remision::create([
-                'fecha' => $this->fecha,
-                'clientes_id' => $this->clientes_id,
-                'empresas_id' => $this->empresas_id,
-                'cantidad' => $this->cantidad,
-                'unidad' => $this->unidad,
-                'descripcion' => $this->descripcion
-            ]);
+           
         }
         // Crear elseif para cada tipo
 
@@ -65,7 +61,10 @@ class CrearDocumento extends Component
             'tipo_documento_id' => $this->tipo_documento_id,
             'clientes_id' => $this->clientes_id
         ]);
+
+        return redirect(route('documentos.index'))->with('alerta', 'El documento se ha creado correctamente.');
     }
+
 
 
     public function render()

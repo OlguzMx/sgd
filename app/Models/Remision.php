@@ -13,13 +13,20 @@ class Remision extends Model
 
     protected $fillable = [
         'fecha',
-        'clientes_id',
         'empresas_id',
-        'cantidad',
-        'unidad',
-        'descripcion',
     ];
 
+    // TODO SOBRE DOCUMETOS 
     
+    // Documento pertenece a remisión
+    public function documento() {
+
+        return $this->belongsTo(Documento::class);
+    }
     
+
+    public function detalles_remision() {
+        
+        return $this->hasMany(DetallesRemision::class);
+    }
 }

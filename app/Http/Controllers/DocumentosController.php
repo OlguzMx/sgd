@@ -16,12 +16,14 @@ class DocumentosController extends Controller
      */
     public function index()
     {
-        $documento = Documento::paginate(10);
+        $documentos = Documento::paginate(10);
         $documentoCount = Documento::count();
-        $tipoDocumento = TipoDocumento::all();
-        $user = User::all();
-        $cliente = Cliente::all();
-        return view('documentos.index')->with(['Documentos' => $documento, 'DocumentoCount' => $documentoCount, 'TipoDocumento' => $tipoDocumento, 'User' => $user, 'Cliente' => $cliente]);
+       
+        return view('documentos.index', [
+            'documentos' => $documentos,
+            'DocumentoCount' => $documentoCount,
+            
+        ]);
     }
 
     /**
