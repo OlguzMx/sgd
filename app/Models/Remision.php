@@ -20,7 +20,6 @@ class Remision extends Model
     
     // Documento pertenece a remisión
     public function documento() {
-
         return $this->belongsTo(Documento::class);
     }
     
