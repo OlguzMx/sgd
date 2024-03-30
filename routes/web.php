@@ -63,7 +63,9 @@ Route::middleware([
     Route::post('/documentos/create', [DocumentosController::class, 'store'])->name('documentos.store');
     Route::patch('/documentos/edit/{id}', [DocumentosController::class, 'update'])->name('documentos.update');
     Route::get('/documentos/edit/{id}', [DocumentosController::class, 'edit'])->name('documentos.edit');
+    Route::get('/documentos/{id}', [DocumentosController::class, 'show'])->name('documentos.show');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
+
 
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');

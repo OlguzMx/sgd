@@ -62,13 +62,17 @@ class DocumentosController extends Controller
             return ["Error" => $e->getCode(), "messages" => $e->getMessage()];
         }
     }
-
+ 
     /**
      * DESPLIEGA LA VISTA DE UN DOCUMENTO EN ESPECÍFICO.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $documento = Documento::find($id);
+        // dd($documento);
+        return view('documentos.show', [
+            'Documentos' => $documento,
+        ]);
     }
 
     /**

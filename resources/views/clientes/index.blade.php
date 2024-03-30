@@ -50,7 +50,7 @@
                                         <th class="px-6 py-3 text-left font-semibold uppercase">Departamento</th>
                                         <th class="px-6 py-3 text-left font-semibold uppercase">Empresa</th>
                                         <th class="px-6 py-3 text-left font-semibold uppercase">Acción</th>
-                                    </tr>
+                                    </tr> 
                                 </thead>
 
                                 <tbody id="listado-proveedores" class="bg-slate-50 hover:bg-slate-100">
