@@ -55,7 +55,7 @@
                             </div>
                             <div
                                 class="bg-blue-500 px-6 py-4 transition-colors duration-300 ease-in-out hover:bg-blue-600">
-                                <a href="{{ route('documentos.show', $documento) }}"
+                                <a href="#"
                                     class="text-white font-semibold text-sm hover:text-blue-200 transition duration-300 ease-in-out">Ver
                                     más</a>
                             </div>
@@ -80,7 +80,7 @@
 
 </x-app-layout>
 
-<script>
+{{-- <script>
     // SCRIPT PARA ELIMINAR DOCUMENTOS
     function deleteDocumento(id) {
         Swal.fire({
@@ -124,4 +124,4 @@
             }
         });
     }
-</script>
+</script> --}}

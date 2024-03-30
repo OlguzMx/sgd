@@ -55,6 +55,13 @@ class CrearDocumento extends Component
     public function save()
     {
         $this->validate();
+        // Guardar en Documento
+        $documento = Documento::create([
+            'users_id' => $this->users_id,
+            'tipo_documento_id' => $this->tipo_documento_id,
+            'clientes_id' => $this->clientes_id
+        ]);
+
         // Remisión
         if ($this->validate()['tipo_documento_id'] === '1') {
             // Validar campos de remision
@@ -69,6 +76,8 @@ class CrearDocumento extends Component
             $remision = new Remision();
             $remision->fecha = $this->fecha;
             $remision->empresas_id = $this->empresas_id;
+            // Asignar el ID del documento a la remisión
+            $remision->documentos_id = $documento->id;
             $remision->save();
 
             // Guardar cada detalle en la base de datos asociado con la remisión
@@ -83,13 +92,6 @@ class CrearDocumento extends Component
             }
         }
         // Crear elseif para cada tipo
-
-        // Guardar en Documento
-        Documento::create([
-            'users_id' => $this->users_id,
-            'tipo_documento_id' => $this->tipo_documento_id,
-            'clientes_id' => $this->clientes_id
-        ]);
 
         return redirect(route('documentos.index'))->with('alerta', 'El documento se ha creado correctamente.');
     }

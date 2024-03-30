@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); //Muestra el nombre de la empresa
             $table->foreignId('documentos_id')->constrained('documentos')->onDelete('cascade'); //Muestra el documento
+            $table->timestamps();
         });
     }
 

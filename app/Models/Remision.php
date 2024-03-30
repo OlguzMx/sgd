@@ -14,6 +14,7 @@ class Remision extends Model
     protected $fillable = [
         'fecha',
         'empresas_id',
+        'documentos_id'
     ];
 
     // TODO SOBRE DOCUMETOS 
