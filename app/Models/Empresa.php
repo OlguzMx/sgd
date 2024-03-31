@@ -24,4 +24,11 @@ class Empresa extends Model
     {
         return $this->hasMany(Cliente::class);
     }
+
+    public function documento()
+    {
+        return $this->hasMany(Documento::class);
+    }
+
+
 }

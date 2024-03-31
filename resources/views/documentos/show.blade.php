@@ -14,30 +14,49 @@ Ver Documentos
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-2">
                 <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del Documento</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">Ingrese la información requerida para editar el documento.</p>
-                    <div class="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del Documento: <span class="uppercase">{{ $Documentos->tipo_documento->name }}</span></h2>
+                    <div class="mt-8 grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-4">
 
-                        <!-- INICIO - EDITAR USUARIO -->
+                        <!-- INICIO - VISTA PREVIA REMISIÓN -->
 
-                        <div class="sm:col-span-3">
-                            <label for="users_id" class="block text-sm font-medium leading-6 text-gray-900">Usuario</label>
+                        <div class="sm:col-span-3 border px-3 py-2">
                             <div class="mt-2">
-                                <p>{{ $Documentos->user->name }}</p>
+                                {{-- Muestra la fecha del documento en el siguiente formato:  XX (dia) de XX (mes) 20XX --}}
+                                <p class="text-right">Villahermosa, Tabasco a {{ \Carbon\Carbon::parse($Documentos->remision->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
+                                <p class="font-semibold">{{ $Documentos->cliente->name }}</p>
+                                <p class="font-semibold">{{ $Documentos->remision->empresa->name }}</p>
+                                <h2 class="font-bold uppercase text-3xl text-center">Remisión de Equipo</h2>
+                                <table class="border-collapse border border-slate-500">
+                                    <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
+                                        <tr>
+                                            <td class="border-collapse border border-slate- px-4 py-2">Cantidad</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2">Unidad</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2">Descripción</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($Documentos->remision->detalles_remision as $detalle)
+                                        <tr>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->cantidad }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->unidad }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2">{{ $detalle->descripcion }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
-                        <!-- FIN - EDITAR USUARIO -->
+                        <!-- FIN - VISTA PREVIA REMISIÓN -->
 
                     </div>
 
-                    <!-- INICIO - BOTÓN DE GUARDAR EDICIÓN Y REGRESAR -->
+                    <!-- INICIO - REGRESAR -->
                     <div class="py-4">
                         <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105"><a href="{{ route('documentos.index') }}">Regresar</a></button>
-                        <button type="submit" class="bg-orange-500 hover:bg-indigo-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Guardar edición</button>
                     </div>
 
-                    <!-- FIN - BOTÓN DE GUARDAR EDICIÓN Y REGRESAR -->
+                    <!-- FIN - REGRESAR -->
 
                 </div>
             </div>

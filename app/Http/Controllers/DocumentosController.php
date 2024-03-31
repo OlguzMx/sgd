@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Remision;
 use App\Models\User;
 use App\Models\Cliente;
 use App\Models\Documento;
@@ -69,9 +70,11 @@ class DocumentosController extends Controller
     public function show($id)
     {
         $documento = Documento::find($id);
-        // dd($documento);
+        $remision = Remision::all();
+        // dd($remision);
         return view('documentos.show', [
             'Documentos' => $documento,
+            'remision' => $remision
         ]);
     }
 

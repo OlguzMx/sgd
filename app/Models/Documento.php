@@ -39,6 +39,6 @@ class Documento extends Model
     // Relación uno a uno
     public function remision()
     {
-        return $this->hasOne(Remision::class);
+        return $this->hasOne(Remision::class, 'documentos_id', 'id');
     }
 }

@@ -24,7 +24,10 @@ class Remision extends Model
         return $this->belongsTo(Documento::class);
     }
     
-
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'empresas_id', 'id');
+    }
     public function detalles_remision() {
         
         return $this->hasMany(DetallesRemision::class);
