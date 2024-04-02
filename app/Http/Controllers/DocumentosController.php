@@ -83,11 +83,7 @@ class DocumentosController extends Controller
      */
     public function edit(string $id)
     {
-        $documento = Documento::find($id);
-        $tipoDocumento = TipoDocumento::all();
-        $user = User::all();
-        $cliente = Cliente::all();
-        return view('documentos.edit')->with(['Documento' => $documento, 'TipoDocumento' => $tipoDocumento, 'User' => $user, 'Cliente' => $cliente]);
+        return view('documentos.edit', compact('id'));
     }
 
     /**
