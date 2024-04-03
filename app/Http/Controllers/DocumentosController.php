@@ -42,27 +42,27 @@ class DocumentosController extends Controller
     /**
      * CREA UN NUEVO DOCUMENTO Y LO ALMACENA EN EL STORE.
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'titulo' => 'required|max:85',
-            'tipos_documentos_id' => 'required',
-            'users_id' => 'required',
-            'clientes_id' => 'required',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'titulo' => 'required|max:85',
+    //         'tipos_documentos_id' => 'required',
+    //         'users_id' => 'required',
+    //         'clientes_id' => 'required',
+    //     ]);
 
-        try {
-            Documento::create([
-                'titulo' => $request->titulo,
-                'tipos_documentos_id' => $request->tipos_documentos_id,
-                'users_id' => $request->users_id,
-                'clientes_id' => $request->clientes_id,
-            ]);
-            return redirect()->route('documentos.index');
-        } catch (\Exception $e) {
-            return ["Error" => $e->getCode(), "messages" => $e->getMessage()];
-        }
-    }
+    //     try {
+    //         Documento::create([
+    //             'titulo' => $request->titulo,
+    //             'tipos_documentos_id' => $request->tipos_documentos_id,
+    //             'users_id' => $request->users_id,
+    //             'clientes_id' => $request->clientes_id,
+    //         ]);
+    //         return redirect()->route('documentos.index');
+    //     } catch (\Exception $e) {
+    //         return ["Error" => $e->getCode(), "messages" => $e->getMessage()];
+    //     }
+    // }
  
     /**
      * DESPLIEGA LA VISTA DE UN DOCUMENTO EN ESPECÍFICO.
@@ -89,26 +89,26 @@ class DocumentosController extends Controller
     /**
      * ACTUALIZAR UN DOCUMENTO ESPECÍFICO DEL ALMACENAMIENTO.
      */
-    public function update(Request $request, string $id)
-    {
-        try {
-            $validator = Validator::make($request->all(), []);
-            $documento = Documento::find($id);
-            $documento->titulo = $request->titulo;
-            $documento->tipos_documentos_id = $request->tipos_documentos_id;
-            $documento->users_id = $request->users_id;
-            $documento->clientes_id = $request->clientes_id;
-            if ($validator->fails()) {
-                return back()
-                    ->withErrors($validator->messages())
-                    ->withInput($request->input());
-            }
-            $documento->update();
-            return redirect()->route('documentos.index');
-        } catch (\Exception $e) {
-            return ["Error" => $e->getCode(), "Message" => $e->getMessage()];
-        };
-    }
+    // public function update(Request $request, string $id)
+    // {
+    //     try {
+    //         $validator = Validator::make($request->all(), []);
+    //         $documento = Documento::find($id);
+    //         $documento->titulo = $request->titulo;
+    //         $documento->tipos_documentos_id = $request->tipos_documentos_id;
+    //         $documento->users_id = $request->users_id;
+    //         $documento->clientes_id = $request->clientes_id;
+    //         if ($validator->fails()) {
+    //             return back()
+    //                 ->withErrors($validator->messages())
+    //                 ->withInput($request->input());
+    //         }
+    //         $documento->update();
+    //         return redirect()->route('documentos.index');
+    //     } catch (\Exception $e) {
+    //         return ["Error" => $e->getCode(), "Message" => $e->getMessage()];
+    //     };
+    // }
 
     /**
      * ELIMINA UN DOCUMENTO ESPECÍFICO DEL ALMACENAMIENTO.

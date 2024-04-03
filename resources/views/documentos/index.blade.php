@@ -69,7 +69,7 @@
                                         </svg>
 
                                     </button>
-                                    <a href="{{route('documentos.update', $documento->id)}}" class="bg-white text-blue-600 hover:text-blue-800 p-1 rounded-full">
+                                    <a href="{{route('documentos.edit', $documento->id)}}" class="bg-white text-blue-600 hover:text-blue-800 p-1 rounded-full">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"

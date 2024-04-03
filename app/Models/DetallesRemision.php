@@ -17,7 +17,7 @@ class DetallesRemision extends Model
     ];
 
     use HasFactory;
-
+    
     // Todo sobre documentos
     public function remision() {
         return $this->belongsTo(Remision::class);

@@ -60,8 +60,8 @@ Route::middleware([
     // VISTA DE DOCUMENTOS
     Route::get('/documentos', [DocumentosController::class, 'index'])->name('documentos.index');
     Route::get('/documentos/create', [DocumentosController::class, 'create'])->name('documentos.create');
-    Route::post('/documentos/create', [DocumentosController::class, 'store'])->name('documentos.store');
-    Route::patch('/documentos/edit/{id}', [DocumentosController::class, 'update'])->name('documentos.update');
+    // Route::post('/documentos/create', [DocumentosController::class, 'store'])->name('documentos.store');
+    // Route::patch('/documentos/edit/{id}', [DocumentosController::class, 'update'])->name('documentos.update');
     Route::get('/documentos/edit/{id}', [DocumentosController::class, 'edit'])->name('documentos.edit');
     Route::get('/documentos/{id}', [DocumentosController::class, 'show'])->name('documentos.show');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
@@ -69,9 +69,9 @@ Route::middleware([
 
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');
-    Route::get('/tiposdocumentos/create', [TiposDocumentosController::class, 'create'])->name('tiposdocumentos.create');
-    Route::post('/tiposdocumentos/create', [TiposDocumentosController::class, 'store'])->name('tiposdocumentos.store');
-    Route::patch('/tiposdocumentos/edit/{id}', [TiposDocumentosController::class, 'update'])->name('tiposdocumentos.update');
-    Route::get('/tiposdocumentos/edit/{id}', [TiposDocumentosController::class, 'edit'])->name('tiposdocumentos.edit');
-    Route::delete('/tiposdocumentos/delete/{id}', [TiposDocumentosController::class, 'destroy'])->name('tiposdocumentos.destroy');
+    // Route::get('/tiposdocumentos/create', [TiposDocumentosController::class, 'create'])->name('tiposdocumentos.create');
+    // Route::post('/tiposdocumentos/create', [TiposDocumentosController::class, 'store'])->name('tiposdocumentos.store');
+    // Route::patch('/tiposdocumentos/edit/{id}', [TiposDocumentosController::class, 'update'])->name('tiposdocumentos.update');
+    // Route::get('/tiposdocumentos/edit/{id}', [TiposDocumentosController::class, 'edit'])->name('tiposdocumentos.edit');
+    // Route::delete('/tiposdocumentos/delete/{id}', [TiposDocumentosController::class, 'destroy'])->name('tiposdocumentos.destroy');
 });
