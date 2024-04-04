@@ -3,13 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Cliente;
+use App\Models\DetallesRemision;
 use App\Models\Empresa;
 use Livewire\Component;
 use App\Models\Documento;
 
 class EditarDocumento extends Component
 {
-    public $id;
+    public $id; // Id del documento
     public $documento; //Referencia de la instancia de Documento
     public $clientes; //Referencia de la instanicia Clientes
     public $empresas; //Referencia de la instanicia Empresas
@@ -72,11 +73,38 @@ class EditarDocumento extends Component
 
     public function editarDocumento()
     {
-
         // Luego sincroniza los detalles modificados por el usuario
         $this->sincronizarDetalles();
 
-        dd($this->new_detalles);
+        // Obtén el documento que se va a editar
+        $documento = Documento::find($this->id);
+
+        // Si el documento existe
+        if ($documento) {
+            // Actualiza los campos del documento
+            $documento->clientes_id = $this->clientes_id;
+            $documento->save();
+
+            // Verifica si el documento tiene una remisión asociada
+            if ($documento->remision) {
+                // Actualiza los campos de la remisión
+                $documento->remision->fecha = $this->fecha;
+                $documento->remision->empresas_id = $this->empresas_id;
+                $documento->remision->save();
+
+                // Borra todos los detalles de la remisión actual
+                $documento->remision->detalles_remision()->delete();
+
+                // Guarda los nuevos detalles proporcionados por el usuario
+                foreach ($this->new_detalles as $index => $detalle) {
+                    $nuevoDetalle = new DetallesRemision();
+                    $nuevoDetalle->cantidad = $detalle['cantidad_' . $index];
+                    $nuevoDetalle->unidad = $detalle['unidad_' . $index];
+                    $nuevoDetalle->descripcion = $detalle['descripcion_' . $index];
+                    $documento->remision->detalles_remision()->save($nuevoDetalle);
+                }
+            }
+        }
     }
 
     public function render()

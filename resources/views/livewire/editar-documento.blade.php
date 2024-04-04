@@ -62,7 +62,7 @@
             <h4 class="text-center font-semibold text-orange-400 text-lg my-4">
                 Detalles Remisión {{ $documento->remision->id }}
             </h4>
-                <table class="table-auto">
+                <table class="table-auto w-full">
                     <thead>
                         <tr>
                             <th class="px-4 py-2">Detalle</th>
@@ -87,9 +87,10 @@
                                         value="{{ $new_detalles[$index]['unidad_' . $index] }}" />
                                 </td>
                                 <td class="border px-4 py-2">
-                                    <input id="descripcion_{{ $index }}" type="text" class="w-full rounded-md"
-                                        wire:model.defer="new_detalles.{{ $index }}.descripcion_{{ $index }}"
-                                        value="{{ $new_detalles[$index]['descripcion_' . $index] }}" />
+                                    <textarea id="descripcion_{{ $index }}" class="w-full rounded-md overflow-auto" rows="3"
+                                        wire:model.defer="new_detalles.{{ $index }}.descripcion_{{ $index }}">
+                                        {{ $new_detalles[$index]['descripcion_' . $index] }}
+                                    </textarea>
                                 </td>
                             </tr>
                         @endforeach
