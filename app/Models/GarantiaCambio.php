@@ -31,6 +31,11 @@ class GarantiaCambio extends Model
     {
         return $this->belongsTo(Empresa::class, 'empresas_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function detalles_garantia_cambio() {
         
         return $this->hasMany(DetallesGarantiaCambio::class, 'garantias_cambios_id', 'id');

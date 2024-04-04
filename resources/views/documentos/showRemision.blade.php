@@ -15,17 +15,18 @@ Ver Documentos
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-2">
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del Documento: <span class="uppercase">{{ $Documentos->tipo_documento->name }}</span></h2>
-                    <div class="mt-8 grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-4">
+                    <div class="mt-8 grid grid-cols-1 gap-x-2 gap-y-2 md:grid-cols-3">
 
                         <!-- INICIO - VISTA PREVIA REMISIÓN -->
 
                         <div class="sm:col-span-3 border px-3 py-2">
                             <div class="mt-2">
+                                <img src="{{ asset('img/logo-arsite.png') }}" alt="Logo" width="500px" class="my-7">
                                 {{-- Muestra la fecha del documento en el siguiente formato:  XX (dia) de XX (mes) 20XX --}}
                                 <p class="text-right">Villahermosa, Tabasco a {{ \Carbon\Carbon::parse($Documentos->remision->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
                                 <p class="font-semibold">{{ $Documentos->cliente->name }}</p>
                                 <p class="font-semibold">{{ $Documentos->remision->empresa->name }}</p>
-                                <h2 class="font-bold uppercase text-3xl text-center">Remisión de Equipo</h2>
+                                <h2 class="font-bold uppercase text-3xl text-center my-4">{{ $Documentos->tipo_documento->name }} de Equipo</h2>
                                 <table class="border-collapse border border-slate-500">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
@@ -44,7 +45,15 @@ Ver Documentos
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <img src="{{ asset('img/remision/firmas_remision.jpg') }}" alt="Logo" class="mx-auto object-cover rounded my-28">
                             </div>
+                            <footer>
+                                <p class="text-center text-sm font-bold text-gray-700">Calle Unión No. 161 Col Escandón 1ra Sección dpto. 22, C.P. 11800
+                                    <br>
+                                    Delegación Miguel Hidalgo, Ciudad de Mexico RFC AIN040211G2A
+                                    <br>
+                                    TEL: (993) 3-55-40-05 FAX (993) 1-85-07-54 ventas@arsite.com.mx www.arsite.com.mx</p>
+                            </footer>
                         </div>
 
                         <!-- FIN - VISTA PREVIA REMISIÓN -->
@@ -59,7 +68,9 @@ Ver Documentos
                     <!-- FIN - REGRESAR -->
 
                 </div>
+
             </div>
         </div>
+
     </div>
 </x-app-layout>

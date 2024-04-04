@@ -56,6 +56,7 @@ class CrearDocumento extends Component
         $this->users_id = auth()->user()->id;
     }
 
+    // detallesRemision
     public function detallesDocumentos()
     {
         // Agregar los datos del detalle actual al arreglo de detalles

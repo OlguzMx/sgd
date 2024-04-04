@@ -55,10 +55,18 @@
                             </div>
                             <div
                                 class="bg-blue-500 px-6 py-4 transition-colors duration-300 ease-in-out hover:bg-blue-600 flex flex-shrink justify-between">
-                                <a href="{{ route('documentos.show', $documento->id) }}"
+                                
+                                @if($documento->tipo_documento_id === 1)
+                                <a href="{{ route('documentos.showRemision', $documento->id) }}"
                                     class="text-white font-semibold text-sm hover:text-blue-200 transition duration-300 ease-in-out">Ver
                                     más
                                 </a>
+                                @elseif($documento->tipo_documento_id === 4)
+                                <a href="{{ route('documentos.showGarantiaCambios', $documento->id) }}"
+                                    class="text-white font-semibold text-sm hover:text-blue-200 transition duration-300 ease-in-out">Ver
+                                    más
+                                </a>
+                                @endif
                                 <div class="flex justify-center items-center gap-2">
                                     <button onclick="confirmDelete({{ $documento->id }})" type="button"
                                         class="bg-white p-1 rounded-full text-red-500 hover:text-red-700">

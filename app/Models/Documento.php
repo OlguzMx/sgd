@@ -41,4 +41,9 @@ class Documento extends Model
     {
         return $this->hasOne(Remision::class, 'documentos_id', 'id');
     }
+
+    public function garantia_cambio()
+    {
+        return $this->hasOne(GarantiaCambio::class, 'documentos_id', 'id');
+    }
 }

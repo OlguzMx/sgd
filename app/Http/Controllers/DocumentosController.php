@@ -19,11 +19,11 @@ class DocumentosController extends Controller
     {
         $documentos = Documento::paginate(10);
         $documentoCount = Documento::count();
-       
+
         return view('documentos.index', [
             'documentos' => $documentos,
             'DocumentoCount' => $documentoCount,
-            
+
         ]);
     }
 
@@ -63,20 +63,20 @@ class DocumentosController extends Controller
     //         return ["Error" => $e->getCode(), "messages" => $e->getMessage()];
     //     }
     // }
- 
+
     /**
      * DESPLIEGA LA VISTA DE UN DOCUMENTO EN ESPECÍFICO.
      */
-    public function show($id)
-    {
-        $documento = Documento::find($id);
-        $remision = Remision::all();
-        // dd($remision);
-        return view('documentos.show', [
-            'Documentos' => $documento,
-            'remision' => $remision
-        ]);
-    }
+    // public function show($id)
+    // {
+    //     $documento = Documento::find($id);
+    //     $remision = Remision::all();
+    //     // dd($remision);
+    //     return view('documentos.show', [
+    //         'Documentos' => $documento,
+    //         'remision' => $remision
+    //     ]);
+    // }
 
     /**
      * MUESTRA EL FORM PARA EDITAR UN DOCUMENTO ESPECÍFICO.
