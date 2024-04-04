@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('detalles_garantias_cambios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('detalles_cambios_id')->constrained('garantias_cambios')->onDelete('cascade');
+            $table->foreignId('garantias_cambios_id')->constrained('garantias_cambios')->onDelete('cascade');
             $table->string('marca');
             $table->string('modelo');
             $table->string('num_serie_danado');

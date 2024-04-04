@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('puesto_cliente'); //Quien recibe (Mostrará el puesto del cliente)
             $table->string('empresa_cliente'); //Muestra el nombre de la empresa/institucion que pertenece
             $table->foreignId('users_id')->constrained('users')->onDelete('cascade'); // Quien entrega el documento (Ej: Empleados de AR-SITE INTEGRADORES S.A DE C.V)
+            $table->foreignId('documentos_id')->constrained('documentos')->onDelete('cascade'); //Muestra el documento
             $table->timestamps();
         });
     }

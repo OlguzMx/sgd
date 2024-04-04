@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Muestra el nombre, telefono y email
             $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); // Muestra el nombre, direccion, ubicacion (ciudad y estado, ej: Villahermosa, Tabasco) y código postal 
             $table->foreignId('proveedores_id')->constrained('proveedores')->onDelete('cascade'); // Trae los campos de la tabla proveedores (name, direccion, nombre del contacto y telefono)
+            $table->foreignId('documentos_id')->constrained('documentos')->onDelete('cascade'); //Muestra el documento
             $table->string('num_orden_compra');
             $table->string('nombre_proyecto');
             $table->string('tiempo_entrega'); //Ej: Por confirmar con el mayorista, 1 a 2 semanas
