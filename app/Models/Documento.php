@@ -46,4 +46,9 @@ class Documento extends Model
     {
         return $this->hasOne(GarantiaCambio::class, 'documentos_id', 'id');
     }
+
+    public function detalles_garantia_cambio()
+    {
+        return $this->belongsTo(DetallesGarantiaCambio::class, 'garantias_cambios_id', 'id');
+    }
 }

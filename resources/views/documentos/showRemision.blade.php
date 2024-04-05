@@ -20,13 +20,13 @@ Ver Documentos
                         <!-- INICIO - VISTA PREVIA REMISIÓN -->
 
                         <div class="sm:col-span-3 border px-3 py-2">
-                            <div class="mt-2">
+                            <div class="mt-2 mx-24">
                                 <img src="{{ asset('img/logo-arsite.png') }}" alt="Logo" width="500px" class="my-7">
                                 {{-- Muestra la fecha del documento en el siguiente formato:  XX (dia) de XX (mes) 20XX --}}
                                 <p class="text-right">Villahermosa, Tabasco a {{ \Carbon\Carbon::parse($Documentos->remision->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
                                 <p class="font-semibold">{{ $Documentos->cliente->name }}</p>
                                 <p class="font-semibold">{{ $Documentos->remision->empresa->name }}</p>
-                                <h2 class="font-bold uppercase text-3xl text-center my-4">{{ $Documentos->tipo_documento->name }} de Equipo</h2>
+                                <h2 class="font-bold uppercase text-3xl text-center my-10">{{ $Documentos->tipo_documento->name }} de Equipo</h2>
                                 <table class="border-collapse border border-slate-500">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
@@ -48,7 +48,8 @@ Ver Documentos
                                 <img src="{{ asset('img/remision/firmas_remision.jpg') }}" alt="Logo" class="mx-auto object-cover rounded my-28">
                             </div>
                             <footer>
-                                <p class="text-center text-sm font-bold text-gray-700">Calle Unión No. 161 Col Escandón 1ra Sección dpto. 22, C.P. 11800
+                                <p class="text-center text-sm font-bold text-gray-700">
+                                    Calle Unión No. 161 Col Escandón 1ra Sección dpto. 22, C.P. 11800
                                     <br>
                                     Delegación Miguel Hidalgo, Ciudad de Mexico RFC AIN040211G2A
                                     <br>

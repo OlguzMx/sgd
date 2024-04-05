@@ -81,10 +81,10 @@ class DocumentosController extends Controller
     /**
      * MUESTRA EL FORM PARA EDITAR UN DOCUMENTO ESPECÍFICO.
      */
-    public function edit(string $id)
-    {
-        return view('documentos.edit', compact('id'));
-    }
+    // public function edit(string $id)
+    // {
+    //     return view('documentos.edit', compact('id'));
+    // }
 
     /**
      * ACTUALIZAR UN DOCUMENTO ESPECÍFICO DEL ALMACENAMIENTO.

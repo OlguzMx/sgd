@@ -113,7 +113,7 @@
                         </button>
 
                         {{-- Tabla --}}
-                        
+
                     </div> {{-- Fin remision --}}
                     <!-- FIN - Tipo documento: Remisión -->
 
@@ -136,6 +136,8 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
+                            </div>
+                            <div>
                                 <label for="empresas_id" class="block">Empresa</label>
                                 <select wire:model="empresas_id" id="empresas_id" class="block w-full rounded-md border-gray-300 shadow-sm
                             focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm mb-2">
@@ -149,48 +151,71 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_garantias_cambios --}}
-                                <label for="num_inventario" class="block">Núm. de Inventario</label>
-                                <input wire:model="num_inventario" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('num_inventario')
+                            </div>
+                            <div class="col-span-2">
+                                <label for="descripcion" class="block">Descripción</label>
+                                <textarea wire:model="descripcion" id="descripcion" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                @error('descripcion')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
                             </div>
                             <div>
-                                <label for="num_serie_danado" class="block">Núm. de serie dañado</label>
+                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_garantias_cambios - EQUIPO DAÑADO --}}
+                                <label for="marca_danado" class="block">Marca (Equipo dañado)</label>
+                                <input id="marca_danado" wire:model="marca_danado" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('marca_danado')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                                <label for="modelo_danado" class="block">Modelo (Equipo dañado)</label>
+                                <input id="modelo_danado" wire:model="modelo_danado" type="text" placeholder="Eje: AP-505" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('modelo_danado')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                                <label for="num_serie_danado" class="block">Núm. de serie (Equipo dañado)</label>
                                 <input id="num_serie_danado" wire:model="num_serie_danado" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('num_serie_danado')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-                                <label for="num_serie_reemplazo" class="block">Núm. de serie reemplazo</label>
-                                <input wire:model="num_serie_reemplazo" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+                            </div>
+                            <div>
+                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_garantias_cambios - EQUIPO REEMPLAZO --}}
+                                <label for="marca_reemplazo" class="block">Marca (Equipo reemplazo)</label>
+                                <input id="marca_reemplazo" wire:model="marca_reemplazo" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('marca_reemplazo')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                                <label for="modelo_reemplazo" class="block">Modelo (Equipo reemplazo)</label>
+                                <input id="modelo_reemplazo" wire:model="modelo_reemplazo" type="text" placeholder="Eje: AP-505" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('modelo_reemplazo')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                                <label for="num_serie_reemplazo" class="block">Núm. de serie (Equipo reemplazo)</label>
+                                <input id="num_serie_reemplazo" wire:model="num_serie_reemplazo" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('num_serie_reemplazo')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-                                <label for="marca" class="block">Marca</label>
-                                <input id="marca" wire:model="marca" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('marca')
+                                <label for="num_inventario" class="block">Núm. de Inventario</label>
+                                <input id="num_inventario" wire:model="num_inventario" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('num_inventario')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-                            </div>
-                            <div class="col-span-2">
-                                <label for="modelo" class="block">Modelo</label>
-                                <input wire:model="modelo" type="text" placeholder="Eje: AP-505" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('modelo')
-                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
-                                    <p class="text-red-700">{{ $message }}</p>
-                                </div>
-                                @enderror
-
                             </div>
                         </div>
 
@@ -198,21 +223,6 @@
                         <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesGarantiaCambios'>
                             Agregar campos
                         </button>
-
-                        {{-- Tabla --}}
-                        <table class="min-w-full border rounded overflow-hidden">
-                            <thead class="bg-cyan-500 text-white">
-                                <tr>
-                                    <th class="px-6 py-3 text-left font-semibold uppercase">Cantidad</th>
-                                    <th class="px-6 py-3 text-left font-semibold uppercase">Unidad</th>
-                                    <th class="px-6 py-3 text-left font-semibold uppercase">Descripcion</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="listado-proveedores" class="bg-slate-50 hover:bg-slate-100">
-
-                            </tbody>
-                        </table>
                     </div> {{-- Fin garantia cambios --}}
                     {{-- FIN - Tipo documento: Garantía y/o cambio de equipo --}}
 

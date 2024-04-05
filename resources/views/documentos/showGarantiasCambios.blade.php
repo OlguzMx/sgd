@@ -20,17 +20,20 @@ Ver Documentos
                         <!-- INICIO - VISTA PREVIA REMISIÓN -->
 
                         <div class="sm:col-span-3 border px-3 py-2">
-                            <div class="mt-2">
+                            <div class="mt-2 mx-24">
                                 <img src="{{ asset('img/logo-arsite.png') }}" alt="Logo" width="500px" class="my-7">
                                 {{-- Muestra la fecha del documento en el siguiente formato:  XX (dia) de XX (mes) 20XX --}}
                                 <p class="text-right">CDMX a {{ \Carbon\Carbon::parse($Documentos->garantia_cambio->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
-                                <p class="font-semibold">{{ $Documentos->garantia_cambio->empresa->name }}</p>
+                                <p class="font-bold">{{ $Documentos->garantia_cambio->empresa->name }}</p>
                                 <p class="font-semibold">{{ $Documentos->cliente->name }}</p>
                                 <p class="font-semibold">{{ $Documentos->cliente->puesto }}</p>
                                 <p class="font-semibold">{{ $Documentos->garantia_cambio->empresa->ubicacion }}</p>
                                 <p class="text-justify">Por medio de la presente yo el C.<span> {{ $Documentos->user->name }} </span>, en mi carácter de representante legal,
-                                    me dirijo de a usted para informarle que, debido a la aplicación de garantía solicitada con el fabricante SE TIENE
-                                    QUE CAMBIAR ESTE TEXTO (AGREGAR A LA BASE DE DATOS COMO MOTIVO) <span>{{ $Documentos->garantia_cambio->empresa->name }}.</span></p>
+                                    me dirijo de a usted para informarle que, debido a la aplicación de garantía solicitada con el fabricante,
+                                    @foreach ($Documentos->garantia_cambio->detalles_garantia_cambio as $detalle)
+                                    <span>{{ $detalle->descripcion }}</span>
+                                    @endforeach
+                                </p>
                                 <h2 class="font-bold uppercase text-3xl text-center my-4">{{ $Documentos->tipo_documento->name }}</h2>
                                 <h3>Equipo Dañado</h3>
                                 <table class="border-collapse border border-slate-500 my-2">
@@ -44,15 +47,15 @@ Ver Documentos
                                     <tbody>
                                         @foreach ($Documentos->garantia_cambio->detalles_garantia_cambio as $detalle)
                                         <tr>
-                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->marca }}</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->modelo }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->marca_danado }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->modelo_danado }}</td>
                                             <td class="border-collapse border border-slate- px-4 py-2">{{ $detalle->num_serie_danado }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
 
-                                <h3>Equipo Dañado</h3>
+                                <h3>Equipo Reemplazo</h3>
                                 <table class="border-collapse border border-slate-500 my-2">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
@@ -65,8 +68,8 @@ Ver Documentos
                                     <tbody>
                                         @foreach ($Documentos->garantia_cambio->detalles_garantia_cambio as $detalle)
                                         <tr>
-                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->cantidad }}</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->unidad }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->marca_reemplazo }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->modelo_reemplazo }}</td>
                                             <td class="border-collapse border border-slate- px-4 py-2">{{ $detalle->num_serie_reemplazo }}</td>
                                             <td class="border-collapse border border-slate- px-4 py-2">{{ $detalle->num_inventario }}</td>
                                         </tr>
@@ -78,10 +81,22 @@ Ver Documentos
                                     <br>
                                     <br>
                                     Sin más por el momento, quedamos a sus órdenes y expreso que estamos para servirles.
-                                    Se firma la presente a los {{ \Carbon\Carbon::parse($Documentos->garantia_cambio->fecha)->translatedFormat('d \d\e F \d\e Y') }}
-                                    en Ciudad de México.
+                                    Se firma la presente con fecha de {{ \Carbon\Carbon::parse($Documentos->garantia_cambio->fecha)->translatedFormat('d \d\e F \d\e Y') }}
+                                    en la Ciudad de México.
                                 </p>
+
+                                <img src="{{ asset('img/garantia_cambio/firma_genaro.jpg') }}" alt="Logo" width="350px" class="mx-auto object-cover rounded my-20">
+
                             </div>
+                            <footer>
+                                <p class="text-center text-sm font-bold text-gray-700">
+                                    Calle Unión No. 161 Col Escandón 1ra Sección dpto. 22, C.P. 11800
+                                    <br>
+                                    Delegación Miguel Hidalgo, Ciudad de Mexico RFC AIN040211G2A
+                                    <br>
+                                    TEL: (993) 3-55-40-05 FAX (993) 1-85-07-54 ventas@arsite.com.mx www.arsite.com.mx
+                                </p>
+                            </footer>
                         </div>
 
                         <!-- FIN - VISTA PREVIA REMISIÓN -->

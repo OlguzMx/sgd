@@ -42,9 +42,11 @@ class CrearDocumento extends Component
     //tabla garantia_cambios
 
     //tabla detalles_garantias_cambios
-    public $marca;
-    public $modelo;
+    public $marca_danado;
+    public $modelo_danado;
     public $num_serie_danado;
+    public $marca_reemplazo;
+    public $modelo_reemplazo;
     public $num_serie_reemplazo;
     public $num_inventario;
 
@@ -60,38 +62,60 @@ class CrearDocumento extends Component
     public function detallesDocumentos()
     {
         // Agregar los datos del detalle actual al arreglo de detalles
-            $this->detalles[] = [
-                'cantidad' => $this->cantidad,
-                'unidad' => $this->unidad,
-                'descripcion' => $this->descripcion,
-            ];
+        $this->detalles[] = [
+            'cantidad' => $this->cantidad,
+            'unidad' => $this->unidad,
+            'descripcion' => $this->descripcion,
+        ];
 
-            // Limpiar los campos de entrada después de agregar el detalle
-            $this->cantidad = null;
-            $this->unidad = null;
-            $this->descripcion = null;
-        
+        // Limpiar los campos de entrada después de agregar el detalle
+        $this->cantidad = null;
+        $this->unidad = null;
+        $this->descripcion = null;
     }
 
     public function detallesGarantiaCambios()
     {
-        // Agregar los datos del detalle actual al arreglo de detalles
-        
+        // Validar descripcion
+        if (isset($this->descripcion)) {
+            // Agregar los datos del detalle actual al arreglo de detalles
             $this->detalles[] = [
-                'marca' => $this->marca,
-                'modelo' => $this->modelo,
+                // Equipo dañado
+                'marca_danado' => $this->marca_danado,
+                'modelo_danado' => $this->modelo_danado,
                 'num_serie_danado' => $this->num_serie_danado,
+                // Equipo reemplazo
+                'marca_reemplazo' => $this->marca_reemplazo,
+                'modelo_reemplazo' => $this->modelo_reemplazo,
                 'num_serie_reemplazo' => $this->num_serie_reemplazo,
                 'num_inventario' => $this->num_inventario,
             ];
+        } else {
+            $this->detalles[] = [
+                'descripcion' => $this->descripcion,
+                // Equipo dañado
+                'marca_danado' => $this->marca_danado,
+                'modelo_danado' => $this->modelo_danado,
+                'num_serie_danado' => $this->num_serie_danado,
+                // Equipo reemplazo
+                'marca_reemplazo' => $this->marca_reemplazo,
+                'modelo_reemplazo' => $this->modelo_reemplazo,
+                'num_serie_reemplazo' => $this->num_serie_reemplazo,
+                'num_inventario' => $this->num_inventario,
+            ];
+        }
 
-            // Limpiar los campos de entrada después de agregar el detalle
-            $this->marca = null;
-            $this->modelo = null;
-            $this->num_serie_danado = null;
-            $this->num_serie_reemplazo = null;
-            $this->num_inventario = null;
-        
+
+        // Limpiar los campos de entrada después de agregar el detalle
+        // Equipo dañado
+        $this->marca_danado = null;
+        $this->modelo_danado = null;
+        $this->num_serie_danado = null;
+        // Equipo reemplazo
+        $this->marca_reemplazo = null;
+        $this->modelo_reemplazo = null;
+        $this->num_serie_reemplazo = null;
+        $this->num_inventario = null;
     }
 
     public function save()
@@ -195,13 +219,15 @@ class CrearDocumento extends Component
             foreach ($this->detalles as $detalle) {
                 // Crear una nueva instancia de DetallesRemision y asignar los valores
                 $detalleGarantia = new DetallesGarantiaCambio();
-                $detalleGarantia->marca = $detalle['marca'];
-                $detalleGarantia->modelo = $detalle['modelo'];
+                $detalleGarantia->marca_danado = $detalle['marca_danado'];
+                $detalleGarantia->modelo_danado = $detalle['modelo_danado'];
                 $detalleGarantia->num_serie_danado = $detalle['num_serie_danado'];
+                $detalleGarantia->marca_reemplazo = $detalle['marca_reemplazo'];
+                $detalleGarantia->modelo_reemplazo = $detalle['modelo_reemplazo'];
                 $detalleGarantia->num_serie_reemplazo = $detalle['num_serie_reemplazo'];
                 $detalleGarantia->num_inventario = $detalle['num_inventario'];
-                // dd($garantia_cambio);
-
+                $detalleGarantia->descripcion = $detalle['descripcion'];
+                // dd($detalleGarantia);
                 // Asociar el detalle con la remisión recién creada y guardarlo
                 $garantia_cambio->detalles_garantia_cambio()->save($detalleGarantia);
             }

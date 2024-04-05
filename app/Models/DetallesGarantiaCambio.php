@@ -11,9 +11,12 @@ class DetallesGarantiaCambio extends Model
     protected $table = 'detalles_garantias_cambios';
 
     protected $fillable = [
-        'marca',
-        'modelo',
+        'descripcion',
+        'marca_danado',
+        'modelo_danado',
         'num_serie_danado',
+        'marca_reemplazo',
+        'modelo_reemplazo',
         'num_serie_reemplazo',
         'num_inventario',
         'garantias_cambios_id',

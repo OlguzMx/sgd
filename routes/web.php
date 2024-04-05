@@ -5,6 +5,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DocumentosController;
+use App\Http\Controllers\EditController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\TiposDocumentosController;
 
@@ -63,7 +64,8 @@ Route::middleware([
     Route::get('/documentos/create', [DocumentosController::class, 'create'])->name('documentos.create');
     // Route::post('/documentos/create', [DocumentosController::class, 'store'])->name('documentos.store');
     // Route::patch('/documentos/edit/{id}', [DocumentosController::class, 'update'])->name('documentos.update');
-    Route::get('/documentos/edit/{id}', [DocumentosController::class, 'edit'])->name('documentos.edit');
+    Route::get('/documentos/edit/remision/{id}', [EditController::class, 'editRemision'])->name('documentos.editRemision');
+    Route::get('/documentos/edit/garantia_cambios/{id}', [EditController::class, 'editGarantiaCambio'])->name('documentos.editGarantiasCambios');
     Route::get('/documentos/remision/{id}', [ShowController::class, 'showRemision'])->name('documentos.showRemision');
     Route::get('/documentos/garantia_cambios/{id}', [ShowController::class, 'showGarantiaCambios'])->name('documentos.showGarantiaCambios');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
