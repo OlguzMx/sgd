@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
+use App\Http\Controllers\EditController;
+use App\Http\Controllers\ShowController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DocumentosController;
-use App\Http\Controllers\EditController;
-use App\Http\Controllers\ShowController;
 use App\Http\Controllers\TiposDocumentosController;
 
 /*
@@ -70,6 +71,8 @@ Route::middleware([
     Route::get('/documentos/garantia_cambios/{id}', [ShowController::class, 'showGarantiaCambios'])->name('documentos.showGarantiaCambios');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
 
+    // PDF-CONTROLLER
+    Route::get('documentos/remision/pdf/{id}', [PdfController::class, 'pdfRemision'])->name('pdf.remision');
 
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');

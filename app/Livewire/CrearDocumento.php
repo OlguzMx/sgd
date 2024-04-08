@@ -269,6 +269,7 @@ class CrearDocumento extends Component
             // $remision->documentos_id = $documento->id;
             // $remision->save();
         }
+        
         return redirect(route('documentos.index'))->with('alerta', 'El documento se ha creado correctamente.');
     }
 
