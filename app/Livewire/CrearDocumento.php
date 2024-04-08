@@ -7,11 +7,17 @@ use App\Models\Empresa;
 use Livewire\Component;
 use App\Models\Remision;
 use App\Models\Documento;
+use App\Models\SalidaAlmacen;
 use App\Models\TipoDocumento;
+use App\Models\EntradaAlmacen;
 use App\Models\GarantiaCambio;
 use App\Models\DetallesRemision;
 use Livewire\Attributes\Validate;
+use App\Models\DetallesSalidaAlmacen;
+use App\Models\DetallesEntradaAlmacen;
 use App\Models\DetallesGarantiaCambio;
+use App\Models\OrdenCompra;
+use App\Models\Proveedor;
 
 class CrearDocumento extends Component
 {
@@ -50,9 +56,34 @@ class CrearDocumento extends Component
     public $num_serie_reemplazo;
     public $num_inventario;
 
-    // ENTRADA DE MAT/EQ A BODEGA
+    // ENTRADA / SALIDA DE MAT/EQ A BODEGA
+    // tabla entrada/salida_almacen
+    public $name_cliente;
+    public $puesto_cliente;
+    public $empresa_cliente;
+    
+    //tabla detalles_garantias_cambios
+    public $marca;
+    public $modelo;
+    public $num_de_parte;
 
     // SALIDA DE MAT/EQ A BODEGA
+
+    // ORDEN DE COMPRA
+    // tabla orden_de_compra
+    public $proveedores_id;
+    public $num_orden_compra;
+    public $nombre_proyecto;
+    public $tiempo_entrega;
+    public $moneda;
+    public $subtotal;
+    public $iva;
+    public $total;
+
+    // tabla detalles_orden_de_compras
+    public $precio_unitario;
+    public $importe;
+
     public function mount()
     {
         $this->users_id = auth()->user()->id;
@@ -74,37 +105,21 @@ class CrearDocumento extends Component
         $this->descripcion = null;
     }
 
+    // detallesGarantiaCambios
     public function detallesGarantiaCambios()
     {
-        // Validar descripcion
-        if (isset($this->descripcion)) {
-            // Agregar los datos del detalle actual al arreglo de detalles
-            $this->detalles[] = [
-                // Equipo dañado
-                'marca_danado' => $this->marca_danado,
-                'modelo_danado' => $this->modelo_danado,
-                'num_serie_danado' => $this->num_serie_danado,
-                // Equipo reemplazo
-                'marca_reemplazo' => $this->marca_reemplazo,
-                'modelo_reemplazo' => $this->modelo_reemplazo,
-                'num_serie_reemplazo' => $this->num_serie_reemplazo,
-                'num_inventario' => $this->num_inventario,
-            ];
-        } else {
-            $this->detalles[] = [
-                'descripcion' => $this->descripcion,
-                // Equipo dañado
-                'marca_danado' => $this->marca_danado,
-                'modelo_danado' => $this->modelo_danado,
-                'num_serie_danado' => $this->num_serie_danado,
-                // Equipo reemplazo
-                'marca_reemplazo' => $this->marca_reemplazo,
-                'modelo_reemplazo' => $this->modelo_reemplazo,
-                'num_serie_reemplazo' => $this->num_serie_reemplazo,
-                'num_inventario' => $this->num_inventario,
-            ];
-        }
-
+        // Agregar los datos del detalle actual al arreglo de detalles
+        $this->detalles[] = [
+            // Equipo dañado
+            'marca_danado' => $this->marca_danado,
+            'modelo_danado' => $this->modelo_danado,
+            'num_serie_danado' => $this->num_serie_danado,
+            // Equipo reemplazo
+            'marca_reemplazo' => $this->marca_reemplazo,
+            'modelo_reemplazo' => $this->modelo_reemplazo,
+            'num_serie_reemplazo' => $this->num_serie_reemplazo,
+            'num_inventario' => $this->num_inventario,
+        ];
 
         // Limpiar los campos de entrada después de agregar el detalle
         // Equipo dañado
@@ -118,6 +133,68 @@ class CrearDocumento extends Component
         $this->num_inventario = null;
     }
 
+    // detallesEntradaAlmacen
+    public function detallesEntradaAlmacen()
+    {
+        // Agregar los datos del detalle actual al arreglo de detalles
+        $this->detalles[] = [
+            'cantidad' => $this->cantidad,
+            'marca' => $this->marca,
+            'modelo' => $this->modelo,
+            'num_de_parte' => $this->num_de_parte,
+            'descripcion' => $this->descripcion,
+        ];
+
+        // dd($this->detalles);
+        // Limpiar los campos de entrada después de agregar el detalle
+        $this->cantidad = null;
+        $this->marca = null;
+        $this->modelo = null;
+        $this->num_de_parte = null;
+        $this->descripcion = null;
+    }
+
+    // detallesSalidaAlmacen
+    public function detallesSalidaAlmacen()
+    {
+        // Agregar los datos del detalle actual al arreglo de detalles
+        $this->detalles[] = [
+            'cantidad' => $this->cantidad,
+            'marca' => $this->marca,
+            'modelo' => $this->modelo,
+            'num_de_parte' => $this->num_de_parte,
+            'descripcion' => $this->descripcion,
+        ];
+
+        // dd($this->detalles);
+        // Limpiar los campos de entrada después de agregar el detalle
+        $this->cantidad = null;
+        $this->marca = null;
+        $this->modelo = null;
+        $this->num_de_parte = null;
+        $this->descripcion = null;
+    }
+
+    // detallesEntradaAlmacen
+    public function detallesOrdenCompra()
+    {
+        // Agregar los datos del detalle actual al arreglo de detalles
+        $this->detalles[] = [
+            'cantidad' => $this->cantidad,
+            'num_de_parte' => $this->num_de_parte,
+            'descripcion' => $this->descripcion,
+            'precio_unitario' => $this->precio_unitario,
+            'importe' => $this->importe,
+        ];
+
+        // dd($this->detalles);
+        // Limpiar los campos de entrada después de agregar el detalle
+        $this->cantidad = null;
+        $this->num_de_parte = null;
+        $this->descripcion = null;
+        $this->precio_unitario = null;
+        $this->importe = null;
+    }
     public function save()
     {
         $this->validate();
@@ -179,20 +256,33 @@ class CrearDocumento extends Component
         } elseif ($this->validate()['tipo_documento_id'] === '3') { // Crear elseif para cada tipo
             // Validar campos de orden_de_compras
             $this->validate([
-                // 'fecha' => 'required',
-                // 'clientes_id' => 'required',
-                // 'empresas_id' => 'required',
-                // 'cantidad' => 'required',
-                // 'unidad' => 'required',
-                // 'descripcion' => 'required'
+                'fecha' => 'required',
+                'clientes_id' => 'required',
+                'empresas_id' => 'required',
+                'proveedores_id' => 'required',
+                'num_orden_compras' => 'required',
+                'numbre_proyecto' => 'required',
+                'tiempo_entrega' => 'required',
+                'moneda' => 'required',
+                'subtotal' => 'required',
+                'iva' => 'required',
+                'total' => 'required',
             ]);
-            // Tabla remision
-            // $remision = new Remision();
-            // $remision->fecha = $this->fecha;
-            // $remision->empresas_id = $this->empresas_id;
+            // Tabla orden_de_compras
+            $orden_compra = new OrdenCompra();
+            $orden_compra->fecha = $this->fecha;
+            $orden_compra->empresas_id = $this->empresas_id;
+            $orden_compra->proveedores_id = $this->proveedores_id;
+            $orden_compra->num_orden_compra = $this->num_orden_compra;
+            $orden_compra->nombre_proyecto = $this->nombre_proyecto;
+            $orden_compra->tiempo_entrega = $this->tiempo_entrega;
+            $orden_compra->moneda = $this->moneda;
+            $orden_compra->subtotal = $this->subtotal;
+            $orden_compra->iva = $this->iva;
+            $orden_compra->total = $this->total;
             // Asignar el ID del documento a la remisión
-            // $remision->documentos_id = $documento->id;
-            // $remision->save();
+            $orden_compra->documentos_id = $documento->id;
+            $orden_compra->save();
 
             // Garantía y/o cambio de equipo
         } elseif ($this->validate()['tipo_documento_id'] === '4') { // Crear elseif para cada tipo
@@ -211,6 +301,7 @@ class CrearDocumento extends Component
             $garantia_cambio->clientes_id = $this->clientes_id;
             $garantia_cambio->empresas_id = $this->empresas_id;
             $garantia_cambio->users_id = $this->users_id;
+            $garantia_cambio->descripcion = $this->descripcion;
             // Asignar el ID del documento a la remisión
             $garantia_cambio->documentos_id = $documento->id;
             $garantia_cambio->save();
@@ -226,7 +317,6 @@ class CrearDocumento extends Component
                 $detalleGarantia->modelo_reemplazo = $detalle['modelo_reemplazo'];
                 $detalleGarantia->num_serie_reemplazo = $detalle['num_serie_reemplazo'];
                 $detalleGarantia->num_inventario = $detalle['num_inventario'];
-                $detalleGarantia->descripcion = $detalle['descripcion'];
                 // dd($detalleGarantia);
                 // Asociar el detalle con la remisión recién creada y guardarlo
                 $garantia_cambio->detalles_garantia_cambio()->save($detalleGarantia);
@@ -235,39 +325,72 @@ class CrearDocumento extends Component
         } elseif ($this->validate()['tipo_documento_id'] === '5') { // Crear elseif para cada tipo
             // Validar campos de entrada_almacen
             $this->validate([
-                // 'fecha' => 'required',
-                // 'clientes_id' => 'required',
-                // 'empresas_id' => 'required',
-                // 'cantidad' => 'required',
-                // 'unidad' => 'required',
-                // 'descripcion' => 'required'
+                'fecha' => 'required',
+                'users_id' => 'required',
+                'name_cliente' => 'required',
+                'puesto_cliente' => 'required',
+                'empresa_cliente' => 'required',
             ]);
-            // Tabla remision
-            // $remision = new Remision();
-            // $remision->fecha = $this->fecha;
-            // $remision->empresas_id = $this->empresas_id;
+            // Tabla entrada_almacen
+            $entrada_almacen = new EntradaAlmacen();
+            $entrada_almacen->fecha = $this->fecha;
+            $entrada_almacen->users_id = $this->users_id;
+            $entrada_almacen->name_cliente = $this->name_cliente;
+            $entrada_almacen->puesto_cliente = $this->puesto_cliente;
+            $entrada_almacen->empresa_cliente = $this->empresa_cliente;
             // Asignar el ID del documento a la remisión
-            // $remision->documentos_id = $documento->id;
-            // $remision->save();
+            $entrada_almacen->documentos_id = $documento->id;
+            $entrada_almacen->save();
+
+            // Guardar cada detalle en la base de datos asociado con la remisión
+            foreach ($this->detalles as $detalle) {
+                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                $detalleEntradaAlmacen = new DetallesEntradaAlmacen();
+                $detalleEntradaAlmacen->cantidad = $detalle['cantidad'];
+                $detalleEntradaAlmacen->marca = $detalle['marca'];
+                $detalleEntradaAlmacen->modelo = $detalle['modelo'];
+                $detalleEntradaAlmacen->num_de_parte = $detalle['num_de_parte'];
+                $detalleEntradaAlmacen->descripcion = $detalle['descripcion'];
+                // dd($detalleGarantia);
+                // Asociar el detalle con la remisión recién creada y guardarlo
+                $entrada_almacen->detalles_entrada_almacen()->save($detalleEntradaAlmacen);
+            }
 
             // Salida de Mat/Eq a bodega
         } elseif ($this->validate()['tipo_documento_id'] === '6') { // Crear elseif para cada tipo
             // Validar campos de salida_almacen
             $this->validate([
-                // 'fecha' => 'required',
-                // 'clientes_id' => 'required',
-                // 'empresas_id' => 'required',
-                // 'cantidad' => 'required',
-                // 'unidad' => 'required',
-                // 'descripcion' => 'required'
+                'fecha' => 'required',
+                'users_id' => 'required',
+                'name_cliente' => 'required',
+                'puesto_cliente' => 'required',
+                'empresa_cliente' => 'required',
             ]);
-            // Tabla remision
-            // $remision = new Remision();
-            // $remision->fecha = $this->fecha;
-            // $remision->empresas_id = $this->empresas_id;
+            // Tabla salida_almacen
+            $salida_almacen = new SalidaAlmacen();
+            $salida_almacen->fecha = $this->fecha;
+            $salida_almacen->users_id = $this->users_id;
+            $salida_almacen->name_cliente = $this->name_cliente;
+            $salida_almacen->puesto_cliente = $this->puesto_cliente;
+            $salida_almacen->empresa_cliente = $this->empresa_cliente;
             // Asignar el ID del documento a la remisión
-            // $remision->documentos_id = $documento->id;
-            // $remision->save();
+            $salida_almacen->documentos_id = $documento->id;
+            $salida_almacen->save();
+
+            // Guardar cada detalle en la base de datos asociado con la remisión
+            foreach ($this->detalles as $detalle) {
+                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                $detalleSalidaAlmacen = new DetallesSalidaAlmacen();
+                $detalleSalidaAlmacen->cantidad = $detalle['cantidad'];
+                $detalleSalidaAlmacen->marca = $detalle['marca'];
+                $detalleSalidaAlmacen->modelo = $detalle['modelo'];
+                $detalleSalidaAlmacen->num_de_parte = $detalle['num_de_parte'];
+                $detalleSalidaAlmacen->descripcion = $detalle['descripcion'];
+                // dd($detalleGarantia);
+                // Asociar el detalle con la remisión recién creada y guardarlo
+                $salida_almacen->detalles_salida_almacen()->save($detalleSalidaAlmacen);
+            }
+
         }
         return redirect(route('documentos.index'))->with('alerta', 'El documento se ha creado correctamente.');
     }
@@ -277,12 +400,14 @@ class CrearDocumento extends Component
 
         $clientes = Cliente::orderBy('name', 'asc')->get();
         $empresas = Empresa::orderBy('name', 'asc')->get();
+        $proveedores = Proveedor::orderBy('name', 'asc')->get();
         $tiposDocumentos = TipoDocumento::orderBy('name', 'asc')->get();
 
         return view('livewire.crear-documento', [
             'clientes' => $clientes,
             'tiposDocumentos' => $tiposDocumentos,
-            'empresas' => $empresas
+            'empresas' => $empresas,
+            'proveedores' => $proveedores,
         ]);
     }
 }

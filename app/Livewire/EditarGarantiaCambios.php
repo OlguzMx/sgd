@@ -21,6 +21,7 @@ class EditarGarantiaCambios extends Component
     public $empresas_id;
     public $users_id;
 
+
     // Variable donde almacena los objetos en un array
     public $detalles;
 
@@ -47,19 +48,23 @@ class EditarGarantiaCambios extends Component
         foreach ($this->detalles as $index => $detalle) {
             $this->initializeDatos(
                 $index,
-                $detalle->marca,
-                $detalle->modelo,
+                $detalle->marca_danado,
+                $detalle->modelo_danado,
                 $detalle->num_serie_danado,
+                $detalle->marca_reemplazo,
+                $detalle->modelo_reemplazo,
                 $detalle->num_serie_reemplazo,
-                $detalle->num_inventario
+                $detalle->num_inventario,
             );
         }
     }
-    public function initializeDatos($index, $marca, $modelo, $num_serie_danado, $num_serie_reemplazo, $num_inventario)
+    public function initializeDatos($index, $marca_danado, $modelo_danado, $num_serie_danado, $marca_reemplazo, $modelo_reemplazo, $num_serie_reemplazo, $num_inventario)
     {
-        $this->new_detalles[$index]['marca_' . $index] = $marca;
-        $this->new_detalles[$index]['modelo_' . $index] = $modelo;
+        $this->new_detalles[$index]['marca_danado_' . $index] = $marca_danado;
+        $this->new_detalles[$index]['modelo_danado_' . $index] = $modelo_danado;
         $this->new_detalles[$index]['num_serie_danado_' . $index] = $num_serie_danado;
+        $this->new_detalles[$index]['marca_reemplazo_' . $index] = $marca_reemplazo;
+        $this->new_detalles[$index]['modelo_reemplazo_' . $index] = $modelo_reemplazo;
         $this->new_detalles[$index]['num_serie_reemplazo_' . $index] = $num_serie_reemplazo;
         $this->new_detalles[$index]['num_inventario_' . $index] = $num_inventario;
     }
@@ -71,14 +76,16 @@ class EditarGarantiaCambios extends Component
             //Verificar si se ha modificado el detalle en el input correspondiente
             if (isset($this->new_detalles[$index])) {
                 //Si se ha  modificado el dato, se actualiza el detalle en $new_detalles
-                $this->new_detalles[$index]['marca'] = $this->new_detalles[$index]['marca_' . $index];
-                $this->new_detalles[$index]['modelo'] = $this->new_detalles[$index]['modelo_' . $index];
+                $this->new_detalles[$index]['marca_danado'] = $this->new_detalles[$index]['marca_danado_' . $index];
+                $this->new_detalles[$index]['modelo_danado'] = $this->new_detalles[$index]['modelo_danado_' . $index];
                 $this->new_detalles[$index]['num_serie_danado'] = $this->new_detalles[$index]['num_serie_danado_' . $index];
+                $this->new_detalles[$index]['marca_reemplazo'] = $this->new_detalles[$index]['marca_reemplazo_' . $index];
+                $this->new_detalles[$index]['modelo_reemplazo'] = $this->new_detalles[$index]['modelo_reemplazo_' . $index];
                 $this->new_detalles[$index]['num_serie_reemplazo'] = $this->new_detalles[$index]['num_serie_reemplazo_' . $index];
                 $this->new_detalles[$index]['num_inventario'] = $this->new_detalles[$index]['num_inventario_' . $index];
             } else {
                 // Si no se ha modificado, conserva el valor original del detalle
-                $this->new_detalles[$index]['marca'] = $detalle['marca'];
+                $this->new_detalles[$index]['marca_danado'] = $detalle['marca_danado'];
             }
         }
     }
@@ -111,9 +118,11 @@ class EditarGarantiaCambios extends Component
                 //Guardar los nuevos detalles proporcionados por el user
                 foreach($this->new_detalles as $index => $detalle){
                     $nuevoDetalle = new DetallesGarantiaCambio();
-                    $nuevoDetalle->marca = $detalle['marca_' . $index];
-                    $nuevoDetalle->modelo = $detalle['modelo_' . $index];
+                    $nuevoDetalle->marca_danado = $detalle['marca_danado_' . $index];
+                    $nuevoDetalle->modelo_danado = $detalle['modelo_danado_' . $index];
                     $nuevoDetalle->num_serie_danado = $detalle['num_serie_danado_' . $index];
+                    $nuevoDetalle->marca_reemplazo = $detalle['marca_reemplazo_' . $index];
+                    $nuevoDetalle->modelo_reemplazo = $detalle['modelo_reemplazo_' . $index];
                     $nuevoDetalle->num_serie_reemplazo = $detalle['num_serie_reemplazo_' . $index];
                     $nuevoDetalle->num_inventario = $detalle['num_inventario_' . $index];
                     $documento->garantia_cambio->detalles_garantia_cambio()->save($nuevoDetalle);

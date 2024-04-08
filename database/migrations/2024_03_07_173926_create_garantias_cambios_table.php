@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Muestra el nombre, puesto y departamento del cliente
             $table->foreignId('empresas_id')->constrained('empresas')->onDelete('cascade'); // Muestra el nombre y ubicación de la empresa
             $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
+            $table->string('descripcion');
             $table->foreignId('documentos_id')->constrained('documentos')->onDelete('cascade'); //Muestra el documento
             $table->timestamps();
         });

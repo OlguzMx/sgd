@@ -16,4 +16,12 @@ class EditController extends Controller
     {
         return view('documentos.editGarantiaCambio', compact('id'));
     }
+    public function editEntradaAlmacen(string $id)
+    {
+        return view('documentos.editEntradaAlmacen', compact('id'));
+    }
+    public function editSalidaAlmacen(string $id)
+    {
+        return view('documentos.editSalidaAlmacen', compact('id'));
+    }
 }

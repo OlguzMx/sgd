@@ -23,23 +23,28 @@ Ver Documentos
                             <div class="mt-2 mx-24">
                                 <img src="{{ asset('img/logo-arsite.png') }}" alt="Logo" width="500px" class="my-7">
                                 {{-- Muestra la fecha del documento en el siguiente formato:  XX (dia) de XX (mes) 20XX --}}
-                                <p class="text-right">Villahermosa, Tabasco a {{ \Carbon\Carbon::parse($Documentos->remision->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
-                                <p class="font-semibold">{{ $Documentos->cliente->name }}</p>
-                                <p class="font-semibold">{{ $Documentos->remision->empresa->name }}</p>
+                                <p class="text-right">Villahermosa, Tabasco a {{ \Carbon\Carbon::parse($Documentos->entrada_almacen->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
+                                <p class="font-semibold">{{ $Documentos->entrada_almacen->name_cliente }}</p>
+                                <p class="font-semibold">{{ $Documentos->entrada_almacen->empresa_cliente }}</p>
+                                <p class="font-semibold">{{ $Documentos->entrada_almacen->puesto_cliente }}</p>
                                 <h2 class="font-bold uppercase text-3xl text-center my-10">{{ $Documentos->tipo_documento->name }} de Equipo</h2>
                                 <table class="min-w-full table-auto border-collapse border border-slate-500 my-2">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
                                             <td class="border-collapse border border-slate- px-4 py-2">Cantidad</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2">Unidad</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2">Marca</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2">Modelo</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2">Num. de parte</td>
                                             <td class="border-collapse border border-slate- px-4 py-2">Descripción</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($Documentos->remision->detalles_remision as $detalle)
+                                        @foreach ($Documentos->entrada_almacen->detalles_entrada_almacen as $detalle)
                                         <tr>
                                             <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->cantidad }}</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->unidad }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->marca }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->modelo }}</td>
+                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->num_de_parte }}</td>
                                             <td class="border-collapse border border-slate- px-4 py-2">{{ $detalle->descripcion }}</td>
                                         </tr>
                                         @endforeach

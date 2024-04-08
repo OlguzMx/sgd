@@ -62,14 +62,54 @@
             <h4 class="text-center font-semibold text-orange-400 text-lg my-4">
                 Detalles Garantía y/o Cambios {{ $documento->garantia_cambio->id }}
             </h4>
+            <h4 class="text-center font-semibold text-lg my-4">
+                Equipo Dañado
+            </h4>
+                <table class="table-auto w-full">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2">Detalle</th>
+                            <th class="px-4 py-2">Marca (Equipo Dañado)</th>
+                            <th class="px-4 py-2">Modelo</th>
+                            <th class="px-4 py-2">Num. serie dañado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($detalles as $index => $detalle)
+                            <tr>
+                                <td class="border px-4 py-2">{{ $index }}</td>
+                                <td class="border px-4 py-2">
+                                    <input id="marca_danado_{{ $index }}" type="text" class="w-full rounded-md"
+                                        wire:model.defer="new_detalles.{{ $index }}.marca_danado_{{ $index }}"
+                                        value="{{ $new_detalles[$index]['marca_danado_' . $index] }}" />
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <input 
+                                        id="modelo_danado_{{ $index }}" type="text" class="w-full rounded-md"
+                                        wire:model.defer="new_detalles.{{ $index }}.modelo_danado_{{ $index }}"
+                                        value="{{ $new_detalles[$index]['modelo_danado_' . $index] }}" />
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <input 
+                                        id="num_serie_danado_{{ $index }}" type="text" class="w-full rounded-md"
+                                        wire:model.defer="new_detalles.{{ $index }}.num_serie_danado_{{ $index }}"
+                                        value="{{ $new_detalles[$index]['num_serie_danado_' . $index] }}" />
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                <h4 class="text-center font-semibold text-lg my-4">
+                Equipo Reemplazo
+                </h4>
                 <table class="table-auto w-full">
                     <thead>
                         <tr>
                             <th class="px-4 py-2">Detalle</th>
                             <th class="px-4 py-2">Marca</th>
                             <th class="px-4 py-2">Modelo</th>
-                            <th class="px-4 py-2">Num. serie dañado</th>
-                            <th class="px-4 py-2">Num. serie reemplazo</th>
+                            <th class="px-4 py-2">Num. serie</th>
                             <th class="px-4 py-2">Num. inventario</th>
                         </tr>
                     </thead>
@@ -78,21 +118,15 @@
                             <tr>
                                 <td class="border px-4 py-2">{{ $index }}</td>
                                 <td class="border px-4 py-2">
-                                    <input id="marca_{{ $index }}" type="text" class="w-full rounded-md"
-                                        wire:model.defer="new_detalles.{{ $index }}.marca_{{ $index }}"
-                                        value="{{ $new_detalles[$index]['marca_' . $index] }}" />
+                                    <input id="marca_reemplazo_{{ $index }}" type="text" class="w-full rounded-md"
+                                        wire:model.defer="new_detalles.{{ $index }}.marca_reemplazo_{{ $index }}"
+                                        value="{{ $new_detalles[$index]['marca_reemplazo_' . $index] }}" />
                                 </td>
                                 <td class="border px-4 py-2">
                                     <input 
-                                        id="modelo_{{ $index }}" type="text" class="w-full rounded-md"
-                                        wire:model.defer="new_detalles.{{ $index }}.modelo_{{ $index }}"
-                                        value="{{ $new_detalles[$index]['modelo_' . $index] }}" />
-                                </td>
-                                <td class="border px-4 py-2">
-                                    <input 
-                                        id="num_serie_danado_{{ $index }}" type="text" class="w-full rounded-md"
-                                        wire:model.defer="new_detalles.{{ $index }}.num_serie_danado_{{ $index }}"
-                                        value="{{ $new_detalles[$index]['num_serie_danado_' . $index] }}" />
+                                        id="modelo_reemplazo_{{ $index }}" type="text" class="w-full rounded-md"
+                                        wire:model.defer="new_detalles.{{ $index }}.modelo_reemplazo_{{ $index }}"
+                                        value="{{ $new_detalles[$index]['modelo_reemplazo_' . $index] }}" />
                                 </td>
                                 <td class="border px-4 py-2">
                                     <input 
@@ -110,7 +144,7 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                
                 <button type="submit" class="block my-2 rounded-md bg-orange-500 px-2 py-1 text-white w-20">
                     Editar
                 </button>
