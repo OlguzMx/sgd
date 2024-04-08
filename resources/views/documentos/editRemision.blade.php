@@ -20,7 +20,7 @@ Editar documento
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del Documento</h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">Ingrese la información requerida para editar el documento.</p>
-                    <livewire:editar-documento  :$id />
+                    <livewire:editar-remision  :$id />
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-{{-- <div>
+<div>
     <form wire:submit="editarDocumento">
         <div class="gap-y-4 sm:gap-x-6 sm:gap-y-4">
             <h3 class="font-semibold uppercase my-2">Documento de <span
@@ -111,4 +111,4 @@
             class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105"><a
                 href="{{ route('documentos.index') }}">Regresar</a></button>
     </div>
-</div> --}}
+</div>
