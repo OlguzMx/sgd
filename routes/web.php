@@ -1,20 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\PdfController;
->>>>>>> 51c04837327b54f9d4643933ec22d5586676d7a9
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DocumentosController;
-<<<<<<< HEAD
 use App\Http\Controllers\ProveedoresController;
-=======
->>>>>>> 51c04837327b54f9d4643933ec22d5586676d7a9
 use App\Http\Controllers\TiposDocumentosController;
 
 /*
@@ -90,8 +83,6 @@ Route::middleware([
     Route::get('/documentos/salida_almacen/{id}', [ShowController::class, 'showSalidaAlmacen'])->name('documentos.showSalidaAlmacen');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
 
-    // PDF-CONTROLLER
-    Route::get('documentos/remision/pdf/{id}', [PdfController::class, 'pdfRemision'])->name('pdf.remision');
 
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');

@@ -209,24 +209,9 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-                                <label for="unidad" class="block">Unidad</label>
-                                <input wire:model="unidad" type="text" placeholder="Eje: Servicio" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('unidad')
-                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
-                                    <p class="text-red-700">{{ $message }}</p>
-                                </div>
-                                @enderror
-                                
-                                <label for="cantidad" class="block">Cantidad</label>
-                                <input id="cantidad" wire:model="cantidad" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('cantidad')
-                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
-                                    <p class="text-red-700">{{ $message }}</p>
-                                </div>
-                                @enderror
-                                <label for="modelo" class="block">Modelo</label>
-                                <input id="modelo" wire:model="modelo" type="text" placeholder="Eje: AP-505" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('modelo')
+                                <label for="precio_unitario" class="block">Precio Unitario</label>
+                                <input wire:model="precio_unitario" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('precio_unitario')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
@@ -234,16 +219,16 @@
                             </div>
                             <div>
                                 {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen - EQUIPO REEMPLAZO --}}
-                                <label for="marca" class="block">Marca</label>
-                                <input id="marca" wire:model="marca" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('marca')
+                                <label for="num_de_parte" class="block">Núm. de parte</label>
+                                <input id="num_de_parte" wire:model="num_de_parte" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('num_de_parte')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-                                <label for="num_de_parte" class="block">Núm. de parte</label>
-                                <input id="num_de_parte" wire:model="num_de_parte" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('num_de_parte')
+                                <label for="importe" class="block">Importe</label>
+                                <input id="importe" wire:model="importe" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('importe')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
@@ -261,7 +246,7 @@
                         </div>
 
                         {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
-                        <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesSalidaAlmacen'>
+                        <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesOrdenCompra'>
                             Agregar campos
                         </button>
                     </div>

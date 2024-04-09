@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrdenCompra extends Model
 {
-    protected $table = 'orden_de_compra';
+    protected $table = 'orden_de_compras';
 
     use HasFactory;
 
     protected $fillable = [
         'fecha',
-        'clientes_id',
         'empresas_id',
         'proveedores_id',
         'documentos_id',
@@ -25,4 +24,9 @@ class OrdenCompra extends Model
         'iva',
         'total'
     ];
+
+    public function detalles_orden_compra() {
+        
+        return $this->hasMany(DetallesOrdenCompra::class, 'orden_de_compras_id', 'id');
+    }
 }

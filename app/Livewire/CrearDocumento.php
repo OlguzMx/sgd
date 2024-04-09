@@ -7,17 +7,18 @@ use App\Models\Empresa;
 use Livewire\Component;
 use App\Models\Remision;
 use App\Models\Documento;
+use App\Models\Proveedor;
+use App\Models\OrdenCompra;
 use App\Models\SalidaAlmacen;
 use App\Models\TipoDocumento;
 use App\Models\EntradaAlmacen;
 use App\Models\GarantiaCambio;
 use App\Models\DetallesRemision;
 use Livewire\Attributes\Validate;
+use App\Models\DetallesOrdenCompra;
 use App\Models\DetallesSalidaAlmacen;
 use App\Models\DetallesEntradaAlmacen;
 use App\Models\DetallesGarantiaCambio;
-use App\Models\OrdenCompra;
-use App\Models\Proveedor;
 
 class CrearDocumento extends Component
 {
@@ -61,7 +62,7 @@ class CrearDocumento extends Component
     public $name_cliente;
     public $puesto_cliente;
     public $empresa_cliente;
-    
+
     //tabla detalles_garantias_cambios
     public $marca;
     public $modelo;
@@ -257,17 +258,26 @@ class CrearDocumento extends Component
             // Validar campos de orden_de_compras
             $this->validate([
                 'fecha' => 'required',
-                'clientes_id' => 'required',
                 'empresas_id' => 'required',
                 'proveedores_id' => 'required',
-                'num_orden_compras' => 'required',
-                'numbre_proyecto' => 'required',
+                'num_orden_compra' => 'required',
+                'nombre_proyecto' => 'required',
                 'tiempo_entrega' => 'required',
                 'moneda' => 'required',
-                'subtotal' => 'required',
-                'iva' => 'required',
-                'total' => 'required',
             ]);
+
+            // Calcular el subtotal sumando los importes de cada detalle
+            $subtotal = 0;
+            foreach ($this->detalles as $detalle) {
+                $subtotal += $detalle['cantidad'] * $detalle['precio_unitario'];
+            }
+
+            // Calcular el IVA aplicando el porcentaje del 16%
+            $iva = $subtotal * 0.16;
+
+            // Calcular el total sumando el subtotal y el IVA
+            $total = $subtotal + $iva;
+
             // Tabla orden_de_compras
             $orden_compra = new OrdenCompra();
             $orden_compra->fecha = $this->fecha;
@@ -277,14 +287,26 @@ class CrearDocumento extends Component
             $orden_compra->nombre_proyecto = $this->nombre_proyecto;
             $orden_compra->tiempo_entrega = $this->tiempo_entrega;
             $orden_compra->moneda = $this->moneda;
-            $orden_compra->subtotal = $this->subtotal;
-            $orden_compra->iva = $this->iva;
-            $orden_compra->total = $this->total;
+            $orden_compra->subtotal = $subtotal;
+            $orden_compra->iva = $iva;
+            $orden_compra->total = $total;
             // Asignar el ID del documento a la remisión
             $orden_compra->documentos_id = $documento->id;
             $orden_compra->save();
 
-            // Garantía y/o cambio de equipo
+            // Guardar cada detalle en la base de datos asociado con la remisión
+            foreach ($this->detalles as $detalle) {
+                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                $detalleOrdenCompra = new DetallesOrdenCompra();
+                $detalleOrdenCompra->cantidad = $detalle['cantidad'];
+                $detalleOrdenCompra->num_de_parte = $detalle['num_de_parte'];
+                $detalleOrdenCompra->descripcion = $detalle['descripcion'];
+                $detalleOrdenCompra->precio_unitario = $detalle['precio_unitario'];
+                $detalleOrdenCompra->importe = $detalle['importe'];
+                // dd($detalleGarantia);
+                // Asociar el detalle con la remisión recién creada y guardarlo
+                $orden_compra->detalles_orden_compra()->save($detalleOrdenCompra);
+            }
         } elseif ($this->validate()['tipo_documento_id'] === '4') { // Crear elseif para cada tipo
             // Validar campos de garantias_cambios
             $this->validate([
@@ -390,9 +412,8 @@ class CrearDocumento extends Component
                 // Asociar el detalle con la remisión recién creada y guardarlo
                 $salida_almacen->detalles_salida_almacen()->save($detalleSalidaAlmacen);
             }
-
         }
-        
+
         return redirect(route('documentos.index'))->with('alerta', 'El documento se ha creado correctamente.');
     }
 
