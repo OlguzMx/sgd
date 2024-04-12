@@ -65,7 +65,7 @@ Route::middleware([
     Route::post('/proveedores/create', [ProveedoresController::class, 'store'])->name('proveedores.store');
     Route::patch('/proveedores/edit/{id}', [ProveedoresController::class, 'update'])->name('proveedores.update');
     Route::get('/proveedores/edit/{id}', [ProveedoresController::class, 'edit'])->name('proveedores.edit');
-    Route::delete('/proveedores/delete/{id}', [ProveedoresController::class, 'destroy'])->name('empresas.destroy');
+    Route::delete('/proveedores/delete/{id}', [ProveedoresController::class, 'destroy'])->name('proveedores.destroy');
 
 
     // VISTA DE DOCUMENTOS
