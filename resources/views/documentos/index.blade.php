@@ -18,7 +18,6 @@ Documentos
 
             <!-- INICIO - VISTA DE DOCUMENTOS -->
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-2">
-
                 {{-- Importar alerta --}}
                 <livewire:alerta />
 
