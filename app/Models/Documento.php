@@ -28,6 +28,11 @@ class Documento extends Model
         return $this->belongsTo(Cliente::class, 'clientes_id', 'id');
     }
 
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'empresas_id', 'id');
+    }
+
     // SOLO RELACIONES SOBRE DOCUMENTOS
 
     // Un tipo pertenece a Documento
@@ -50,5 +55,20 @@ class Documento extends Model
     public function detalles_garantia_cambio()
     {
         return $this->belongsTo(DetallesGarantiaCambio::class, 'garantias_cambios_id', 'id');
+    }
+
+    public function entrada_almacen()
+    {
+        return $this->hasOne(EntradaAlmacen::class, 'documentos_id', 'id');
+    }
+
+    public function salida_almacen()
+    {
+        return $this->hasOne(SalidaAlmacen::class, 'documentos_id', 'id');
+    }
+
+    public function proveedor()
+    {
+        return $this->hasOne(Proveedor::class, 'documentos_id', 'id');
     }
 }

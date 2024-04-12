@@ -20,7 +20,7 @@ Ver Documentos
                         <!-- INICIO - VISTA PREVIA REMISIÓN -->
 
                         <div class="sm:col-span-3 border px-3 py-2">
-                            <div class="mt-2 mx-24">
+                            <div class="mt-2">
                                 <img src="{{ asset('img/logo-arsite.png') }}" alt="Logo" width="500px" class="my-7">
                                 {{-- Muestra la fecha del documento en el siguiente formato:  XX (dia) de XX (mes) 20XX --}}
                                 <p class="text-right">CDMX a {{ \Carbon\Carbon::parse($Documentos->garantia_cambio->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
@@ -28,15 +28,14 @@ Ver Documentos
                                 <p class="font-semibold">{{ $Documentos->cliente->name }}</p>
                                 <p class="font-semibold">{{ $Documentos->cliente->puesto }}</p>
                                 <p class="font-semibold">{{ $Documentos->garantia_cambio->empresa->ubicacion }}</p>
-                                <p class="text-justify">Por medio de la presente yo el C.<span> {{ $Documentos->user->name }} </span>, en mi carácter de representante legal,
+                                <p class="">
+                                    Por medio de la presente yo el <span class="font-bold">C. {{ $Documentos->user->name }}</span>, en mi carácter de representante legal,
                                     me dirijo de a usted para informarle que, debido a la aplicación de garantía solicitada con el fabricante,
-                                    @foreach ($Documentos->garantia_cambio->detalles_garantia_cambio as $detalle)
-                                    <span>{{ $detalle->descripcion }}</span>
-                                    @endforeach
+                                    <span>{{ $Documentos->garantia_cambio->descripcion }}</span>
                                 </p>
                                 <h2 class="font-bold uppercase text-3xl text-center my-4">{{ $Documentos->tipo_documento->name }}</h2>
                                 <h3>Equipo Dañado</h3>
-                                <table class="border-collapse border border-slate-500 my-2">
+                                <table class="min-w-full table-auto border-collapse border border-slate-500 my-2">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
                                             <td class="border-collapse border border-slate- px-4 py-2">Marca</td>
@@ -56,7 +55,7 @@ Ver Documentos
                                 </table>
 
                                 <h3>Equipo Reemplazo</h3>
-                                <table class="border-collapse border border-slate-500 my-2">
+                                <table class="min-w-full table-auto border-collapse border border-slate-500 my-2">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
                                             <td class="border-collapse border border-slate- px-4 py-2">Marca</td>
@@ -77,7 +76,7 @@ Ver Documentos
                                     </tbody>
                                 </table>
 
-                                <p class="text-justify">Siendo el caso concluido ya que el equipo fue recibido satisfactoriamente, por el área usuaria que solicito la aplicación de la garantía.
+                                <p class="">Siendo el caso concluido ya que el equipo fue recibido satisfactoriamente, por el área usuaria que solicito la aplicación de la garantía.
                                     <br>
                                     <br>
                                     Sin más por el momento, quedamos a sus órdenes y expreso que estamos para servirles.
