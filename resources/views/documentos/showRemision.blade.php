@@ -30,17 +30,17 @@ Ver Documentos
                                 <table class="min-w-full table-auto border-collapse border border-slate-500 my-2">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
-                                            <td class="border-collapse border border-slate- px-4 py-2">Cantidad</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2">Unidad</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2">Descripción</td>
+                                            <td class="border-collapse border border-slate-500 px-4 py-2">Cantidad</td>
+                                            <td class="border-collapse border border-slate-500 px-4 py-2">Unidad</td>
+                                            <td class="border-collapse border border-slate-500 px-4 py-2">Descripción</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($Documentos->remision->detalles_remision as $detalle)
                                         <tr>
-                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->cantidad }}</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2 text-center">{{ $detalle->unidad }}</td>
-                                            <td class="border-collapse border border-slate- px-4 py-2">{{ $detalle->descripcion }}</td>
+                                            <td class="border-collapse border border-slate-500 px-4 py-2 text-center">{{ $detalle->cantidad }}</td>
+                                            <td class="border-collapse border border-slate-500 px-4 py-2 text-center">{{ $detalle->unidad }}</td>
+                                            <td class="border-collapse border border-slate-500 px-4 py-2">{{ $detalle->descripcion }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

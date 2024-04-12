@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\ClienteController;
@@ -83,7 +84,8 @@ Route::middleware([
     Route::get('/documentos/salida_almacen/{id}', [ShowController::class, 'showSalidaAlmacen'])->name('documentos.showSalidaAlmacen');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
 
-
+    // PDF-CONTROLLER
+    Route::get('documentos/remision/pdf/{id}', [PdfController::class, 'pdfRemision'])->name('pdf.remision');
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');
     // Route::get('/tiposdocumentos/create', [TiposDocumentosController::class, 'create'])->name('tiposdocumentos.create');

@@ -7,6 +7,7 @@ use App\Models\Documento;
 use Barryvdh\Snappy\Facades\SnappyPdf;
 
 use Illuminate\Routing\Controller;
+
 class PdfController extends Controller
 {
 
@@ -14,12 +15,15 @@ class PdfController extends Controller
     {
         $documento = Documento::find($id);
 
+        // Paginar los detalles de la remisión
+        $detallesRemision = $documento->remision->detalles_remision->chunk(6); // Mostrar 6 registros por página
+
         $pdf = SnappyPdf::loadView('pdf.remision', [
-            'documento' => $documento
+            'documento' => $documento,
+            'detallesRemision' => $detallesRemision
         ]);
+
 
         return $pdf->inline('document.pdf');
     }
-
-
 }
