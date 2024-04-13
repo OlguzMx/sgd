@@ -11,21 +11,18 @@
             margin: 0;
             padding: 0 30px;
             /* Ajusta este valor según la altura de tu footer */
-            margin-bottom: 30%;
-            /* Ajusta este valor según la altura de tu footer */
+
         }
 
         footer {
             padding: 10px;
             font-size: 16px;
             text-align: center;
-            position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
             font-weight: 600;
+            clear: both;
+            /* Asegura que el footer se coloque después de todo el contenido */
         }
-
 
         .my-10 {
             margin: 35px 0;
@@ -98,7 +95,6 @@
 
 <body>
     <header>
-        <img src="{{ asset('img/logo-arsite.png') }}" alt="Logo" width="500px" class="my-7">
         <p class="fecha">Villahermosa, Tabasco a
             {{ \Carbon\Carbon::parse($documento->remision->fecha)->translatedFormat('d \d\e F \d\e Y') }}
         </p>
@@ -108,9 +104,9 @@
             {{ $documento->tipo_documento->name }} de Equipo</h1>
     </header>
 
-    <main>
-        <!-- Contenido principal -->
-        @foreach ($detallesRemision as $pagina)
+    @foreach ($detallesRemision as $pagina)
+        <main>
+            <!-- Contenido principal -->
             <table class="table">
                 <thead>
                     <tr class="uppercase font-semibold">
@@ -129,24 +125,19 @@
                     @endforeach
                 </tbody>
             </table>
-            <img src="{{ asset('img/remision/firmas_remision.jpg') }}" alt="Logo"
-                style="object-fit:cover; margin-top:20px;">
-                @if (!$loop->last)
-                <div style="page-break-after: always;"></div> <!-- Agregar salto de página si no es la última página -->
-            @endif
-        @endforeach
-    </main>
 
-    <footer>
-        <p>
-            Calle Unión No. 161 Col Escandón 1ra Sección dpto. 22, C.P. 11800
-            <br>
-            Delegación Miguel Hidalgo, Ciudad de Mexico RFC AIN040211G2A
-            <br>
-            TEL: (993) 3-55-40-05 FAX (993) 1-85-07-54 <a href="mailto:ventas@arsite.com.mx"> ventas@arsite.com.mx</a>
-            <a href="www.arsite.com.mx">www.arsite.com.mx</a>
-        </p>
-    </footer>
+            {{-- SOLO LA ULTIMA PAGINA --}}
+            @if ($loop->last)
+                <img src="{{ asset('img/remision/firmas_remision.jpg') }}" alt="Logo"
+                    style="object-fit:cover; margin-top:20px;">
+            @endif
+        </main>
+
+        @if (!$loop->last)
+            <div style="page-break-after: always;"></div> <!-- Agregar salto de página si no es la última página -->
+            <div style="height: 10em;"></div>
+        @endif
+    @endforeach
 </body>
 
 </html>

@@ -25,6 +25,8 @@ use App\Http\Controllers\TiposDocumentosController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/documentos/remision/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
+Route::get('/documentos/remision/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
 
 Route::middleware([
     'auth:sanctum',
@@ -85,7 +87,7 @@ Route::middleware([
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
 
     // PDF-CONTROLLER
-    Route::get('documentos/remision/pdf/{id}', [PdfController::class, 'pdfRemision'])->name('pdf.remision');
+    Route::get('/documentos/remision/pdf/{id}', [PdfController::class, 'pdfRemision'])->name('pdf.remision');
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');
     // Route::get('/tiposdocumentos/create', [TiposDocumentosController::class, 'create'])->name('tiposdocumentos.create');
