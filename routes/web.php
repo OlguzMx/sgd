@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\ClienteController;
@@ -24,6 +25,8 @@ use App\Http\Controllers\TiposDocumentosController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/documentos/remision/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
+Route::get('/documentos/remision/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
 
 Route::middleware([
     'auth:sanctum',
@@ -65,7 +68,7 @@ Route::middleware([
     Route::post('/proveedores/create', [ProveedoresController::class, 'store'])->name('proveedores.store');
     Route::patch('/proveedores/edit/{id}', [ProveedoresController::class, 'update'])->name('proveedores.update');
     Route::get('/proveedores/edit/{id}', [ProveedoresController::class, 'edit'])->name('proveedores.edit');
-    Route::delete('/proveedores/delete/{id}', [ProveedoresController::class, 'destroy'])->name('empresas.destroy');
+    Route::delete('/proveedores/delete/{id}', [ProveedoresController::class, 'destroy'])->name('proveedores.destroy');
 
 
     // VISTA DE DOCUMENTOS
@@ -83,7 +86,8 @@ Route::middleware([
     Route::get('/documentos/salida_almacen/{id}', [ShowController::class, 'showSalidaAlmacen'])->name('documentos.showSalidaAlmacen');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
 
-
+    // PDF-CONTROLLER
+    Route::get('/documentos/remision/pdf/{id}', [PdfController::class, 'pdfRemision'])->name('pdf.remision');
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');
     // Route::get('/tiposdocumentos/create', [TiposDocumentosController::class, 'create'])->name('tiposdocumentos.create');
