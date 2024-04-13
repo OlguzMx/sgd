@@ -281,7 +281,7 @@ class CrearDocumento extends Component
             // Tabla orden_de_compras
             $orden_compra = new OrdenCompra();
             $orden_compra->fecha = $this->fecha;
-            $orden_compra->empresas_id = $this->empresas_id;
+            $orden_compra->empresas_id = $this->empresas_id; 
             $orden_compra->proveedores_id = $this->proveedores_id;
             $orden_compra->num_orden_compra = $this->num_orden_compra;
             $orden_compra->nombre_proyecto = $this->nombre_proyecto;
