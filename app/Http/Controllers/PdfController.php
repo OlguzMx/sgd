@@ -16,7 +16,6 @@ class PdfController extends Controller
     public function pdfRemision(string $id)
     {
         $documento = Documento::find($id);
-
         // Paginar los detalles de la remisión
         $detallesRemision = $documento->remision->detalles_remision->chunk(15); // Mostrar 6 registros por página
 
@@ -35,7 +34,7 @@ class PdfController extends Controller
         ])->setOptions($options);
 
         // Obtener fecha actual en el formato deseado
-        $fechaActual = Carbon::now()->format('Ymd');
+        $fechaActual = Carbon::now()->format('Y-m-d');
         
         return $pdf->download("remision-$fechaActual.pdf");
     }
