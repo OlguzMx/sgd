@@ -112,7 +112,7 @@
                                             </svg>
                                         </a>
                                     @elseif ($documento->tipo_documento_id === 3)
-                                        <a href="{{ route('documentos.editGarantiasCambios', $documento->id) }}"
+                                        <a href="{{ route('documentos.editOrdenCompra', $documento->id) }}"
                                             title="Editar {{ $documento->tipo_documento->name }}"
                                             class="bg-white text-blue-600 hover:text-blue-800 p-1 rounded-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

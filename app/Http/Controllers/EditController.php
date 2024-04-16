@@ -11,7 +11,10 @@ class EditController extends Controller
     {
         return view('documentos.editRemision', compact('id'));
     }
-
+    public function editOrdenCompra(string $id)
+    {
+        return view('documentos.editOrdenCompra', compact('id'));
+    }
     public function editGarantiaCambio(string $id)
     {
         return view('documentos.editGarantiaCambio', compact('id'));

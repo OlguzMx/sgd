@@ -80,6 +80,7 @@ Route::middleware([
     Route::get('/documentos/edit/garantia_cambios/{id}', [EditController::class, 'editGarantiaCambio'])->name('documentos.editGarantiasCambios');
     Route::get('/documentos/edit/entrada_almacen/{id}', [EditController::class, 'editEntradaAlmacen'])->name('documentos.editEntradaAlmacen');
     Route::get('/documentos/edit/salida_almacen/{id}', [EditController::class, 'editSalidaAlmacen'])->name('documentos.editSalidaAlmacen');
+    Route::get('/documentos/edit/orden_compra/{id}', [EditController::class, 'editOrdenCompra'])->name('documentos.editOrdenCompra');
     Route::get('/documentos/remision/{id}', [ShowController::class, 'showRemision'])->name('documentos.showRemision');
     Route::get('/documentos/garantia_cambios/{id}', [ShowController::class, 'showGarantiaCambios'])->name('documentos.showGarantiaCambios');
     Route::get('/documentos/entrada_almacen/{id}', [ShowController::class, 'showEntradaAlmacen'])->name('documentos.showEntradaAlmacen');
