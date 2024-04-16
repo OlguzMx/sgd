@@ -98,7 +98,7 @@
                 
                 <div>
                     <label for="fecha" class="block">Fecha</label>
-                    <input type="date" wire:model="fecha"
+                    <input id="fecha" type="date" wire:model="fecha"
                         class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     @error('fecha')
                         <div

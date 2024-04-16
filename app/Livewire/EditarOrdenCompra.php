@@ -47,14 +47,10 @@ class EditarOrdenCompra extends Component
         $this->fecha = $this->documento->orden_compra->fecha;
         $this->clientes_id = $this->documento->clientes_id;
         $this->empresas_id = $this->documento->orden_compra->empresas_id;
-        $this->proveedores_id =  $this->documento->proveedores_id;
-        $this->num_orden_compra = $this->documento->num_orden_compra;
-        $this->nombre_proyecto = $this->documento->nombre_proyecto;
-        $this->tiempo_entrega = $this->documento->tiempo_entrega;
-        $this->moneda = $this->documento->moneda;
-        $this->subtotal = $this->documento->subtotal;
-        $this->iva = $this->documento->iva;
-        $this->total = $this->documento->total;
+        $this->proveedores_id =  $this->documento->orden_compra->proveedores_id;
+        $this->num_orden_compra = $this->documento->orden_compra->num_orden_compra;
+        $this->nombre_proyecto = $this->documento->orden_compra->nombre_proyecto;
+        $this->tiempo_entrega = $this->documento->orden_compra->tiempo_entrega;
         $this->detalles = $this->documento->orden_compra->detalles_orden_compra;
 
         // Inicializamos los valores en new_detalles usando los datos del detalle 
