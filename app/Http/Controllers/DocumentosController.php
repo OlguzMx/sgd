@@ -17,7 +17,7 @@ class DocumentosController extends Controller
      */
     public function index()
     {
-        $documentos = Documento::paginate(10);
+        $documentos = Documento::orderBy('created_at', 'desc')->paginate(10);
         $documentoCount = Documento::count();
 
         return view('documentos.index', [
