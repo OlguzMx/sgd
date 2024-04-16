@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\SalidaAlmacen;
 use App\Models\EntradaAlmacen;
 use App\Models\GarantiaCambio;
+use App\Models\OrdenCompra;
 
 class ShowController extends Controller
 {
@@ -20,6 +21,17 @@ class ShowController extends Controller
         return view('documentos.showRemision', [
             'Documentos' => $documento,
             'remision' => $remision
+        ]);
+    }
+
+    public function showOrdenCompra($id)
+    {
+        $documento = Documento::find($id);
+        $orden_compra = OrdenCompra::all();
+        // dd($remision);
+        return view('documentos.showOrdenCompra', [
+            'Documentos' => $documento,
+            'orden_compra' => $orden_compra
         ]);
     }
 

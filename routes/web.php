@@ -84,6 +84,7 @@ Route::middleware([
     Route::get('/documentos/garantia_cambios/{id}', [ShowController::class, 'showGarantiaCambios'])->name('documentos.showGarantiaCambios');
     Route::get('/documentos/entrada_almacen/{id}', [ShowController::class, 'showEntradaAlmacen'])->name('documentos.showEntradaAlmacen');
     Route::get('/documentos/salida_almacen/{id}', [ShowController::class, 'showSalidaAlmacen'])->name('documentos.showSalidaAlmacen');
+    Route::get('/documentos/orden_compra/{id}', [ShowController::class, 'showOrdenCompra'])->name('documentos.showOrdenCompra');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
 
     // PDF-CONTROLLER

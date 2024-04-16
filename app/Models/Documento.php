@@ -67,6 +67,10 @@ class Documento extends Model
         return $this->hasOne(SalidaAlmacen::class, 'documentos_id', 'id');
     }
 
+    public function orden_compra()
+    {
+        return $this->hasOne(OrdenCompra::class, 'documentos_id', 'id');
+    }
     public function proveedor()
     {
         return $this->hasOne(Proveedor::class, 'documentos_id', 'id');

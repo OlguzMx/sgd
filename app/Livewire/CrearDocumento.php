@@ -179,16 +179,18 @@ class CrearDocumento extends Component
     // detallesEntradaAlmacen
     public function detallesOrdenCompra()
     {
+        // Calcular el importe
+        $importe = $this->cantidad * $this->precio_unitario;
+
         // Agregar los datos del detalle actual al arreglo de detalles
         $this->detalles[] = [
             'cantidad' => $this->cantidad,
             'num_de_parte' => $this->num_de_parte,
             'descripcion' => $this->descripcion,
             'precio_unitario' => $this->precio_unitario,
-            'importe' => $this->importe,
+            'importe' => $importe,
         ];
 
-        // dd($this->detalles);
         // Limpiar los campos de entrada después de agregar el detalle
         $this->cantidad = null;
         $this->num_de_parte = null;
@@ -196,6 +198,7 @@ class CrearDocumento extends Component
         $this->precio_unitario = null;
         $this->importe = null;
     }
+
     public function save()
     {
         $this->validate();
@@ -258,6 +261,7 @@ class CrearDocumento extends Component
             // Validar campos de orden_de_compras
             $this->validate([
                 'fecha' => 'required',
+                'clientes_id' => 'required',
                 'empresas_id' => 'required',
                 'proveedores_id' => 'required',
                 'num_orden_compra' => 'required',
@@ -281,7 +285,8 @@ class CrearDocumento extends Component
             // Tabla orden_de_compras
             $orden_compra = new OrdenCompra();
             $orden_compra->fecha = $this->fecha;
-            $orden_compra->empresas_id = $this->empresas_id; 
+            $orden_compra->empresas_id = $this->empresas_id;
+            $orden_compra->clientes_id = $this->clientes_id;
             $orden_compra->proveedores_id = $this->proveedores_id;
             $orden_compra->num_orden_compra = $this->num_orden_compra;
             $orden_compra->nombre_proyecto = $this->nombre_proyecto;
