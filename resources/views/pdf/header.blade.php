@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,4 +9,5 @@
 <body>
     <img src="{{ asset('img/logo-arsite.png') }}" alt="Logo" width="500px" class="my-7">
 </body>
+
 </html>

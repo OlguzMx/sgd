@@ -19,7 +19,7 @@ class PdfController extends Controller
         // Paginar los detalles de la remisión
         $detallesRemision = $documento->remision->detalles_remision->chunk(15); // Mostrar 6 registros por página
 
-        // Configurar la opción para el número de página en el pie de página
+        // Configurar la opción para el número de página en el pie de página. 
         $options = [
             'header-html' => config('app.url') . '/documentos/remision/pdf/header',
             'footer-right' => '[page]', // Agrega el número de página en el lado derecho del pie de página

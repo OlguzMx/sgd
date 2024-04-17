@@ -59,9 +59,7 @@
         .w-full {
             width: 100%;
         }
-
-
-        /* Clases de table */
+        /* Clases de la tabla*/
         .table {
             border-collapse: collapse;
             border-width: 1px;
