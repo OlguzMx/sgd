@@ -41,7 +41,7 @@ class ProveedoresController extends Controller
             'telefono' => $request->telefono,
         ]);
 
-        return redirect()->route('proveedores.index');
+        return redirect(route('proveedores.index'))->with('alerta', 'Se ha creado el Proveedor Correctamente');
     }
 
     public function edit(string $id)
@@ -67,7 +67,9 @@ class ProveedoresController extends Controller
                     ->withInput($request->input());
             }
             $proveedor->update();
-            return redirect()->route('proveedores.index');
+
+            return redirect(route('proveedores.index'))->with('alerta', 'Se ha editado el Proveedor Correctamente');
+            
         } catch (\Exception $e) {
             return ["Error" => $e->getCode(), "Message" => $e->getMessage()];
         };

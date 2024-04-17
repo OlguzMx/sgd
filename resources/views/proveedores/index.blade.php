@@ -19,6 +19,8 @@
                 <h2 class="text-3xl font-light text-center font-mono">{{ $ProveedoresCount }}
                     <span class="font-normal"> @choice('Proveedor|Proveedores',$ProveedoresCount )</span>
                 </h2>
+                 {{-- Importar alerta --}}
+                 <livewire:alerta />
 
                 <!-- FIN - CONTEO DE PROVEEDORES -->
 

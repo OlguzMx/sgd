@@ -111,7 +111,7 @@ Editar Proveedor
 
                         <div class="py-4">
                             <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105"><a href="{{ route('proveedores.index') }}">Regresar</a></button>
-                            <button type="submit" class="bg-orange-500 hover:bg-indigo-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Crear Proveedor</button>
+                            <button type="submit" class="bg-orange-500 hover:bg-indigo-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Editar Proveedor</button>
                         </div>
 
                         <!-- FIN - BOTONES DE CREAR CLIENTE Y REGRESAR -->
