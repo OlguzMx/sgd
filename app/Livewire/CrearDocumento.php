@@ -8,6 +8,7 @@ use Livewire\Component;
 use App\Models\Remision;
 use App\Models\Documento;
 use App\Models\Proveedor;
+use App\Models\Cotizacion;
 use App\Models\OrdenCompra;
 use App\Models\SalidaAlmacen;
 use App\Models\TipoDocumento;
@@ -15,6 +16,7 @@ use App\Models\EntradaAlmacen;
 use App\Models\GarantiaCambio;
 use App\Models\DetallesRemision;
 use Livewire\Attributes\Validate;
+use App\Models\DetallesCotizacion;
 use App\Models\DetallesOrdenCompra;
 use App\Models\DetallesSalidaAlmacen;
 use App\Models\DetallesEntradaAlmacen;
@@ -85,6 +87,9 @@ class CrearDocumento extends Component
     public $precio_unitario;
     public $importe;
 
+    // COTIZACIÓN
+    // tabla cotizacion
+    public $folio;
     public function mount()
     {
         $this->users_id = auth()->user()->id;
@@ -199,6 +204,30 @@ class CrearDocumento extends Component
         $this->importe = null;
     }
 
+    public function detallesCotizacion()
+    {
+        // Calcular el importe
+        $importe = $this->cantidad * $this->precio_unitario;
+
+        // Agregar los datos del detalle actual al arreglo de detalles
+        $this->detalles[] = [
+            'cantidad' => $this->cantidad,
+            'unidad' => $this->unidad, // Asegúrate de que $this->unidad tenga un valor aquí
+            'num_de_parte' => $this->num_de_parte,
+            'descripcion' => $this->descripcion,
+            'precio_unitario' => $this->precio_unitario,
+            'importe' => $importe,
+        ];        
+
+        // Limpiar los campos de entrada después de agregar el detalle
+        $this->cantidad = null;
+        $this->unidad = null;
+        $this->num_de_parte = null;
+        $this->descripcion = null;
+        $this->precio_unitario = null;
+        $this->importe = null;
+    }
+
     public function save()
     {
         $this->validate();
@@ -239,23 +268,62 @@ class CrearDocumento extends Component
             }
             // Cotización
         } elseif ($this->validate()['tipo_documento_id'] === '2') { // Crear elseif para cada tipo
-            // Validar campos de cotización
+            // Validar campos de cotizacion
             $this->validate([
-                // 'fecha' => 'required',
-                // 'clientes_id' => 'required',
-                // 'empresas_id' => 'required',
-                // 'cantidad' => 'required',
-                // 'unidad' => 'required',
-                // 'descripcion' => 'required'
+                'fecha' => 'required',
+                'clientes_id' => 'required',
+                'empresas_id' => 'required',
             ]);
-            // Tabla cotización
-            // $remision = new Remision();
-            // $remision->fecha = $this->fecha;
-            // $remision->empresas_id = $this->empresas_id;
-            // Asignar el ID del documento a la remisión
-            // $remision->documentos_id = $documento->id;
-            // $remision->save();
 
+            // Calcular el subtotal sumando los importes de cada detalle
+            $subtotal = 0;
+            foreach ($this->detalles as $detalle) {
+                $subtotal += $detalle['cantidad'] * $detalle['precio_unitario'];
+            }
+
+            // Calcular el IVA aplicando el porcentaje del 16%
+            $iva = $subtotal * 0.16;
+
+            // Calcular el total sumando el subtotal y el IVA
+            $total = $subtotal + $iva;
+
+            // Obtener las siglas del usuario autenticado
+            $siglasUsuario = strtoupper(substr(auth()->user()->name, 0, 2)); // Por ejemplo, tomar las primeras dos letras en mayúsculas
+
+            // Generar un número aleatorio o utilizar un contador autoincrementable
+            $numeroAleatorio = mt_rand(10000, 99999); // Generar un número aleatorio de 5 dígitos
+
+            // Concatenar las siglas con el número generado
+            $folio = $siglasUsuario . $numeroAleatorio; // Por ejemplo, "OM12345"
+
+            // Tabla cotizacion
+            $cotizacion = new Cotizacion();
+            $cotizacion->fecha = $this->fecha;
+            $cotizacion->folio = $folio; // Asignar el folio generado
+            $cotizacion->empresas_id = $this->empresas_id;
+            $cotizacion->clientes_id = $this->clientes_id;
+            $cotizacion->subtotal = $subtotal;
+            $cotizacion->iva = $iva;
+            $cotizacion->total = $total;
+            // Asignar el ID del documento a la remisión
+            $cotizacion->documentos_id = $documento->id;
+            $cotizacion->save();
+
+
+            // Guardar cada detalle en la base de datos asociado con la remisión
+            foreach ($this->detalles as $detalle) {
+                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                $detalleCotizacion = new DetallesCotizacion();
+                $detalleCotizacion->cantidad = $detalle['cantidad'];
+                $detalleCotizacion->unidad = $detalle['unidad'];
+                $detalleCotizacion->num_de_parte = $detalle['num_de_parte'];
+                $detalleCotizacion->descripcion = $detalle['descripcion'];
+                $detalleCotizacion->precio_unitario = $detalle['precio_unitario'];
+                $detalleCotizacion->importe = $detalle['importe'];
+                // dd($detalleGarantia);
+                // Asociar el detalle con la remisión recién creada y guardarlo
+                $cotizacion->detalles_cotizacion()->save($detalleCotizacion);
+            }
             // Orden de compra
         } elseif ($this->validate()['tipo_documento_id'] === '3') { // Crear elseif para cada tipo
             // Validar campos de orden_de_compras

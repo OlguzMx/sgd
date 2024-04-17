@@ -118,7 +118,82 @@
                     <!-- FIN - Tipo documento: Remisión -->
 
                     {{-- INICIO - Tipo documento: Cotización --}}
+                    <div x-show="selectedOption === '2' ">
+                        <div class="flex flex-col md:grid md:grid-cols-2 md:gap-6">
+                            <div>
+                                <label for="fecha" class="block">Coloque la fecha</label>
+                                <input type="date" wire:model="fecha" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('fecha')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="empresas_id" class="block">Empresa</label>
+                                <select wire:model="empresas_id" id="empresas_id" class="block w-full rounded-md border-gray-300 shadow-sm
+                            focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm mb-2">
+                                    <option>Seleccione la empresa</option>
+                                    @foreach ($empresas as $empresa)
+                                    <option value="{{ $empresa->id }}">{{ $empresa->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('empresas_id')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <h4 class="col-span-2 text-center font-semibold text-orange-500">Agregue las veces que requiera</h4>
+                            <div>
+                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_cotizacion --}}
+                                <label for="cantidad" class="block">Cantidad</label>
+                                <input id="cantidad" wire:model="cantidad" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('cantidad')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                                <label for="precio_unitario" class="block">Precio Unitario</label>
+                                <input wire:model="precio_unitario" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('precio_unitario')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                                <label for="num_de_parte" class="block">Núm. de parte</label>
+                                <input id="num_de_parte" wire:model="num_de_parte" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('num_de_parte')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="unidad" class="block">Unidad</label>
+                                <input id="unidad" wire:model="unidad" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('unidad')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-span-2">
+                                <label for="descripcion" class="block">Descripción</label>
+                                <textarea wire:model="descripcion" id="descripcion" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                @error('descripcion')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
 
+                        {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
+                        <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesCotizacion'>
+                            Agregar campos
+                        </button>
+                    </div>
                     {{-- FIN - Tipo documento: Cotización --}}
 
                     {{-- INICIO - Tipo documento: Orden de compra --}}

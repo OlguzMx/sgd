@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cotizacion;
 use App\Models\Remision;
 use App\Models\Documento;
 use Illuminate\Http\Request;
@@ -24,14 +25,25 @@ class ShowController extends Controller
         ]);
     }
 
-    public function showOrdenCompra($id)
+    public function showCotizacion($id)
     {
         $documento = Documento::find($id);
         $orden_compra = OrdenCompra::all();
         // dd($remision);
-        return view('documentos.showOrdenCompra', [
+        return view('documentos.showCotizacion', [
             'Documentos' => $documento,
             'orden_compra' => $orden_compra
+        ]);
+    }
+
+    public function showOrdenCompra($id)
+    {
+        $documento = Documento::find($id);
+        $cotizacion = Cotizacion::all();
+        // dd($remision);
+        return view('documentos.showOrdenCompra', [
+            'Documentos' => $documento,
+            'cotizacion' => $cotizacion
         ]);
     }
 

@@ -81,11 +81,13 @@ Route::middleware([
     Route::get('/documentos/edit/entrada_almacen/{id}', [EditController::class, 'editEntradaAlmacen'])->name('documentos.editEntradaAlmacen');
     Route::get('/documentos/edit/salida_almacen/{id}', [EditController::class, 'editSalidaAlmacen'])->name('documentos.editSalidaAlmacen');
     Route::get('/documentos/edit/orden_compra/{id}', [EditController::class, 'editOrdenCompra'])->name('documentos.editOrdenCompra');
+    Route::get('/documentos/edit/cotizacion/{id}', [EditController::class, 'editCotizacion'])->name('documentos.editCotizacion');
     Route::get('/documentos/remision/{id}', [ShowController::class, 'showRemision'])->name('documentos.showRemision');
     Route::get('/documentos/garantia_cambios/{id}', [ShowController::class, 'showGarantiaCambios'])->name('documentos.showGarantiaCambios');
     Route::get('/documentos/entrada_almacen/{id}', [ShowController::class, 'showEntradaAlmacen'])->name('documentos.showEntradaAlmacen');
     Route::get('/documentos/salida_almacen/{id}', [ShowController::class, 'showSalidaAlmacen'])->name('documentos.showSalidaAlmacen');
     Route::get('/documentos/orden_compra/{id}', [ShowController::class, 'showOrdenCompra'])->name('documentos.showOrdenCompra');
+    Route::get('/documentos/cotizacion/{id}', [ShowController::class, 'showCotizacion'])->name('documentos.showCotizacion');
     Route::delete('/documentos/delete/{id}', [DocumentosController::class, 'destroy'])->name('documentos.destroy');
 
     // PDF-CONTROLLER
