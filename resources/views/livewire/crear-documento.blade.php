@@ -301,13 +301,6 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-                                <label for="importe" class="block">Importe</label>
-                                <input id="importe" wire:model="importe" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('importe')
-                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
-                                    <p class="text-red-700">{{ $message }}</p>
-                                </div>
-                                @enderror
                             </div>
                             <div class="col-span-2">
                                 <label for="descripcion" class="block">Descripción</label>

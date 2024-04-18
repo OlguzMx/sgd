@@ -25,8 +25,21 @@ use App\Http\Controllers\TiposDocumentosController;
 Route::get('/', function () {
     return view('welcome');
 });
+// Header y Footer de Remisión
 Route::get('/documentos/remision/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
 Route::get('/documentos/remision/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
+
+// Header y Footer de Garantia
+Route::get('/documentos/garantia_cambio/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
+Route::get('/documentos/garantia_cambio/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
+
+// Header y Footer de Entrada
+Route::get('/documentos/entrada_almacen/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
+Route::get('/documentos/entrada_almacen/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
+
+// Header y Footer de Salida
+Route::get('/documentos/salida_almacen/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
+Route::get('/documentos/salida_almacen/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
 
 Route::middleware([
     'auth:sanctum',
@@ -92,6 +105,9 @@ Route::middleware([
 
     // PDF-CONTROLLER
     Route::get('/documentos/remision/pdf/{id}', [PdfController::class, 'pdfRemision'])->name('pdf.remision');
+    Route::get('/documentos/garantia_cambio/pdf/{id}', [PdfController::class, 'pdfGarantia'])->name('pdf.garantia');
+    Route::get('/documentos/entrada_almacen/pdf/{id}', [PdfController::class, 'pdfEntrada'])->name('pdf.entrada');
+    Route::get('/documentos/salida_almacen/pdf/{id}', [PdfController::class, 'pdfSalida'])->name('pdf.salida');
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');
     // Route::get('/tiposdocumentos/create', [TiposDocumentosController::class, 'create'])->name('tiposdocumentos.create');
