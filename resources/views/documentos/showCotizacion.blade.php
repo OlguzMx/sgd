@@ -25,8 +25,8 @@ Ver Documentos
                                 {{-- Muestra la fecha del documento en el siguiente formato:  XX (dia) de XX (mes) 20XX --}}
                                 <p class="text-right">Villahermosa, Tabasco a {{ \Carbon\Carbon::parse($Documentos->cotizacion->fecha)->translatedFormat('d \d\e F \d\e Y') }}</p>
                                 <p class="text-right">Folio: {{ $Documentos->cotizacion->folio }}</p>
-                                <p class="font-semibold">At'n. {{ $Documentos->cotizacion->empresa->name }}</p>
-                                <p class="font-semibold">{{ $Documentos->cliente->name }}</p>
+                                <p class="font-semibold">{{ $Documentos->cotizacion->empresa->name }}</p>
+                                <p class="font-semibold">At'n. {{ $Documentos->cliente->name }}</p>
                                 <p class="font-semibold">{{ $Documentos->cliente->puesto }}</p>
                                 <br>
                                 <p class="text-xs"><span class="font-semibold">Ar-Site Integradores, S.A. de C.V.</span> <br>

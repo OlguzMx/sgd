@@ -43,7 +43,7 @@ class ClienteController extends Controller
             'num_fijo' => 'nullable|max:13',
             'extension' => 'nullable|max:5',
             'empresas_id' => 'required',
-            'departamento' => 'sometimes'
+            'departamento' => 'nullable'
         ]);
 
         Cliente::create([
@@ -93,6 +93,7 @@ class ClienteController extends Controller
             $cliente->num_fijo = $request->num_fijo;
             $cliente->extension = $request->extension;
             $cliente->empresas_id = $request->empresas_id;
+            $cliente->departamento = $request->departamento;
             if ($validator->fails()) {
                 return back()
                     ->withErrors($validator->messages())

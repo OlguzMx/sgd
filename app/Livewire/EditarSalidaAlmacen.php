@@ -129,6 +129,8 @@ class EditarSalidaAlmacen extends Component
                 }
             }
         }
+
+        return redirect(route('documentos.index'))->with('alerta', 'El documento se modificó correctamente correctamente.');
     }
 
     public function render()

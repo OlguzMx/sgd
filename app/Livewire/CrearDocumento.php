@@ -43,10 +43,6 @@ class CrearDocumento extends Component
     // Detalles de los tipos de documentos (NEW)
     public $detalles = [];
 
-    // COTIZACIÓN
-
-    // ORDEN DE COMPRA
-
     // GARANTÍA Y/O CAMBIO DE EQUIPO
     //tabla garantia_cambios
 
@@ -77,8 +73,12 @@ class CrearDocumento extends Component
     public $proveedores_id;
     public $num_orden_compra;
     public $nombre_proyecto;
-    public $tiempo_entrega;
-    public $moneda;
+    public $domicilio;
+    public $ubicacion;
+    public $codigo_postal;
+    public $contacto_cliente;
+    public $tel_cliente;
+    public $email_cliente;
     public $subtotal;
     public $iva;
     public $total;
@@ -181,7 +181,7 @@ class CrearDocumento extends Component
         $this->descripcion = null;
     }
 
-    // detallesEntradaAlmacen
+    // detallesOrdenCompra
     public function detallesOrdenCompra()
     {
         // Calcular el importe
@@ -204,6 +204,7 @@ class CrearDocumento extends Component
         $this->importe = null;
     }
 
+    // detallesCotizacion
     public function detallesCotizacion()
     {
         // Calcular el importe
@@ -244,9 +245,6 @@ class CrearDocumento extends Component
             $this->validate([
                 'fecha' => 'required',
                 'empresas_id' => 'required',
-                // 'cantidad' => 'required',
-                // 'unidad' => 'required',
-                // 'descripcion' => 'required'
             ]);
             // Tabla remision
             $remision = new Remision();
@@ -267,7 +265,7 @@ class CrearDocumento extends Component
                 $remision->detalles_remision()->save($detalleRemision);
             }
             // Cotización
-        } elseif ($this->validate()['tipo_documento_id'] === '2') { // Crear elseif para cada tipo
+        } elseif ($this->validate()['tipo_documento_id'] === '2') { // COTIZACIÓN - Crear elseif para cada tipo
             // Validar campos de cotizacion
             $this->validate([
                 'fecha' => 'required',
@@ -305,14 +303,14 @@ class CrearDocumento extends Component
             $cotizacion->subtotal = $subtotal;
             $cotizacion->iva = $iva;
             $cotizacion->total = $total;
-            // Asignar el ID del documento a la remisión
+            // Asignar el ID del documento a la cotizacion
             $cotizacion->documentos_id = $documento->id;
             $cotizacion->save();
 
 
-            // Guardar cada detalle en la base de datos asociado con la remisión
+            // Guardar cada detalle en la base de datos asociado con la cotizacion
             foreach ($this->detalles as $detalle) {
-                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                // Crear una nueva instancia de DetallesCotizacion y asignar los valores
                 $detalleCotizacion = new DetallesCotizacion();
                 $detalleCotizacion->cantidad = $detalle['cantidad'];
                 $detalleCotizacion->unidad = $detalle['unidad'];
@@ -320,12 +318,11 @@ class CrearDocumento extends Component
                 $detalleCotizacion->descripcion = $detalle['descripcion'];
                 $detalleCotizacion->precio_unitario = $detalle['precio_unitario'];
                 $detalleCotizacion->importe = $detalle['importe'];
-                // dd($detalleGarantia);
-                // Asociar el detalle con la remisión recién creada y guardarlo
+                // Asociar el detalle con la cotizacion recién creada y guardarlo
                 $cotizacion->detalles_cotizacion()->save($detalleCotizacion);
             }
             // Orden de compra
-        } elseif ($this->validate()['tipo_documento_id'] === '3') { // Crear elseif para cada tipo
+        } elseif ($this->validate()['tipo_documento_id'] === '3') { // ORDEN DE COMPRA - Crear elseif para cada tipo
             // Validar campos de orden_de_compras
             $this->validate([
                 'fecha' => 'required',
@@ -334,8 +331,13 @@ class CrearDocumento extends Component
                 'proveedores_id' => 'required',
                 'num_orden_compra' => 'required',
                 'nombre_proyecto' => 'required',
-                'tiempo_entrega' => 'required',
-                'moneda' => 'required',
+                'name_cliente' => 'required',
+                'domicilio' => 'required',
+                'ubicacion' => 'required',
+                'codigo_postal' => 'required',
+                'contacto_cliente' => 'required',
+                'tel_cliente' => 'required',
+                'email_cliente' => 'required',
             ]);
 
             // Calcular el subtotal sumando los importes de cada detalle
@@ -358,18 +360,23 @@ class CrearDocumento extends Component
             $orden_compra->proveedores_id = $this->proveedores_id;
             $orden_compra->num_orden_compra = $this->num_orden_compra;
             $orden_compra->nombre_proyecto = $this->nombre_proyecto;
-            $orden_compra->tiempo_entrega = $this->tiempo_entrega;
-            $orden_compra->moneda = $this->moneda;
+            $orden_compra->name_cliente = $this->name_cliente;
+            $orden_compra->domicilio = $this->domicilio;
+            $orden_compra->ubicacion = $this->ubicacion;
+            $orden_compra->codigo_postal = $this->codigo_postal;
+            $orden_compra->contacto_cliente = $this->contacto_cliente;
+            $orden_compra->tel_cliente = $this->tel_cliente;
+            $orden_compra->email_cliente = $this->email_cliente;
             $orden_compra->subtotal = $subtotal;
             $orden_compra->iva = $iva;
             $orden_compra->total = $total;
-            // Asignar el ID del documento a la remisión
+            // Asignar el ID del documento a la orden de compra
             $orden_compra->documentos_id = $documento->id;
             $orden_compra->save();
 
-            // Guardar cada detalle en la base de datos asociado con la remisión
+            // Guardar cada detalle en la base de datos asociado con la orden de compra
             foreach ($this->detalles as $detalle) {
-                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                // Crear una nueva instancia de DetallesOrdenCompra y asignar los valores
                 $detalleOrdenCompra = new DetallesOrdenCompra();
                 $detalleOrdenCompra->cantidad = $detalle['cantidad'];
                 $detalleOrdenCompra->num_de_parte = $detalle['num_de_parte'];
@@ -377,33 +384,31 @@ class CrearDocumento extends Component
                 $detalleOrdenCompra->precio_unitario = $detalle['precio_unitario'];
                 $detalleOrdenCompra->importe = $detalle['importe'];
                 // dd($detalleGarantia);
-                // Asociar el detalle con la remisión recién creada y guardarlo
+                // Asociar el detalle con la orden de compra recién creada y guardarlo
                 $orden_compra->detalles_orden_compra()->save($detalleOrdenCompra);
             }
-        } elseif ($this->validate()['tipo_documento_id'] === '4') { // Crear elseif para cada tipo
+        } elseif ($this->validate()['tipo_documento_id'] === '4') { // GARANTÍA Y/O CAMBIO DE EQUIPOS - Crear elseif para cada tipo
             // Validar campos de garantias_cambios
             $this->validate([
                 'fecha' => 'required',
                 'clientes_id' => 'required',
                 'empresas_id' => 'required',
                 'users_id' => 'required',
-                // 'unidad' => 'required',
-                // 'descripcion' => 'required'
             ]);
-            // Tabla remision
+            // Tabla GarantiaCambio
             $garantia_cambio = new GarantiaCambio();
             $garantia_cambio->fecha = $this->fecha;
             $garantia_cambio->clientes_id = $this->clientes_id;
             $garantia_cambio->empresas_id = $this->empresas_id;
             $garantia_cambio->users_id = $this->users_id;
             $garantia_cambio->descripcion = $this->descripcion;
-            // Asignar el ID del documento a la remisión
+            // Asignar el ID del documento a la garantia y/o cambio de equipo
             $garantia_cambio->documentos_id = $documento->id;
             $garantia_cambio->save();
 
-            // Guardar cada detalle en la base de datos asociado con la remisión
+            // Guardar cada detalle en la base de datos asociado con la garantia y/o cambio de equipo
             foreach ($this->detalles as $detalle) {
-                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                // Crear una nueva instancia de DetallesGarantiaCambio y asignar los valores
                 $detalleGarantia = new DetallesGarantiaCambio();
                 $detalleGarantia->marca_danado = $detalle['marca_danado'];
                 $detalleGarantia->modelo_danado = $detalle['modelo_danado'];
@@ -412,12 +417,11 @@ class CrearDocumento extends Component
                 $detalleGarantia->modelo_reemplazo = $detalle['modelo_reemplazo'];
                 $detalleGarantia->num_serie_reemplazo = $detalle['num_serie_reemplazo'];
                 $detalleGarantia->num_inventario = $detalle['num_inventario'];
-                // dd($detalleGarantia);
-                // Asociar el detalle con la remisión recién creada y guardarlo
+                // Asociar el detalle con la garantia y/o cambio de equipo recién creada y guardarlo
                 $garantia_cambio->detalles_garantia_cambio()->save($detalleGarantia);
             }
             // Entrada de Mat/Eq a bodega
-        } elseif ($this->validate()['tipo_documento_id'] === '5') { // Crear elseif para cada tipo
+        } elseif ($this->validate()['tipo_documento_id'] === '5') { // ENTRADA DE MAT/EQ A BODEGA - Crear elseif para cada tipo
             // Validar campos de entrada_almacen
             $this->validate([
                 'fecha' => 'required',
@@ -433,13 +437,13 @@ class CrearDocumento extends Component
             $entrada_almacen->name_cliente = $this->name_cliente;
             $entrada_almacen->puesto_cliente = $this->puesto_cliente;
             $entrada_almacen->empresa_cliente = $this->empresa_cliente;
-            // Asignar el ID del documento a la remisión
+            // Asignar el ID del documento a la entrada de mat/qe a bodega
             $entrada_almacen->documentos_id = $documento->id;
             $entrada_almacen->save();
 
-            // Guardar cada detalle en la base de datos asociado con la remisión
+            // Guardar cada detalle en la base de datos asociado con la entrada de mat/qe a bodega
             foreach ($this->detalles as $detalle) {
-                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                // Crear una nueva instancia de DetallesEntradaAlmacen y asignar los valores
                 $detalleEntradaAlmacen = new DetallesEntradaAlmacen();
                 $detalleEntradaAlmacen->cantidad = $detalle['cantidad'];
                 $detalleEntradaAlmacen->marca = $detalle['marca'];
@@ -447,12 +451,12 @@ class CrearDocumento extends Component
                 $detalleEntradaAlmacen->num_de_parte = $detalle['num_de_parte'];
                 $detalleEntradaAlmacen->descripcion = $detalle['descripcion'];
                 // dd($detalleGarantia);
-                // Asociar el detalle con la remisión recién creada y guardarlo
+                // Asociar el detalle con la entrada de mat/qe a bodega recién creada y guardarlo
                 $entrada_almacen->detalles_entrada_almacen()->save($detalleEntradaAlmacen);
             }
 
             // Salida de Mat/Eq a bodega
-        } elseif ($this->validate()['tipo_documento_id'] === '6') { // Crear elseif para cada tipo
+        } elseif ($this->validate()['tipo_documento_id'] === '6') { // SALIDA DE MAT/EQ A BODEGA - Crear elseif para cada tipo
             // Validar campos de salida_almacen
             $this->validate([
                 'fecha' => 'required',
@@ -468,21 +472,20 @@ class CrearDocumento extends Component
             $salida_almacen->name_cliente = $this->name_cliente;
             $salida_almacen->puesto_cliente = $this->puesto_cliente;
             $salida_almacen->empresa_cliente = $this->empresa_cliente;
-            // Asignar el ID del documento a la remisión
+            // Asignar el ID del documento a la salida de mat/eq a bodega
             $salida_almacen->documentos_id = $documento->id;
             $salida_almacen->save();
 
-            // Guardar cada detalle en la base de datos asociado con la remisión
+            // Guardar cada detalle en la base de datos asociado con la salida de mat/eq a bodega
             foreach ($this->detalles as $detalle) {
-                // Crear una nueva instancia de DetallesRemision y asignar los valores
+                // Crear una nueva instancia de DetallesSalidaAlmacen y asignar los valores
                 $detalleSalidaAlmacen = new DetallesSalidaAlmacen();
                 $detalleSalidaAlmacen->cantidad = $detalle['cantidad'];
                 $detalleSalidaAlmacen->marca = $detalle['marca'];
                 $detalleSalidaAlmacen->modelo = $detalle['modelo'];
                 $detalleSalidaAlmacen->num_de_parte = $detalle['num_de_parte'];
                 $detalleSalidaAlmacen->descripcion = $detalle['descripcion'];
-                // dd($detalleGarantia);
-                // Asociar el detalle con la remisión recién creada y guardarlo
+                // Asociar el detalle con la salida de mat/eq a bodega recién creada y guardarlo
                 $salida_almacen->detalles_salida_almacen()->save($detalleSalidaAlmacen);
             }
         }

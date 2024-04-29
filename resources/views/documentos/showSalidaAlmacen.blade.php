@@ -17,7 +17,7 @@ Ver Documentos
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del Documento: <span class="uppercase">{{ $Documentos->tipo_documento->name }}</span></h2>
                     <div class="mt-8 grid grid-cols-1 gap-x-2 gap-y-2 md:grid-cols-3">
 
-                        <!-- INICIO - VISTA PREVIA REMISIÓN -->
+                        <!-- INICIO - VISTA PREVIA SALIDA DE MAT/EQ A BODEGA -->
 
                         <div class="sm:col-span-3 border px-3 py-2">
                             <div class="mt-2 mx-24">
@@ -62,7 +62,7 @@ Ver Documentos
                             </footer>
                         </div>
 
-                        <!-- FIN - VISTA PREVIA REMISIÓN -->
+                        <!-- FIN - VISTA PREVIA SALIDA DE MAT/EQ A BODEGA -->
 
                     </div>
 

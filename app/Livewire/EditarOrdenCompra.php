@@ -25,8 +25,13 @@ class EditarOrdenCompra extends Component
     public $proveedores_id;
     public $num_orden_compra;
     public $nombre_proyecto;
-    public $tiempo_entrega;
-    public $moneda;
+    public $name_cliente;
+    public $domicilio;
+    public $ubicacion;
+    public $codigo_postal;
+    public $contacto_cliente;
+    public $tel_cliente;
+    public $email_cliente;
     public $subtotal;
     public $iva;
     public $total;
@@ -50,7 +55,13 @@ class EditarOrdenCompra extends Component
         $this->proveedores_id =  $this->documento->orden_compra->proveedores_id;
         $this->num_orden_compra = $this->documento->orden_compra->num_orden_compra;
         $this->nombre_proyecto = $this->documento->orden_compra->nombre_proyecto;
-        $this->tiempo_entrega = $this->documento->orden_compra->tiempo_entrega;
+        $this->name_cliente = $this->documento->orden_compra->name_cliente;
+        $this->domicilio = $this->documento->orden_compra->domicilio;
+        $this->ubicacion = $this->documento->orden_compra->ubicacion;
+        $this->codigo_postal = $this->documento->orden_compra->codigo_postal;
+        $this->contacto_cliente = $this->documento->orden_compra->contacto_cliente;
+        $this->tel_cliente = $this->documento->orden_compra->tel_cliente;
+        $this->email_cliente = $this->documento->orden_compra->email_cliente;
         $this->detalles = $this->documento->orden_compra->detalles_orden_compra;
 
         // Inicializamos los valores en new_detalles usando los datos del detalle 
@@ -116,7 +127,13 @@ class EditarOrdenCompra extends Component
                 $documento->orden_compra->proveedores_id = $this->proveedores_id;
                 $documento->orden_compra->num_orden_compra = $this->num_orden_compra;
                 $documento->orden_compra->nombre_proyecto = $this->nombre_proyecto;
-                $documento->orden_compra->tiempo_entrega = $this->tiempo_entrega;  
+                $documento->orden_compra->name_cliente = $this->name_cliente;
+                $documento->orden_compra->domicilio = $this->domicilio;
+                $documento->orden_compra->ubicacion = $this->ubicacion;
+                $documento->orden_compra->codigo_postal = $this->codigo_postal;
+                $documento->orden_compra->contacto_cliente = $this->contacto_cliente;
+                $documento->orden_compra->tel_cliente = $this->tel_cliente;
+                $documento->orden_compra->email_cliente = $this->email_cliente;
                 $documento->orden_compra->save();
 
                 // Borrado de todos los detalles de la orden_compras actual
@@ -134,6 +151,7 @@ class EditarOrdenCompra extends Component
                 }
             }
         }
+        return redirect(route('documentos.index'))->with('alerta', 'El documento se modificó correctamente correctamente.');
     }
     public function render()
     {

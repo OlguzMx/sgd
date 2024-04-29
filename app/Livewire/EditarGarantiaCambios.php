@@ -116,7 +116,7 @@ class EditarGarantiaCambios extends Component
                 $documento->garantia_cambio->detalles_garantia_cambio()->delete();
 
                 //Guardar los nuevos detalles proporcionados por el user
-                foreach($this->new_detalles as $index => $detalle){
+                foreach ($this->new_detalles as $index => $detalle) {
                     $nuevoDetalle = new DetallesGarantiaCambio();
                     $nuevoDetalle->marca_danado = $detalle['marca_danado_' . $index];
                     $nuevoDetalle->modelo_danado = $detalle['modelo_danado_' . $index];
@@ -129,6 +129,7 @@ class EditarGarantiaCambios extends Component
                 }
             }
         }
+        return redirect(route('documentos.index'))->with('alerta', 'El documento se modificó correctamente correctamente.');
     }
 
 

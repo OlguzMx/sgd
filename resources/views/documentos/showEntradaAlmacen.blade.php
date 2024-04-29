@@ -17,7 +17,7 @@ Ver Documentos
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Datos del Documento: <span class="uppercase">{{ $Documentos->tipo_documento->name }}</span></h2>
                     <div class="mt-8 grid grid-cols-1 gap-x-2 gap-y-2 md:grid-cols-3">
 
-                        <!-- INICIO - VISTA PREVIA REMISIÓN -->
+                        <!-- INICIO - VISTA PREVIA DE ENTRADA DE MAT/EQ A BODEGA -->
 
                         <div class="sm:col-span-3 border px-3 py-2">
                             <div class="mt-2 mx-24">
@@ -27,7 +27,7 @@ Ver Documentos
                                 <p class="font-semibold">{{ $Documentos->entrada_almacen->name_cliente }}</p>
                                 <p class="font-semibold">{{ $Documentos->entrada_almacen->empresa_cliente }}</p>
                                 <p class="font-semibold">{{ $Documentos->entrada_almacen->puesto_cliente }}</p>
-                                <h2 class="font-bold uppercase text-3xl text-center my-10">{{ $Documentos->tipo_documento->name }} de Equipo</h2>
+                                <h2 class="font-bold uppercase text-3xl text-center my-10">{{ $Documentos->tipo_documento->name }}</h2>
                                 <table class="min-w-full table-auto border-collapse border border-slate-500 my-2">
                                     <thead class="text-center text-lg uppercase font-thin border border-slate-600 bg-gray-400">
                                         <tr>
@@ -62,7 +62,7 @@ Ver Documentos
                             </footer>
                         </div>
 
-                        <!-- FIN - VISTA PREVIA REMISIÓN -->
+                        <!-- FIN - VISTA PREVIA DE ENTRADA DE MAT/EQ A BODEGA -->
 
                     </div>
 

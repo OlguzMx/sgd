@@ -39,5 +39,14 @@ class EmpresasTableSeeder extends Seeder
             'ubicacion' => 'Villahermosa, Tabasco',
             'codigo_postal' => '86035',
         ]);
+
+        // EMPRESA DE EJEMPLO PARA CREAR CLIENTE Y USARLO EN LOS TIPOS DE DOCUMENTOS ENTRADA/SALIDA DE MAT/EQ A BODEGA
+        DB::table('empresas')->insert([
+            'name' => '-- EJEMPLO --',
+            'email' => 'ejemplo@gmail.com	',
+            'direccion' => 'ejemplo',
+            'ubicacion' => 'Villahermosa, Tabasco',
+            'codigo_postal' => '86035',
+        ]);
     }
 }

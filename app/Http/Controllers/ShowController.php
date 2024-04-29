@@ -14,6 +14,8 @@ use App\Models\OrdenCompra;
 class ShowController extends Controller
 {
     // CONTROLADOR EXCLUSIVAMENTE PARA LOS SHOW DE CADA TIPO DE DOCUMENTO
+
+    // SHOW DE REMISIÓN
     public function showRemision($id)
     {
         $documento = Documento::find($id);
@@ -25,6 +27,7 @@ class ShowController extends Controller
         ]);
     }
 
+    // SHOW DE COTIZACIÓN
     public function showCotizacion($id)
     {
         $documento = Documento::find($id);
@@ -36,6 +39,7 @@ class ShowController extends Controller
         ]);
     }
 
+    // SHOW DE ORDEN DE COMPRA
     public function showOrdenCompra($id)
     {
         $documento = Documento::find($id);
@@ -47,6 +51,7 @@ class ShowController extends Controller
         ]);
     }
 
+    // SHOW DE GARANTÍA Y/O CAMBIOS DE EQUIPO
     public function showGarantiaCambios($id)
     {
         $documento = Documento::find($id);
@@ -58,6 +63,7 @@ class ShowController extends Controller
         ]);
     }
 
+    // SHOW DE ENTRADA DE MAT/EQ A BODEGA
     public function showEntradaAlmacen($id)
     {
         $documento = Documento::find($id);
@@ -68,6 +74,7 @@ class ShowController extends Controller
         ]);
     }
 
+    // SHOW DE SALIDA DE MAT/EQ A BODEGA
     public function showSalidaAlmacen($id)
     {
         $documento = Documento::find($id);

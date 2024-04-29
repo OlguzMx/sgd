@@ -84,7 +84,8 @@ Crear empresa
 
                             <!-- FIN - DIRECCIÓN -->
 
-                            <!-- inicio -->
+                            <!-- INICIO - UBICACIÓN -->
+
                             <div class="sm:col-span-3">
                                 <label for="ubicacion" class="block text-sm font-medium leading-6 text-gray-900">Ubicación</label>
                                 <div class="mt-2">
@@ -99,6 +100,10 @@ Crear empresa
                                     @enderror
                                 </div>
                             </div>
+
+                            <!-- FIN - UBICACIÓN -->
+
+                            <!-- INICIO - CÓDIGO POSTAL -->
 
                             <div class="sm:col-span-3">
                                 <label for="codigo_postal" class="block text-sm font-medium leading-6 text-gray-900">Código Postal</label>
@@ -115,7 +120,7 @@ Crear empresa
                                 </div>
                             </div>
 
-
+                            <!-- FIN - CÓDIGO POSTAL -->
 
                         </div>
 

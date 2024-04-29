@@ -16,7 +16,7 @@ Crear Proveedor
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
 
-            <!-- INICIO - DATOS DEL DOCUMENTO -->
+            <!-- INICIO - DATOS DEL PROVEEDOR -->
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-8 py-2 flex flex-col items-center md:block ">
                 <div class="border-b border-gray-900/10 pb-12">
@@ -120,7 +120,7 @@ Crear Proveedor
                 </div>
             </div>
 
-            <!-- FIN - DATOS DEL DOCUMENTO -->
+            <!-- FIN - DATOS DEL PROVEEDOR -->
 
         </div>
     </div>

@@ -30,6 +30,14 @@ Route::get('/documentos/remision/pdf/header', [PdfController::class, 'pdfHeader'
 Route::get('/documentos/remision/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
 
 // Header y Footer de Garantia
+Route::get('/documentos/cotizacion/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
+Route::get('/documentos/cotizacion/pdf/footer', [PdfController::class, 'pdfFooterCotizacion'])->name('pdf.footer');
+
+// Header y Footer de Garantia
+Route::get('/documentos/orden_compra/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
+Route::get('/documentos/orden_compra/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
+
+// Header y Footer de Garantia
 Route::get('/documentos/garantia_cambio/pdf/header', [PdfController::class, 'pdfHeader'])->name('pdf.header');
 Route::get('/documentos/garantia_cambio/pdf/footer', [PdfController::class, 'pdfFooter'])->name('pdf.footer');
 
@@ -108,6 +116,9 @@ Route::middleware([
     Route::get('/documentos/garantia_cambio/pdf/{id}', [PdfController::class, 'pdfGarantia'])->name('pdf.garantia');
     Route::get('/documentos/entrada_almacen/pdf/{id}', [PdfController::class, 'pdfEntrada'])->name('pdf.entrada');
     Route::get('/documentos/salida_almacen/pdf/{id}', [PdfController::class, 'pdfSalida'])->name('pdf.salida');
+    Route::get('/documentos/orden_compra/pdf/{id}', [PdfController::class, 'pdfOrden'])->name('pdf.orden');
+    Route::get('/documentos/cotizacion/pdf/{id}', [PdfController::class, 'pdfCotizacion'])->name('pdf.cotizacion');
+
     // VISTA DE TIPOS DOCUMENTOS
     Route::get('/tiposdocumentos', [TiposDocumentosController::class, 'index'])->name('tiposdocumentos.index');
     // Route::get('/tiposdocumentos/create', [TiposDocumentosController::class, 'create'])->name('tiposdocumentos.create');

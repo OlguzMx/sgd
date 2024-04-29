@@ -31,12 +31,14 @@
         /* Utilidades */
         .fecha {
             text-align: right;
-            font-size: 21px;
+            font-family: Arial;
+            font-size: 18px;
         }
 
         .name-cliente,
         .name-empresa {
             font-size: 25px;
+            font-family: 'Times New Roman';
             margin: 0;
         }
 
@@ -59,6 +61,7 @@
         .w-full {
             width: 100%;
         }
+
         /* Clases de la tabla*/
         .table {
             border-collapse: collapse;
@@ -83,6 +86,10 @@
             font-weight: bold;
         }
 
+        .td-texto {
+            font-family: 'Arial Narrow';
+        }
+
         /* Agregamos un borde derecho a las celdas, excepto para la última columna */
         .table th:not(:last-child),
         .table td:not(:last-child) {
@@ -100,46 +107,46 @@
         <p class="font-semibold name-cliente">{{ $documento->entrada_almacen->puesto_cliente }}</p>
         <p class="font-semibold name-empresa">{{ $documento->entrada_almacen->empresa_cliente }}</p>
         <h1 class="font-bold uppercase text-center my-10">
-            {{ $documento->tipo_documento->name }} de Equipo</h1>
+            {{ $documento->tipo_documento->name }}
+        </h1>
     </header>
 
     @foreach ($detallesEntrada as $pagina)
-        <main>
-            <!-- Contenido principal -->
-            <table class="table">
-                <thead>
-                    <tr class="uppercase font-semibold">
-                        <td>Cantidad</td>
-                        <td>Marca</td>
-                        <td>Modelo</td>
-                        <td>N. de Parte</td>
-                        <td class="w-full">Descripción</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($pagina as $detalle)
-                        <tr>
-                            <td>{{ $detalle->cantidad }}</td>
-                            <td>{{ $detalle->marca }}</td>
-                            <td>{{ $detalle->modelo }}</td>
-                            <td>{{ $detalle->num_de_parte }}</td>
-                            <td class="w-full">{{ $detalle->descripcion }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <main>
+        <!-- Contenido principal -->
+        <table class="table">
+            <thead>
+                <tr class="uppercase font-semibold">
+                    <td>Cantidad</td>
+                    <td>Marca</td>
+                    <td>Modelo</td>
+                    <td>N. de Parte</td>
+                    <td class="w-full">Descripción</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pagina as $detalle)
+                <tr class="td-texto">
+                    <td>{{ $detalle->cantidad }}</td>
+                    <td>{{ $detalle->marca }}</td>
+                    <td>{{ $detalle->modelo }}</td>
+                    <td>{{ $detalle->num_de_parte }}</td>
+                    <td class="w-full">{{ $detalle->descripcion }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-            {{-- SOLO LA ULTIMA PAGINA --}}
-            @if ($loop->last)
-                <img src="{{ asset('img/remision/firmas_remision.jpg') }}" alt="Logo"
-                    style="object-fit:cover; margin-top:20px;">
-            @endif
-        </main>
-
-        @if (!$loop->last)
-            <div style="page-break-after: always;"></div> <!-- Agregar salto de página si no es la última página -->
-            <div style="height: 10em;"></div>
+        {{-- SOLO LA ULTIMA PAGINA --}}
+        @if ($loop->last)
+        <img src="{{ asset('img/remision/firmas_remision.jpg') }}" alt="Logo" style="object-fit:cover; margin-top:20px;">
         @endif
+    </main>
+
+    @if (!$loop->last)
+    <div style="page-break-after: always;"></div> <!-- Agregar salto de página si no es la última página -->
+    <div style="height: 10em;"></div>
+    @endif
     @endforeach
 </body>
 

@@ -36,7 +36,7 @@ class EditarCotizacion extends Component
         $this->clientes = Cliente::all();
         $this->empresas = Empresa::all();
 
-        // Sincronizamos los datos de la base de datos con el formulario de edit-garantia-cambios
+        // Sincronizamos los datos de la base de datos con el formulario de edit-cotizacion
         $this->fecha = $this->documento->cotizacion->fecha;
         $this->clientes_id = $this->documento->clientes_id;
         $this->empresas_id = $this->documento->cotizacion->empresas_id;
@@ -44,7 +44,7 @@ class EditarCotizacion extends Component
         $this->detalles = $this->documento->cotizacion->detalles_cotizacion;
 
         // Inicializamos los valores en new_detalles usando los datos del detalle 
-        // (Los datos de la base de datos de la tabla detalles_garantias_cambios)
+        // (Los datos de la base de datos de la tabla detalles_cotizacion)
         foreach ($this->detalles as $index => $detalle) {
             $this->initializeDatos(
                 $index,
@@ -100,7 +100,7 @@ class EditarCotizacion extends Component
             $documento->clientes_id = $this->clientes_id;
             $documento->save();
 
-            // Verificar si el documento tiene una garantia y/o cambio asociado
+            // Verificar si el documento tiene una cotizacion asociado
             if ($documento->cotizacion) {
                 // Actualiza los campos del documento: cotizacions
                 $documento->cotizacion->fecha = $this->fecha;
@@ -108,7 +108,7 @@ class EditarCotizacion extends Component
                 $documento->cotizacion->folio = $this->folio;
                 $documento->cotizacion->save();
 
-                // Borrado de todos los detalles de la cotizacions actual
+                // Borrado de todos los detalles de la cotizacion actual
                 $documento->cotizacion->detalles_cotizacion()->delete();
 
                 //Guardar los nuevos detalles proporcionados por el user

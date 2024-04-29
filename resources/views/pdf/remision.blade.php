@@ -31,12 +31,14 @@
         /* Utilidades */
         .fecha {
             text-align: right;
-            font-size: 21px;
+            font-family: 'Times New Roman';
+            font-size: 20px;
         }
 
         .name-cliente,
         .name-empresa {
             font-size: 25px;
+            font-family: 'Times New Roman';
             margin: 0;
         }
 
@@ -75,6 +77,7 @@
             border: 1px solid #000;
             /* Establecemos un borde en todas las direcciones */
             text-align: center;
+            font-family: 'Arial Narrow';
             font-size: 20px;
         }
 

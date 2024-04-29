@@ -1,7 +1,7 @@
 <div>
     <form wire:submit="editarCotizacion">
         <div class="gap-y-4 sm:gap-x-6 sm:gap-y-4">
-            <h3 class="font-semibold uppercase my-2">Documento de <span
+            <h3 class="text-center font-semibold uppercase my-2">Documento de: <span
                     class="text-orange-400">{{ $documento->tipo_documento->name }}</span></h3>
             <div class="grid grid-cols-2 gap-8">
                 <div>
@@ -71,10 +71,7 @@
                 </div>
             </div>
             <h4 class="text-center font-semibold text-orange-400 text-lg my-4">
-                Detalles de {{ $documento->cotizacion->id }}
-            </h4>
-            <h4 class="text-center font-semibold text-lg my-4">
-                Equipo Dañado
+                Detalles de {{ $documento->tipo_documento->name }}
             </h4>
                 <table class="table-auto w-full">
                     <thead>
@@ -109,10 +106,11 @@
                                         value="{{ $new_detalles[$index]['num_de_parte_' . $index] }}" />
                                 </td>
                                 <td class="border px-4 py-2">
-                                    <input 
-                                        id="descripcion_{{ $index }}" type="text" class="w-full rounded-md"
-                                        wire:model.defer="new_detalles.{{ $index }}.descripcion_{{ $index }}"
-                                        value="{{ $new_detalles[$index]['descripcion_' . $index] }}" />
+                                    <textarea 
+                                        id="descripcion_{{ $index }}" type="text" class="w-full rounded-md overflow-auto" rows="3"
+                                        wire:model.defer="new_detalles.{{ $index }}.descripcion_{{ $index }}">
+                                        {{ $new_detalles[$index]['descripcion_' . $index] }} 
+                                    </textarea>
                                 </td>
                                 <td class="border px-4 py-2">
                                     <input 

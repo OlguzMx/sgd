@@ -21,6 +21,7 @@ class ClientesTableSeeder extends Seeder
             'num_cel' => '9955772288',
             'num_fijo' => '1234',
             'extension' => '242',
+            'departamento' => 'Encargado de Redes',
             'empresas_id' => 3,
         ]);
 
@@ -31,6 +32,7 @@ class ClientesTableSeeder extends Seeder
             'num_cel' => '9951155643',
             'num_fijo' => '24124',
             'extension' => '421',
+            'departamento' => 'Encargado de Sistemas',
             'empresas_id' => 2,
         ]);
 
@@ -41,7 +43,19 @@ class ClientesTableSeeder extends Seeder
             'num_cel' => '9922005588',
             'num_fijo' => '1214',
             'extension' => '12',
+            'departamento' => 'Encargado de Pedadogía',
             'empresas_id' => 1,
+        ]);
+
+        DB::table('clientes')->insert([
+            'name' => '-- EJ: ENTRADA/SALIDA --',
+            'email' => 'ejemplo1@gmail.com',
+            'puesto' => 'Ejemplo',
+            'num_cel' => '9922005588',
+            'num_fijo' => '1214',
+            'extension' => '12',
+            'departamento' => '',
+            'empresas_id' => 4,
         ]);
     }
 }

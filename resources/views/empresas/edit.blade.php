@@ -38,12 +38,6 @@ Editar cliente
 
                             <!-- FIN - EDITAR NOMBRE -->
 
-                            <!-- INICIO - EDITAR EMPRESA -->
-
-                         
-
-                            <!-- FIN - EDITAR EMPRESA -->
-
                             <!-- INICIO EDITAR DIRECCIÓN -->
 
                             <div class="sm:col-span-3">
@@ -52,7 +46,10 @@ Editar cliente
                                     <input id="direccion" name="direccion" type="text" value="{{ $Empresa->direccion }}" autocomplete="direccion" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
+
                             <!-- FIN EDITAR DIRECCIÓN -->
+
+                            <!-- INICIO - EMAIL -->
 
                             <div class="sm:col-span-3">
                                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
@@ -61,38 +58,34 @@ Editar cliente
                                 </div>
                             </div>
 
+                            <!-- FIN - EMAIL -->
+
+                            <!-- INICIO - UBICACIÓN -->
+
                             <div class="sm:col-span-3">
-                                <label for="ubicacion"
-                                    class="block text-sm font-medium leading-6 text-gray-900">Ubicación</label>
+                                <label for="ubicacion" class="block text-sm font-medium leading-6 text-gray-900">Ubicación</label>
                                 <div class="mt-2">
-                                    <input 
-                                        id="ubicacion" 
-                                        name="ubicacion" 
-                                        type="text" 
-                                        autocomplete="ubicacion"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                                    <input id="ubicacion" name="ubicacion" type="text" autocomplete="ubicacion" class="block w-full rounded-md border-0 py-1.5 text-gray-900 
                                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-                                        focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        value="{{ $Empresa->ubicacion }}">
+                                        focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ $Empresa->ubicacion }}">
                                 </div>
                             </div>
-                            
+
+                            <!-- FIN - UBICACIÓN -->
+
+                            <!-- INICIO - CÓDIGO POSTAL -->
+
                             <div class="sm:col-span-3">
-                                <label for="codigo_postal"
-                                    class="block text-sm font-medium leading-6 text-gray-900">Código Postal</label>
+                                <label for="codigo_postal" class="block text-sm font-medium leading-6 text-gray-900">Código Postal</label>
                                 <div class="mt-2">
-                                    <input 
-                                        id="codigo_postal" 
-                                        name="codigo_postal" 
-                                        type="text" 
-                                        autocomplete="codigo_postal"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                                    <input id="codigo_postal" name="codigo_postal" type="text" autocomplete="codigo_postal" class="block w-full rounded-md border-0 py-1.5 text-gray-900 
                                         shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-                                        focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        value="{{ $Empresa->codigo_postal }}">
+                                        focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ $Empresa->codigo_postal }}">
                                 </div>
                             </div>
-                            
+
+                            <!-- FIN - CÓDIGO POSTAL -->
+
                         </div>
 
                         <!-- INICIO - BOTON DE GUARDAR EDICION Y REGRESAR -->

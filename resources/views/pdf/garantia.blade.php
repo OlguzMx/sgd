@@ -31,12 +31,14 @@
         /* Utilidades */
         .fecha {
             text-align: right;
-            font-size: 21px;
+            font-family: Arial;
+            font-size: 15px;
         }
 
         .name-cliente,
         .name-empresa {
-            font-size: 25px;
+            font-size: 18px;
+            font-family: Arial;
             margin: 0;
         }
 
@@ -64,16 +66,18 @@
         .table {
             border-collapse: collapse;
             border-width: 1px;
+            margin: auto;
+            width: 100%;
         }
 
         .table thead {
-            background-color: #c4c5c6;
+            background-color: #0070C0;
         }
 
         .table th,
         .table td {
             padding: 8px 16px;
-            border: 1px solid #000;
+            border: 1px solid #0070C0;
             /* Establecemos un borde en todas las direcciones */
             text-align: center;
             font-size: 20px;
@@ -87,7 +91,24 @@
         /* Agregamos un borde derecho a las celdas, excepto para la última columna */
         .table th:not(:last-child),
         .table td:not(:last-child) {
-            border-right: 1px solid #000;
+            border-right: 1px solid #0070C0;
+        }
+
+        .p-tabla {
+            font-family: Arial;
+            font-size: x-small;
+
+        }
+
+        .contenedor {
+            text-align: center
+        }
+
+        /* Clases del texto */
+        .p-texto {
+            font-size: 18px;
+            font-family: Arial;
+            text-align: justify;
         }
     </style>
 </head>
@@ -98,14 +119,13 @@
             {{ \Carbon\Carbon::parse($documento->garantia_cambio->fecha)->translatedFormat('d \d\e F \d\e Y') }}
         </p>
         <p class="font-semibold name-cliente">{{ $documento->garantia_cambio->empresa->name }}</p>
-        <p class="font-semibold name-cliente">{{ $documento->cliente->name }}</p>
-        <p class="font-semibold name-cliente">{{ $documento->cliente->puesto }}</p>
-        <p class="font-semibold name-empresa">{{ $documento->garantia_cambio->empresa->ubicacion }}</p>
-        <h1 class="font-bold uppercase text-center my-10">
-            {{ $documento->tipo_documento->name }}
-        </h1>
+        <p class="name-cliente">{{ $documento->cliente->name }}</p>
+        <p class="name-cliente">{{ $documento->cliente->puesto }}</p>
+        <p class="name-cliente">{{ $documento->cliente->departamento }}</p>
+        <p class="name-empresa">{{ $documento->garantia_cambio->empresa->ubicacion }}</p>
+
     </header>
-    <p class="">
+    <p class="p-texto">
         Por medio de la presente yo el <span class="font-bold">C. {{ $documento->user->name }}</span>, en mi carácter de representante legal,
         me dirijo de a usted para informarle que, debido a la aplicación de garantía solicitada con el fabricante,
         <span>{{ $documento->garantia_cambio->descripcion }}</span>
@@ -124,8 +144,8 @@
             </thead>
             <tbody>
                 @foreach ($pagina as $detalle)
-                <tr>
-                    <td>{{ $detalle->marca_danado }}</td>
+                <tr class="p-tabla">
+                    <td class="font-semibold">{{ $detalle->marca_danado }}</td>
                     <td>{{ $detalle->modelo_danado }}</td>
                     <td>{{ $detalle->num_serie_danado }}</td>
                 </tr>
@@ -145,8 +165,8 @@
             </thead>
             <tbody>
                 @foreach ($pagina as $detalle)
-                <tr>
-                    <td>{{ $detalle->marca_reemplazo }}</td>
+                <tr class="p-tabla">
+                    <td class="font-semibold">{{ $detalle->marca_reemplazo }}</td>
                     <td>{{ $detalle->modelo_reemplazo }}</td>
                     <td>{{ $detalle->num_serie_reemplazo }}</td>
                     <td>{{ $detalle->num_inventario }}</td>
@@ -155,7 +175,7 @@
             </tbody>
         </table>
 
-        <p class="">Siendo el caso concluido ya que el equipo fue recibido satisfactoriamente, por el área usuaria que solicito la aplicación de la garantía.
+        <p class="p-texto">Siendo el caso concluido ya que el equipo fue recibido satisfactoriamente, por el área usuaria que solicito la aplicación de la garantía.
             <br>
             <br>
             Sin más por el momento, quedamos a sus órdenes y expreso que estamos para servirles.
@@ -164,7 +184,9 @@
         </p>
         {{-- SOLO LA ULTIMA PAGINA --}}
         @if ($loop->last)
-        <img src="{{ asset('img/garantia_cambio/firma_genaro.jpg') }}" alt="Logo" width="350px" class="mx-auto object-cover rounded my-20">
+        <div class="contenedor">
+            <img src="{{ asset('img/garantia_cambio/firma_genaro.jpg') }}" alt="Logo" width="350px">
+        </div>
         @endif
     </main>
 

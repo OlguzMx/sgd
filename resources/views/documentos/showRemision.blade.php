@@ -45,7 +45,13 @@ Ver Documentos
                                         @endforeach
                                     </tbody>
                                 </table>
+
+                                <!-- INICIO -IMG DE FIRMAS -->
+
                                 <img src="{{ asset('img/remision/firmas_remision.jpg') }}" alt="Logo" class="mx-auto object-cover rounded my-28">
+
+                                <!-- FIN -IMG DE FIRMAS -->
+
                             </div>
                             <footer>
                                 <p class="text-center text-sm font-bold text-gray-700">
@@ -53,7 +59,8 @@ Ver Documentos
                                     <br>
                                     Delegación Miguel Hidalgo, Ciudad de Mexico RFC AIN040211G2A
                                     <br>
-                                    TEL: (993) 3-55-40-05 FAX (993) 1-85-07-54 ventas@arsite.com.mx www.arsite.com.mx</p>
+                                    TEL: (993) 3-55-40-05 FAX (993) 1-85-07-54 ventas@arsite.com.mx www.arsite.com.mx
+                                </p>
                             </footer>
                         </div>
 

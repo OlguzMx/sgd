@@ -45,7 +45,9 @@
                         <p class="text-red-700">{{ $message }}</p>
                     </div>
                     @enderror
+
                     <!-- INICIO - Tipo documento: Remisión -->
+
                     <div x-show="selectedOption === '1'" class="mt-4">
                         <div class="flex flex-col md:grid md:grid-cols-2 md:gap-6">
                             <div>
@@ -56,7 +58,6 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-
                             </div>
                             <div>
                                 <label for="empresas_id" class="block">Empresa</label>
@@ -75,6 +76,7 @@
                             </div>
 
                             {{-- CAMPOS DINÁMICOS DE TABLA detalles_remision --}}
+
                             <h4 class="col-span-2 text-center font-semibold text-orange-500">Agregue las veces que
                                 requiera</h4>
                             <div>
@@ -104,20 +106,19 @@
                                 </div>
                                 @enderror
                             </div>
-
-
                         </div>
                         {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
+
                         <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesDocumentos'>
                             Agregar campos
                         </button>
 
-                        {{-- Tabla --}}
 
-                    </div> {{-- Fin remision --}}
+                    </div>
                     <!-- FIN - Tipo documento: Remisión -->
 
                     {{-- INICIO - Tipo documento: Cotización --}}
+
                     <div x-show="selectedOption === '2' ">
                         <div class="flex flex-col md:grid md:grid-cols-2 md:gap-6">
                             <div>
@@ -145,8 +146,10 @@
                                 @enderror
                             </div>
                             <h4 class="col-span-2 text-center font-semibold text-orange-500">Agregue las veces que requiera</h4>
+
+                            {{-- CAMPOS DINÁMICOS DE TABLA detalles_cotizacion --}}
+
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_cotizacion --}}
                                 <label for="cantidad" class="block">Cantidad</label>
                                 <input id="cantidad" wire:model="cantidad" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('cantidad')
@@ -190,13 +193,16 @@
                         </div>
 
                         {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
+
                         <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesCotizacion'>
                             Agregar campos
                         </button>
                     </div>
+
                     {{-- FIN - Tipo documento: Cotización --}}
 
                     {{-- INICIO - Tipo documento: Orden de compra --}}
+
                     <div x-show="selectedOption === '3' ">
                         <div class="flex flex-col md:grid md:grid-cols-2 md:gap-6">
                             <div>
@@ -256,27 +262,75 @@
                                 </div>
                                 @enderror
                             </div>
+                            <h4 class="col-span-2 text-center font-semibold text-orange-500">Datos de la dirección de entrega</h4>
                             <div>
-                                <label for="tiempo_entrega" class="block">Tiempo de entrega</label>
-                                <input type="text" wire:model="tiempo_entrega" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('tiempo_entrega')
+                                <label for="name_cliente" class="block">Nombre del Cliente</label>
+                                <input type="text" wire:model="name_cliente" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('name_cliente')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
                             </div>
                             <div>
-                                <label for="moneda" class="block">Moneda</label>
-                                <input type="text" wire:model="moneda" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                @error('moneda')
+                                <label for="domicilio" class="block">Domicilio</label>
+                                <input type="text" wire:model="domicilio" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('domicilio')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="ubicacion" class="block">Ubicación</label>
+                                <input type="text" wire:model="ubicacion" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('ubicacion')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="codigo_postal" class="block">Código Postal</label>
+                                <input type="text" wire:model="codigo_postal" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('codigo_postal')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="contacto_cliente" class="block">Contacto Cliente</label>
+                                <input type="text" wire:model="contacto_cliente" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('contacto_cliente')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="tel_cliente" class="block">Télfono Cliente</label>
+                                <input type="text" wire:model="tel_cliente" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('tel_cliente')
+                                <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
+                                    <p class="text-red-700">{{ $message }}</p>
+                                </div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="email_cliente" class="block">Email Cliente</label>
+                                <input type="text" wire:model="email_cliente" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('email_cliente')
                                 <div class="alerta my-2 p-2 border-l-4 border-l-red-700 text-sm shadow-md text-center font-bold bg-red-100">
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
                             </div>
                             <h4 class="col-span-2 text-center font-semibold text-orange-500">Agregue las veces que requiera</h4>
+
+                            {{-- CAMPOS DINÁMICOS DE TABLA detalles_orden_compra --}}
+
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen - EQUIPO DAÑADO --}}
                                 <label for="cantidad" class="block">Cantidad</label>
                                 <input id="cantidad" wire:model="cantidad" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('cantidad')
@@ -293,7 +347,6 @@
                                 @enderror
                             </div>
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen - EQUIPO REEMPLAZO --}}
                                 <label for="num_de_parte" class="block">Núm. de parte</label>
                                 <input id="num_de_parte" wire:model="num_de_parte" type="text" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('num_de_parte')
@@ -314,13 +367,16 @@
                         </div>
 
                         {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
+
                         <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesOrdenCompra'>
                             Agregar campos
                         </button>
                     </div>
+
                     {{-- FIN - Tipo documento: Orden de compra --}}
 
                     {{-- INICIO - Tipo documento: Garantía y/o cambio de equipo --}}
+
                     <div x-show="selectedOption === '4' ">
                         <div class="flex flex-col md:grid md:grid-cols-2 md:gap-6">
                             <div>
@@ -356,8 +412,10 @@
                                 </div>
                                 @enderror
                             </div>
+
+                            {{-- CAMPOS DINÁMICOS DE TABLA detalles_garantias_cambios - EQUIPO DAÑADO --}}
+
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_garantias_cambios - EQUIPO DAÑADO --}}
                                 <label for="marca_danado" class="block">Marca (Equipo dañado)</label>
                                 <input id="marca_danado" wire:model="marca_danado" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('marca_danado')
@@ -379,10 +437,11 @@
                                     <p class="text-red-700">{{ $message }}</p>
                                 </div>
                                 @enderror
-
                             </div>
+
+                            {{-- CAMPOS DINÁMICOS DE TABLA detalles_garantias_cambios - EQUIPO REEMPLAZO --}}
+
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_garantias_cambios - EQUIPO REEMPLAZO --}}
                                 <label for="marca_reemplazo" class="block">Marca (Equipo reemplazo)</label>
                                 <input id="marca_reemplazo" wire:model="marca_reemplazo" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('marca_reemplazo')
@@ -415,13 +474,16 @@
                         </div>
 
                         {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
+
                         <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesGarantiaCambios'>
                             Agregar campos
                         </button>
-                    </div> {{-- Fin garantia cambios --}}
+                    </div>
+
                     {{-- FIN - Tipo documento: Garantía y/o cambio de equipo --}}
 
                     {{-- INICIO - Tipo documento: Entrada de Mat/Eq a bodega --}}
+
                     <div x-show="selectedOption === '5' ">
                         <div class="flex flex-col md:grid md:grid-cols-2 md:gap-6">
                             <div>
@@ -462,8 +524,10 @@
                             </div>
                             <h4 class="col-span-2 text-center font-semibold text-orange-500">Agregue las veces que
                                 requiera</h4>
+
+                            {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen --}}
+
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen - EQUIPO DAÑADO --}}
                                 <label for="cantidad" class="block">Cantidad</label>
                                 <input id="cantidad" wire:model="cantidad" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('cantidad')
@@ -480,7 +544,6 @@
                                 @enderror
                             </div>
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen - EQUIPO REEMPLAZO --}}
                                 <label for="marca" class="block">Marca</label>
                                 <input id="marca" wire:model="marca" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('marca')
@@ -508,13 +571,16 @@
                         </div>
 
                         {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
+
                         <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesEntradaAlmacen'>
                             Agregar campos
                         </button>
                     </div>
+
                     {{-- FIN - Tipo documento: Entrada de Mat/Eq a bodega --}}
 
                     {{-- INICIO - Tipo documento: Salida de Mat/Eq a bodega --}}
+
                     <div x-show="selectedOption === '6' ">
                         <div class="flex flex-col md:grid md:grid-cols-2 md:gap-6">
                             <div>
@@ -555,8 +621,10 @@
                             </div>
                             <h4 class="col-span-2 text-center font-semibold text-orange-500">Agregue las veces que
                                 requiera</h4>
+
+                            {{-- CAMPOS DINÁMICOS DE TABLA detalles_salida_almacen --}}
+
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen - EQUIPO DAÑADO --}}
                                 <label for="cantidad" class="block">Cantidad</label>
                                 <input id="cantidad" wire:model="cantidad" type="number" min="0" class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('cantidad')
@@ -573,7 +641,6 @@
                                 @enderror
                             </div>
                             <div>
-                                {{-- CAMPOS DINÁMICOS DE TABLA detalles_entrada_almacen - EQUIPO REEMPLAZO --}}
                                 <label for="marca" class="block">Marca</label>
                                 <input id="marca" wire:model="marca" type="text" placeholder="Ej: Aruba, Fortinet, etc." class="mb-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @error('marca')
@@ -601,10 +668,12 @@
                         </div>
 
                         {{-- BOTÓN PARA ALMACENAR EN EL ARRAY DE DETALLES DOCUMENTOS --}}
+
                         <button class="my-3 text-orange-500 border-b-2 border-b-orange-200/30 hover:border-b-orange-400" type="button" wire:click='detallesSalidaAlmacen'>
                             Agregar campos
                         </button>
                     </div>
+
                     {{-- FIN - Tipo documento: Salida de Mat/Eq a bodega --}}
 
                 </div>
@@ -613,11 +682,13 @@
 
 
         <!-- INICIO - BOTÓN DE CREAR Y REGRESAR -->
+
         <div class="py-4">
             <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105"><a href="{{ route('documentos.index') }}">Regresar</a></button>
             <button type="submit" class="bg-orange-500 hover:bg-indigo-700 text-white font-bold p-2 rounded transition duration-300 ease-in-out transform hover:scale-105">Crear
                 Documento</button>
         </div>
+
         <!-- FIN - BOTÓN DE CREAR Y REGRESAR -->
     </form>
 

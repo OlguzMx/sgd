@@ -8,7 +8,7 @@
 </head>
 <body>
     <footer >
-        <p style="text-align: center; margin:0;">
+        <p style="text-align: center; margin:0; font-family: Arial; font-size: x-small;">
             Calle Unión No. 161 Col Escandón 1ra Sección dpto. 22, C.P. 11800
             <br>
             Delegación Miguel Hidalgo, Ciudad de Mexico RFC AIN040211G2A
