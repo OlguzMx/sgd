@@ -7,21 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Acerca del proyecto desarrollado en Laravel
+## Sistema de Gestión Documental (SGD)
 
-Sistema web desarrollado para AR-SITE Integradores durante el Programa de Educación Dual.
-
-Su objetivo es facilitar la administración, almacenamiento y consulta de documentos empresariales.
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sistema web desarrollado para AR-SITE Integradores durante el Programa de Educación Dual con el objetivo de optimizar la administración, almacenamiento y consulta de documentos empresariales.
 
 ## Funciones
 
@@ -37,25 +25,21 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ✔ Carga de archivos
 
-## Laravel Sponsors
+## Tecnologías
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Laravel
 
-### Premium Partners
+PHP
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Bootstrap
+
+JavaScript
+
+MySQL
+
+Git
+
+GitHub
 
 ## Contributing
 
